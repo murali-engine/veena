@@ -3,34 +3,63 @@ import { Scene, Timeline } from "murali-js/core";
 import { palette } from "murali-js/style";
 import { Label } from "murali-js/text";
 import { WordCloud } from "murali-js/maths";
-const { BLUE_B, GOLD_C, GREEN_C, PINK_C, PURPLE_B, TEAL_C, WHITE } = palette;
+const { WHITE } = palette;
 
-const WORDS = [
-  ["Murali JS", 100], ["animation", 88], ["deterministic", 82], ["timeline", 75],
-  ["TypeScript", 70], ["CSS", 68], ["3D", 64], ["camera", 58],
-  ["storytelling", 56], ["React", 50], ["SVG", 49], ["preview", 46],
-  ["render", 45], ["scene", 44], ["motion", 42], ["layout", 40],
-  ["particles", 37], ["shapes", 36], ["clips", 34], ["video", 32],
-  ["WebGL", 30], ["typography", 27], ["graphs", 25], ["tensors", 24],
-  ["creative", 22], ["code-first", 20], ["reusable", 18], ["world-space", 17],
+const EDITORIAL_COLORS = ["#dce2ea", "#aab4c3", "#78a9a2", "#7f94b2", "#9d8fa8"];
+
+const FEATURED_WORDS = [
+  ["AI", 100],
+  ["Machine Learning", 94],
+  ["Deep Learning", 90],
+  ["Neural Network", 86],
+  ["Foundation Model", 82],
+  ["LLM", 78],
+  ["Generative AI", 96],
+] as const;
+
+const FILLER_WORDS = [
+  ["chatbots", 52], ["assistants", 50], ["generated images", 48], ["automation", 46],
+  ["deepfakes", 44], ["new models", 42], ["transformers", 40], ["training", 38],
+  ["inference", 36], ["tokens", 34], ["multimodal", 32], ["agents", 30],
+  ["reasoning", 28], ["synthetic media", 26], ["embeddings", 24], ["context", 22],
+  ["prompting", 20], ["alignment", 18], ["compute", 16], ["data", 14],
 ] as const;
 
 class WordCloudScene extends Scene {
   override construct(): void {
-    const title = this.add(Label("A deterministic word cloud").height(0.42).color(WHITE).typewriter());
+    const title = this.add(Label("The language of AI").height(0.42).color(WHITE).typewriter());
     this.toEdge(title, "up", { margin: 0.55 });
-    const cloud = this.add(WordCloud(WORDS.map(([text, weight]) => ({ text, weight })))
+    const cloud = this.add(WordCloud([
+      ...FEATURED_WORDS.map(([text, weight]) => ({
+        text,
+        weight,
+        featured: true,
+        orientation: "horizontal" as const,
+      })),
+      ...FILLER_WORDS.map(([text, weight]) => ({ text, weight })),
+    ], {
+      minimumWordSize: 0.3,
+      maximumWordSize: 1,
+      colors: EDITORIAL_COLORS,
+    })
       .size([13.5, 6.3])
-      .fontRange([0.2, 1.15])
-      .palette([TEAL_C, BLUE_B, PURPLE_B, PINK_C, GOLD_C, GREEN_C])
-      .rotations([0, 0, 0, 0, -90, 90])
       .shape("ellipse")
       .padding(0.07)
-      .seed(2026), { at: [0, -0.35, 0] });
+      .seed(2026), { at: [0, 0.1, 0] });
 
     const timeline = new Timeline();
     timeline.animate(title).duration(0.8).ease("linear").typewrite();
-    timeline.animate(cloud.words).at(0.45).stagger(0.045).duration(0.5).ease("outCubic").appear();
+    cloud.animate(timeline, {
+      at: 0.45,
+      featuredStagger: 0.22,
+      featuredDuration: 0.55,
+      pause: 1.25,
+      fillerStagger: 0.045,
+      fillerDuration: 0.4,
+      hold: 1.4,
+      exitStagger: 0.018,
+      exitDuration: 0.45,
+    });
     this.play(timeline);
   }
 }

@@ -168,6 +168,25 @@ NewspaperOpening(newspapers, {
 
 When `totalTime` and `timing` are both present, `timing` defines the relative rhythm and `totalTime` scales that rhythm to the requested duration.
 
+## Fading out
+
+`NewspaperOpening` uses the standard timeline opacity animation rather than a dedicated `fadeOut()` method. Animate the composition's `visual` and fade it to zero:
+
+```ts
+const fadeDuration = 0.5;
+
+opening.animate(timeline);
+
+timeline
+  .animate(opening.visual)
+  .at(opening.duration - fadeDuration)
+  .duration(fadeDuration)
+  .ease("inOutCubic")
+  .fadeTo(0);
+```
+
+This example uses the final part of `endHold` for the fade, so it does not extend the sequence. Use `.at(opening.duration)` instead when the fade should begin only after the complete opening has finished.
+
 ## Final title page
 
 Opening-level options configure the last page rather than the individual newspapers:

@@ -1,0 +1,121 @@
+---
+title: Word clouds
+description: Build deterministic word clouds with featured-word pacing, semantic orientation, and staged removal.
+---
+
+# Word clouds
+
+`WordCloud` lays out weighted labels without overlaps. Placement, color selection, and automatic orientation are deterministic for a given seed, so previews and exported frames produce the same composition.
+
+```ts
+import { Timeline } from "murali-js/core";
+import { WordCloud } from "murali-js/maths";
+
+const cloud = this.add(WordCloud([
+  { text: "AI", weight: 100, featured: true, orientation: "horizontal" },
+  { text: "Machine Learning", weight: 94, featured: true, orientation: "horizontal" },
+  { text: "Deep Learning", weight: 90, featured: true, orientation: "horizontal" },
+  { text: "Neural Network", weight: 86, featured: true, orientation: "horizontal" },
+  { text: "Foundation Model", weight: 82, featured: true, orientation: "horizontal" },
+  { text: "LLM", weight: 78, featured: true, orientation: "horizontal" },
+  { text: "Generative AI", weight: 96, featured: true, orientation: "horizontal" },
+  { text: "chatbots", weight: 52 },
+  { text: "automation", weight: 46, orientation: "vertical" },
+  { text: "deepfakes", weight: 44 },
+  { text: "multimodal", weight: 32 },
+], {
+  minimumWordSize: 0.3,
+  maximumWordSize: 1,
+  colors: ["#dce2ea", "#aab4c3", "#78a9a2", "#7f94b2", "#9d8fa8"],
+})
+  .size([13.5, 6.3])
+  .shape("ellipse")
+  .padding(0.07)
+  .seed(2026));
+```
+
+Larger weights produce larger words. `minimumWordSize` is a hard readability floor, while `maximumWordSize` controls the upper end of the hierarchy. When space is tight, Murali compresses larger words toward the minimum without crossing it. If the words still cannot fit, layout fails with a clear error instead of silently producing illegible text.
+
+The `colors` array defines the word-color pool. Featured words consistently use its first color; filler words are assigned deterministic colors from the complete set. A word's own `color` still takes precedence.
+
+## Word options
+
+| Option | Meaning |
+| --- | --- |
+| `text` | Displayed word or phrase. It must not be empty. |
+| `weight` | Positive relative size. |
+| `color` | Optional per-word color overriding the cloud palette. |
+| `featured` | Places the word in the first, spelled-out reveal group. |
+| `orientation` | Optional `"horizontal"` or `"vertical"` preference. |
+
+Orientation is semantic rather than degree-based. A horizontal word stays at zero rotation. For a vertical word, Murali deterministically chooses one of the two vertical reading directions. When `orientation` is omitted, Murali chooses from its default orientation mix.
+
+## Paced reveal
+
+The cloud can author its complete sequence onto an ordinary timeline:
+
+```ts
+const timeline = new Timeline();
+
+cloud.animate(timeline, {
+  at: 0.45,
+  featuredStagger: 0.22,
+  featuredDuration: 0.55,
+  pause: 1.25,
+  fillerStagger: 0.045,
+  fillerDuration: 0.4,
+  hold: 1.4,
+  exitStagger: 0.018,
+  exitDuration: 0.45,
+});
+
+this.play(timeline);
+```
+
+The sequence runs in four phases:
+
+1. Featured words are spelled out in input order.
+2. The animation waits for `pause` seconds after the final featured word finishes.
+3. Remaining filler words appear with their own stagger, then the complete cloud remains for `hold` seconds.
+4. Every word is erased with the configured exit timing.
+
+If no entries are marked `featured`, all words belong to the opening group and the filler phase is empty.
+
+### Timing defaults
+
+| Option | Default | Purpose |
+| --- | ---: | --- |
+| `at` | `0` | Absolute timeline start in seconds. |
+| `featuredStagger` | `0.16` | Delay between featured-word starts. |
+| `featuredDuration` | `0.48` | Spell-out time for each featured word. |
+| `pause` | `0.8` | Gap between featured and filler phases. |
+| `fillerStagger` | `0.035` | Delay between filler-word starts. |
+| `fillerDuration` | `0.36` | Appearance time for each filler word. |
+| `hold` | `1` | Time the complete cloud stays visible. |
+| `exitStagger` | `0.012` | Delay between word-removal starts. |
+| `exitDuration` | `0.4` | Erase time for each word. |
+
+## Layout and styling
+
+| Builder | Purpose |
+| --- | --- |
+| `.size([width, height])` | Set the cloud's world-space bounds. |
+| `.fontRange([minimum, maximum])` | Map word weights to label heights. |
+| `.palette(colors)` | Set the deterministic automatic color pool. |
+| `.shape("ellipse" \| "rectangle")` | Choose the placement boundary. |
+| `.padding(value)` | Set clearance around each word. |
+| `.fontFamily(value)` | Set the label font family. |
+| `.fontWeight(value)` | Set the label font weight. |
+| `.seed(value)` | Reproduce a particular layout. |
+
+Each word remains an ordinary label. Use `cloud.words` for every label, or `cloud.featuredWords` and `cloud.fillerWords` when a custom timeline needs direct control instead of `cloud.animate(...)`.
+
+The constructor options and the `.fontRange(...)`/`.palette(...)` builders configure the same values. Constructor options are convenient when the cloud's content and visual policy should be declared together; builders remain available for fluent composition.
+
+Run the complete example with:
+
+```bash
+npm run example -- word-cloud --preview
+```
+
+Source: `examples/word-cloud.ts`.

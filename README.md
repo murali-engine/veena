@@ -232,6 +232,41 @@ Use semantic roles for reusable components and `palette` when a particular swatc
 
 `neuralNetwork` models named layers, stable node and edge IDs, dense weight matrices, or explicit sparse/skip connections. `NeuralNetwork` renders that model with theme-aware activation and signed-weight encodings. Cumulative snapshots interpolate values and activations through ordinary timeline state, while `flowProgress` propagates over unique edges without enumerating every end-to-end route.
 
+`EqualizerBars` presents changing model or training variables as compact segmented bars. Each variable defines its own range, display precision, unit, and optional color. Named snapshots are cumulative and interpolate deterministically through `morphProgress`:
+
+```ts
+const signals = EqualizerBars([
+  { id: "loss", label: "LOSS", min: 0, max: 2.5, value: 2.2 },
+  { id: "accuracy", label: "ACC", min: 0, max: 100, value: 18, unit: "%", digits: 0 },
+], { title: "TRAINING SIGNALS", segments: 14 })
+  .snapshot({ name: "trained", values: { loss: 0.18, accuracy: 92 } });
+
+timeline.animate(signals).duration(3).ease("inOutCubic")
+  .to({ morphProgress: signals.snapshotIndex("trained") });
+```
+
+Values outside their authored range remain visible numerically while the corresponding bar clamps to the track. See [`examples/ai/equalizer-bars.ts`](./examples/ai/equalizer-bars.ts).
+
+For dense learning visualizations, `LearningParameterField` draws hundreds of independent micro-bars on one Canvas. Animate its `epoch` state to show noisy parameter updates gradually converging to learned targets:
+
+```ts
+const parameters = LearningParameterField(360, {
+  epochs: 120,
+  columns: 36,
+  seed: 17,
+  noise: 0.3,
+  settlingRate: 4.8,
+  layout: (index, count) => customNormalizedPosition(index, count),
+});
+
+timeline.animate(parameters).duration(12).ease("linear")
+  .to(parameters.epochState(parameters.epochs));
+```
+
+The `layout` callback can place bars into matrices, model layers, arcs, clusters, or any other normalized 2D configuration. Early epochs contain seeded stochastic corrections; their amplitude decays continuously, and every parameter reaches its exact target after `epochs`. Use explicit parameter specifications when real initial and target weights are available, or pass a count to generate a deterministic illustrative field. See [`examples/ai/learning-parameter-field.ts`](./examples/ai/learning-parameter-field.ts).
+
+`LearningMeterGaugeField` provides the alternate semicircular meter language used in classic mathematical animations. It uses the same deterministic epoch-settling model and custom layout callback, but renders each parameter as a ticked dial and subdued needle. Both dense learning components have no panel background by default; set `background` only when a self-contained plate is wanted. See [`examples/ai/learning-meter-gauges.ts`](./examples/ai/learning-meter-gauges.ts).
+
 See [`examples/ai/neural-networks.ts`](./examples/ai/neural-networks.ts) and [`docs/neural-networks.md`](./docs/neural-networks.md).
 
 ### Semantic matrices
@@ -660,24 +695,31 @@ Word clouds use deterministic seeded placement and keep every word as an ordinar
 
 ```ts
 const cloud = this.add(WordCloud([
-  { text: "Murali JS", weight: 100 },
-  { text: "animation", weight: 80 },
-  { text: "TypeScript", weight: 65 },
-])
+  { text: "AI", weight: 100, featured: true, orientation: "horizontal" },
+  { text: "Machine Learning", weight: 90, featured: true, orientation: "horizontal" },
+  { text: "Generative AI", weight: 95, featured: true, orientation: "horizontal" },
+  { text: "chatbots", weight: 60 },
+  { text: "automation", weight: 50, orientation: "vertical" },
+], {
+  minimumWordSize: 0.3,
+  maximumWordSize: 1,
+  colors: ["#dce2ea", "#aab4c3", "#78a9a2", "#7f94b2"],
+})
   .size([12, 6])
-  .fontRange([0.22, 1.1])
-  .palette([palette.TEAL_C, palette.BLUE_B, palette.GOLD_C])
-  .rotations([0, 0, 0, -90, 90])
   .shape("ellipse")
   .seed(2026));
 
-timeline.animate(cloud.words)
-  .stagger(0.05)
-  .duration(0.5)
-  .appear();
+cloud.animate(timeline, {
+  at: 0.5,
+  featuredStagger: 0.2,
+  pause: 1.2,
+  fillerStagger: 0.04,
+  hold: 1.5,
+  exitDuration: 0.45,
+});
 ```
 
-The builder also supports rectangular clouds, custom padding, font family, font weight, and per-word colors. See [`examples/word-cloud.ts`](./examples/word-cloud.ts).
+Entries marked `featured` are spelled out first. The animation pauses, reveals all remaining filler words, holds the complete cloud, and then erases it. Every phase is independently configurable. Set an entry's optional `orientation` to `"horizontal"` or `"vertical"`; when it is omitted, Murali chooses the orientation automatically. The builder also supports rectangular clouds, custom padding, font family, font weight, and per-word colors. See [`examples/word-cloud.ts`](./examples/word-cloud.ts).
 
 ## Commands
 

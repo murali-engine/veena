@@ -2116,6 +2116,66 @@ test("lays out word clouds deterministically without overlapping labels", () => 
   assert.throws(() => WordCloud([{ text: "bad", weight: 0 }]), /must be positive/);
 });
 
+test("paces featured word-cloud words before filler and erases the result", () => {
+  const cloud = WordCloud([
+    { text: "AI", weight: 10, featured: true, orientation: "horizontal" },
+    { text: "chatbots", weight: 5, orientation: "vertical" },
+    { text: "LLM", weight: 8, featured: true },
+  ], {
+    minimumWordSize: 0.28,
+    maximumWordSize: 0.9,
+    colors: ["#dce2ea", "#7f94b2"],
+  }).size([8, 4]).rotations([0]);
+  const animation = new Timeline();
+
+  cloud.animate(animation, {
+    at: 1,
+    featuredStagger: 0.2,
+    featuredDuration: 0.5,
+    pause: 0.7,
+    fillerStagger: 0.1,
+    fillerDuration: 0.3,
+    hold: 0.8,
+    exitStagger: 0.01,
+    exitDuration: 0.4,
+  });
+
+  assert.deepEqual(cloud.featuredWords.map((word) => word.text), ["AI", "LLM"]);
+  assert.deepEqual(cloud.fillerWords.map((word) => word.text), ["chatbots"]);
+  assert.equal(cloud.featuredWords[0]?.initialState.rotationZ, 0);
+  assert.equal(Math.abs(cloud.fillerWords[0]?.initialState.rotationZ ?? 0), 90);
+  assert.equal(cloud.featuredWords[1]?.initialState.rotationZ, 0);
+  assert.equal(cloud.featuredWords[0]?.initialState.color, "#dce2ea");
+  assert.equal(cloud.featuredWords[0]?.worldFontSize, 0.9);
+  assert.equal(cloud.fillerWords[0]?.worldFontSize, 0.28);
+  assert.equal(cloud.words.every((word) => (word.worldFontSize ?? 0) >= 0.28), true);
+  assert.deepEqual(animation.animations.map(({ tattva, start, duration, to }) => ({
+    text: tattva.text,
+    start,
+    duration,
+    opacity: to.opacity,
+    revealProgress: to.revealProgress,
+  })), [
+    { text: "AI", start: 1, duration: 0.5, opacity: undefined, revealProgress: 1 },
+    { text: "LLM", start: 1.2, duration: 0.5, opacity: undefined, revealProgress: 1 },
+    { text: "chatbots", start: 2.4, duration: 0.3, opacity: 1, revealProgress: undefined },
+    { text: "AI", start: 3.5, duration: 0.4, opacity: undefined, revealProgress: 0 },
+    { text: "chatbots", start: 3.51, duration: 0.4, opacity: undefined, revealProgress: 0 },
+    { text: "LLM", start: 3.52, duration: 0.4, opacity: undefined, revealProgress: 0 },
+  ]);
+  assert.equal(animation.duration, 3.92);
+  assert.throws(() => cloud.animate(new Timeline(), { pause: -1 }), /pause cannot be negative/);
+  assert.throws(
+    () => WordCloud([{ text: "bad", weight: 1, orientation: "diagonal" as "horizontal" }]),
+    /orientation.*horizontal or vertical/,
+  );
+  assert.throws(() => WordCloud([{ text: "bad", weight: 1 }], { colors: [] }), /colors cannot be empty/);
+  assert.throws(
+    () => WordCloud([{ text: "bad", weight: 1 }], { minimumWordSize: 1, maximumWordSize: 0.5 }),
+    /maximumWordSize must be at least minimumWordSize/,
+  );
+});
+
 test("projects one vector onto another and labels the angle", () => {
   const a: readonly [number, number] = [2.5, 1.2];
   const b: readonly [number, number] = [2.1, -0.25];

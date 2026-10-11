@@ -5,3 +5,6 @@ export * from "./transformers.ts";
 export * from "./tensors.ts";
 export * from "./sampling.ts";
 export * from "./tensor-model.ts";
+export * from "./equalizer-bars.ts";
+export * from "./learning-parameter-field.ts";
+export * from "./learning-meter-gauge.ts";
