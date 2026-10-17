@@ -8,3 +8,5 @@ export * from "./tensor-model.ts";
 export * from "./equalizer-bars.ts";
 export * from "./learning-parameter-field.ts";
 export * from "./learning-meter-gauge.ts";
+export * from "./ai-circuit-mark.ts";
+export * from "./biological-neuron.ts";

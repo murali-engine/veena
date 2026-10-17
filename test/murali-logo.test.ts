@@ -139,7 +139,7 @@ test("springs the settled logo up from the baseline and back past rest", () => {
   let previousScales: readonly number[] | undefined;
 
   for (let step = 0; step <= 360; step += 1) {
-    const time = scene.duration * step / 360;
+    const time: number = scene.duration * step / 360;
     const sampled = scene.sampleAt(time);
     const scales = ovals.map((oval) => sampled.get(oval)?.scaleY ?? 0);
     if (previousScales) {

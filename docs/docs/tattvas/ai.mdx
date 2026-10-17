@@ -22,6 +22,21 @@ this.add(network);
 
 Networks support named layers, stable node/edge IDs, dense weights, explicit sparse or skip connections, activation snapshots, and signal flow over unique edges.
 
+## Biological neurons
+
+`BiologicalNeuron` is a stylised teaching view with three independently animated phases: input pulses travel inward through dendrites, charge illuminates the soma, and a signal travels outward along the axon to its terminals.
+
+```ts
+const neuron = BiologicalNeuron({ dendrites: 9, myelinated: true });
+this.add(neuron);
+
+timeline.animate(neuron).duration(1.2).to(neuron.receive());
+timeline.animate(neuron).duration(0.5).to(neuron.illuminate());
+timeline.animate(neuron).duration(1.5).to(neuron.fire());
+```
+
+The component is deliberately a visual explanation rather than a physiological simulation. Pair it with `NeuralNetwork` to explain which ideas inspired artificial neurons while keeping their differences explicit.
+
 ## Semantic tensors
 
 `tensorAxis` and `tensorSnapshot` attach meaning to each dimension and element. Operations preserve or transform that meaning:

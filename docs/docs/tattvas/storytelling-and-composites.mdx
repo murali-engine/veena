@@ -26,6 +26,24 @@ Animate its `reveal` and `signal` state to separate construction from replay.
 
 `NewspaperOpening(newspapers, options)` builds a fully opaque, imperfectly aligned stack from fluent `Newspaper` objects. Generated pages support `lead`, `columns`, and `tabloid` layouts; real scans can replace generated pages. Browse the [Opening sequences](../openings/index.mdx) collection or go directly to the [Newspaper opening guide](../openings/newspaper-opening.mdx).
 
+## Page-turn transitions
+
+`PageTurn(outgoingScene, incomingScene)` creates a Kindle-style page turn: both scenes remain fixed in place while the outgoing surface wraps away behind a soft moving fold, exposing the incoming scene underneath. The effect is deterministic in previews and exports.
+
+```ts
+const turn = PageTurn(new CoverScene(), new StoryScene())
+  .direction("left")
+  .style({ curlWidth: 0.6, shadowOpacity: 0.3 })
+  .timing({ duration: 1.3 })
+  .addTo(this);
+
+const timeline = new Timeline();
+turn.animate(timeline, { at: 1 });
+this.play(timeline);
+```
+
+Use `direction("right")` for the reverse hinge. Both nested scenes otherwise retain normal `SceneView` playback behavior and remain available as `turn.outgoing` and `turn.incoming` for clock configuration.
+
 ## Fireworks
 
 `Fireworks()` is deterministic and responsive across landscape, portrait, and square frames:

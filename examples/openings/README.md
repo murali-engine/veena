@@ -6,6 +6,7 @@ This folder contains full-screen animated introductions, called **opening sequen
 - `opening-scene-view.ts` — 3D ident transitioning into a main scene
 - `wave-mesh-background.ts` — atmospheric wave title sequence
 - `newspaper-opening.ts` — configurable stacked-newspaper montage
+- `page-turn.ts` — sequential Kindle-style turns across four differently colored scenes
 
 Run an opener from the repository root:
 
