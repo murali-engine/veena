@@ -6,6 +6,27 @@ Manim and [Murali](https://muraliengine.com/) are the baseline. A scene is ordin
 
 The web is why scene construction is not limited to the built-in library. The shapes Veena ships are conveniences. If the browser can draw it — DOM, CSS, React, another web library, or Three.js — it can be in the scene, on that same timeline, and rendered frame-by-frame to an MP4. Web content is allowed only when its picture is a function of scene time.
 
+## Install
+
+```bash
+mkdir my-animation
+cd my-animation
+npm init -y
+npm pkg set type=module
+npm install veena-engine
+```
+
+`npm install veena-engine` installs the renderer and the tools a scene needs: Chromium, FFmpeg, React, Three.js, TypeScript, and `tsx`. Write a scene as shown in [Use Veena as a package](#use-veena-as-a-package), then render it:
+
+```bash
+npx veena render hello.ts
+npx tsx hello.ts
+```
+
+`npx veena render` reads the scene file directly. `npx tsx` runs a file that calls `render()` itself, which needs `"type": "module"` in the project. The first render downloads Chromium and FFmpeg when the package manager skipped their install scripts. That includes npm 12, a global install, and any install run with `--ignore-scripts`.
+
+The published package name is `veena-engine`. npm blocks the shorter name `veena` because it is too similar to `lerna`. Until the first publish, install a packed tarball. See [Installation](./docs/docs/installation.mdx).
+
 ## Quick start
 
 ```bash
@@ -19,7 +40,7 @@ Pass `--preview` to open the scene in a window instead. Nothing is encoded. Play
 ```bash
 npm run example -- hello-shapes --preview
 ```
-Veena depends on Playwright's Chromium package, so the compatible browser is downloaded during a normal npm installation. Set `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` before installing only when your environment manages browsers separately.
+A normal `npm install` in this repository downloads Playwright's Chromium. If that download is skipped, the next render fetches it. Set `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` only when your environment manages that browser separately.
 The local package is also compiled automatically during `npm install`, so files can be run directly from the examples directory with `npx tsx hello-shapes.ts`. Add `--preview` to open a window instead of exporting: `npx tsx hello-shapes.ts --preview`.
 
 To render a specific example, pass its short name:
@@ -64,10 +85,10 @@ Define and render the animation from one entry point:
 
 ```ts
 // hello.ts
-import { render } from "veena";
-import { Scene, clip, timeline } from "veena/core";
-import { Circle } from "veena/primitives";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, clip, timeline } from "veena-engine/core";
+import { Circle } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
 
 class HelloScene extends Scene {
   override construct() {
@@ -93,15 +114,15 @@ render(import.meta.url, HelloScene, {
 });
 ```
 
-Run it with `npx tsx hello.ts`. `import.meta.url` identifies the current source file so Veena can bundle the scene for Chromium. The CLI remains available as an optional convenience.
+Run it with `npx tsx hello.ts`, or render the same file with `npx veena render hello.ts`. `import.meta.url` identifies the current source file so Veena can bundle the scene for Chromium. The project needs `"type": "module"` when the file calls `render()` under `tsx`.
 
 The package root above remains a compatibility prelude. For larger scenes, category imports make ownership and autocomplete clearer:
 
 ```ts
-import { Scene, clip, timeline } from "veena/core";
-import { Circle } from "veena/primitives";
-import { Label } from "veena/text";
-import { render } from "veena";
+import { Scene, clip, timeline } from "veena-engine/core";
+import { Circle } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
+import { render } from "veena-engine";
 ```
 
 Available domains include `core`, `style`, `adapters`, `layout`, `primitives`, `text`, `maths`, `ai`, `composite`, `storytelling`, `table`, `utility`, and the Node-only `render` pipeline. See [`docs/code-organization.md`](./docs/code-organization.md).
@@ -170,7 +191,7 @@ npx tsx veena-logo-image.ts -- \
 `VeenaLogoSequence` turns the canonical three-oval mark into a complete, seamless brand gesture: one oval breathes, splits into three, compresses on contact, separates, settles into the logo, and folds back into one oval.
 
 ```ts
-import { VeenaLogoMark, VeenaLogoSequence } from "veena/composite";
+import { VeenaLogoMark, VeenaLogoSequence } from "veena-engine/composite";
 
 const mark = this.add(VeenaLogoMark({ width: 6.6 }));
 this.play(VeenaLogoSequence(mark));
@@ -185,11 +206,11 @@ The default duration is 6.4 seconds. Pass `{ duration: 4 }` to retime the whole 
 Scenes accept typed semantic themes. Built-in Tattvas inherit the scene theme, a `Group` can override a subtree, and explicit object styles continue to win:
 
 ```ts
-import { Scene } from "veena/core";
-import { Group } from "veena/layout";
-import { Circle } from "veena/primitives";
-import { createTheme, themeColor, themes } from "veena/style";
-import { Label } from "veena/text";
+import { Scene } from "veena-engine/core";
+import { Group } from "veena-engine/layout";
+import { Circle } from "veena-engine/primitives";
+import { createTheme, themeColor, themes } from "veena-engine/style";
+import { Label } from "veena-engine/text";
 
 const kavriq = createTheme(themes.dark, {
   name: "kavriq",
@@ -221,7 +242,7 @@ The same resolved theme is exposed as `--veena-*` CSS variables and passed into 
 Fixed Veena/Manim swatches now live under `palette` rather than as top-level exports:
 
 ```ts
-import { palette } from "veena/style";
+import { palette } from "veena-engine/style";
 
 Circle().fill(palette.TEAL_C);
 ```
@@ -741,7 +762,7 @@ npm test
 npm run test:package
 ```
 
-`test:package` creates an npm tarball, installs it into a clean temporary project, and verifies both `"veena"` and `"veena/render"`. This catches missing build output and incorrect package exports before publishing.
+`test:package` creates an npm tarball, installs it into a clean temporary project, and verifies both `"veena-engine"` and `"veena-engine/render"`. This catches missing build output and incorrect package exports before publishing.
 
 ## Architecture
 

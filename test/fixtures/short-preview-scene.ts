@@ -1,4 +1,4 @@
-import { Circle, Scene, render } from "veena";
+import { Circle, Scene, render } from "veena-engine";
 
 class ShortPreviewScene extends Scene {
   override construct(): void {

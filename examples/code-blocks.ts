@@ -1,7 +1,7 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { CodeBlock, Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { CodeBlock, Label } from "veena-engine/text";
 const { GRAY_B, WHITE } = palette;
 
 const rustCode = `fn highlight(tokens: &[&str]) -> Vec<String> {

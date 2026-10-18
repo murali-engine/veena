@@ -1,7 +1,7 @@
-import { render } from "veena";
-import { Scene, timeline } from "veena/core";
-import { Label } from "veena/text";
-import { WaveMesh } from "veena/composite";
+import { render } from "veena-engine";
+import { Scene, timeline } from "veena-engine/core";
+import { Label } from "veena-engine/text";
+import { WaveMesh } from "veena-engine/composite";
 
 /** Reusable lower-screen animated mesh inspired by event-stage motion graphics. */
 class WaveMeshBackground extends Scene {

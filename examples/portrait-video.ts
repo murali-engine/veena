@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Circle } from "veena/primitives";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Circle } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
 const { BLUE_D, GREEN_D, WHITE } = palette;
 
 /** Port of Murali `examples/portrait_video.rs`. */

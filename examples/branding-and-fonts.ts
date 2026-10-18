@@ -1,9 +1,9 @@
-import { render } from "veena";
-import { Scene } from "veena/core";
-import { fontFamily, fontFile, palette } from "veena/style";
-import { Group } from "veena/layout";
-import { Circle } from "veena/primitives";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene } from "veena-engine/core";
+import { fontFamily, fontFile, palette } from "veena-engine/style";
+import { Group } from "veena-engine/layout";
+import { Circle } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
 
 // This private asset is optional and Git-ignored. Rendering falls back cleanly when it is absent.
 const SATOSHI = fontFile("Satoshi", "../assets/fonts/private/Satoshi-Bold.ttf", {

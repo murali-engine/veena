@@ -32,10 +32,10 @@ CSS is a first-class styling and transformation language, not an implementation 
 ## Target scene shape
 
 ```ts
-import { render } from "veena";
-import { Scene, clip, timeline } from "veena/core";
-import { Circle } from "veena/primitives";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, clip, timeline } from "veena-engine/core";
+import { Circle } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
 
 class MotionBasics extends Scene {
   construct() {

@@ -9,27 +9,27 @@ Veena's public API is divided by ownership so projects do not need one enormous 
 
 | Package | Main contents |
 | --- | --- |
-| `veena/core` | `Scene`, `Tattva`, timelines, clips, cameras, scene views, fonts, asset helpers |
-| `veena/style` | Themes, semantic colors, CSS types, and `palette` |
-| `veena/layout` | `Group`, `HStack`, and `VStack` |
-| `veena/primitives` | Shapes, paths, arrows, props, shape morphing |
-| `veena/text` | Labels, code, math text, LaTeX, text/formula morphing, 3D text |
-| `veena/maths` | Graphs, matrices, equations, fields, curves, surfaces, maps, Fourier helpers |
-| `veena/ai` | Tensors, neural networks, attention, transformers, context, sampling |
-| `veena/storytelling` | Stepwise diagrams, chat, openings, and fireworks |
-| `veena/composite` | Veena logo, wave mesh, and YouTube subscribe components |
-| `veena/table` | Focused `Table` entry point |
-| `veena/utility` | Traced paths and related utility motion |
-| `veena/adapters` | `ReactTattva` and `ThreeTattva` |
-| `veena/render` | Node-only rendering and capture pipeline |
+| `veena-engine/core` | `Scene`, `Tattva`, timelines, clips, cameras, scene views, fonts, asset helpers |
+| `veena-engine/style` | Themes, semantic colors, CSS types, and `palette` |
+| `veena-engine/layout` | `Group`, `HStack`, and `VStack` |
+| `veena-engine/primitives` | Shapes, paths, arrows, props, shape morphing |
+| `veena-engine/text` | Labels, code, math text, LaTeX, text/formula morphing, 3D text |
+| `veena-engine/maths` | Graphs, matrices, equations, fields, curves, surfaces, maps, Fourier helpers |
+| `veena-engine/ai` | Tensors, neural networks, attention, transformers, context, sampling |
+| `veena-engine/storytelling` | Stepwise diagrams, chat, openings, and fireworks |
+| `veena-engine/composite` | Veena logo, wave mesh, and YouTube subscribe components |
+| `veena-engine/table` | Focused `Table` entry point |
+| `veena-engine/utility` | Traced paths and related utility motion |
+| `veena-engine/adapters` | `ReactTattva` and `ThreeTattva` |
+| `veena-engine/render` | Node-only rendering and capture pipeline |
 
 The package root remains a compatibility prelude, but category imports produce clearer ownership and autocomplete:
 
 ```ts
-import { render } from "veena";
-import { Scene, timeline } from "veena/core";
-import { Circle } from "veena/primitives";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, timeline } from "veena-engine/core";
+import { Circle } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
 ```
 
 Builder functions generally return a configured tattva directly (`Circle()`) or a builder with `.build()` when construction spans several semantic choices (`NumberPlane(...).build()`).

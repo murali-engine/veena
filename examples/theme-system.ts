@@ -1,10 +1,10 @@
-import { render } from "veena";
-import { Scene } from "veena/core";
-import { ReactTattva, ThreeTattva } from "veena/adapters";
-import { createTheme, themeColor, themes } from "veena/style";
-import { Group } from "veena/layout";
-import { Circle, Rectangle } from "veena/primitives";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene } from "veena-engine/core";
+import { ReactTattva, ThreeTattva } from "veena-engine/adapters";
+import { createTheme, themeColor, themes } from "veena-engine/style";
+import { Group } from "veena-engine/layout";
+import { Circle, Rectangle } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
 import { createElement } from "react";
 import { Mesh, MeshStandardMaterial, TorusGeometry } from "three";
 

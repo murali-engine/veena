@@ -1,5 +1,5 @@
-import { render } from "veena";
-import { Scene } from "veena/core";
+import { render } from "veena-engine";
+import { Scene } from "veena-engine/core";
 import {
   Prop3D,
   centeredPropPosition,
@@ -8,9 +8,9 @@ import {
   modelCenter,
   modelDimensions,
   parseGltf,
-} from "veena/primitives";
-import { Label } from "veena/text";
-import type { Vec3 } from "veena/core";
+} from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
+import type { Vec3 } from "veena-engine/core";
 import { appleBin, appleGltf } from "./assets/props/files.ts";
 
 const FOV = 42;

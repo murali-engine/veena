@@ -10,7 +10,7 @@ description: Semantic color roles, palette swatches, local fonts, and persistent
 Themes describe reusable intent: background, surfaces, text, accents, status colors, strokes, typography, radii, and effects.
 
 ```ts
-import { createTheme, themeColor, themes } from "veena/style";
+import { createTheme, themeColor, themes } from "veena-engine/style";
 
 const kavriq = createTheme(themes.dark, {
   name: "kavriq",
@@ -40,7 +40,7 @@ Explicit object styles win over inherited theme values. A `Group` can override a
 Use semantic roles for reusable components. Use `palette` when a specific swatch is intentionally part of the artwork.
 
 ```ts
-import { palette } from "veena/style";
+import { palette } from "veena-engine/style";
 
 Circle().fill(palette.TEAL_C);
 ```
@@ -56,7 +56,7 @@ Label("Editorial title").font("Georgia, serif").fontWeight(700);
 Embed a local TTF, OTF, WOFF, or WOFF2 file:
 
 ```ts
-import { fontFile } from "veena/core";
+import { fontFile } from "veena-engine/core";
 
 const satoshi = fontFile("Satoshi", "./assets/Satoshi-Bold.ttf", { weight: 700 });
 

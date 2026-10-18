@@ -1,11 +1,11 @@
-import { render } from "veena";
-import { Scene, Timeline, easeInOutQuad } from "veena/core";
-import { palette } from "veena/style";
-import { Circle } from "veena/primitives";
-import { Label } from "veena/text";
-import { StreamLines, circleSeeds } from "veena/maths";
+import { render } from "veena-engine";
+import { Scene, Timeline, easeInOutQuad } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Circle } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
+import { StreamLines, circleSeeds } from "veena-engine/maths";
 const { GOLD_C, GRAY_A, GRAY_B, TEAL_C, WHITE } = palette;
-import type { Vec2 } from "veena/core";
+import type { Vec2 } from "veena-engine/core";
 
 const growthStart = 2;
 const growthDuration = 2.8;

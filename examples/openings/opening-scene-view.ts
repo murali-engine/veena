@@ -1,11 +1,11 @@
-import { render } from "veena";
-import { Scene, SceneView, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Circle, Line, Rectangle } from "veena/primitives";
-import { Label } from "veena/text";
-import { Opening } from "veena/storytelling";
+import { render } from "veena-engine";
+import { Scene, SceneView, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Circle, Line, Rectangle } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
+import { Opening } from "veena-engine/storytelling";
 const { BLUE_D, GOLD_C, GRAY_A, GREEN_C, PINK_C, TEAL_C, WHITE } = palette;
-import type { Tattva, Vec3 } from "veena/core";
+import type { Tattva, Vec3 } from "veena-engine/core";
 
 const BACKGROUND = "#0a121c";
 

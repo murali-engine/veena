@@ -5,8 +5,8 @@ Veena themes are typed, deterministic design-token trees shared by DOM, SVG, Rea
 ## Create and select a theme
 
 ```ts
-import { Scene } from "veena/core";
-import { createTheme, themes } from "veena/style";
+import { Scene } from "veena-engine/core";
+import { createTheme, themes } from "veena-engine/style";
 
 const brand = createTheme(themes.dark, {
   name: "brand",
@@ -111,7 +111,7 @@ Hex and CSS colors are authored as sRGB values. Three.js converts those inputs i
 The fixed Veena/Manim palette is deliberately separate from semantic theming:
 
 ```ts
-import { palette } from "veena/style";
+import { palette } from "veena-engine/style";
 
 const { TEAL_C, GOLD_C } = palette;
 ```

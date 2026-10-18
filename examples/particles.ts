@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Circle, ParticleBelt } from "veena/primitives";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Circle, ParticleBelt } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
 const { BLUE_B, GOLD_C, GRAY_A, GRAY_B, PURPLE_B, TEAL_C, WHITE } = palette;
 
 const evolveStart = 2.6;

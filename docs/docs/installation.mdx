@@ -6,12 +6,50 @@ description: Install Veena and verify preview and export.
 
 # Installation
 
-Veena requires Node.js 20 or later. Its exporter uses the compatible Chromium distributed with Playwright and FFmpeg distributed through `ffmpeg-static`.
+Veena requires Node.js 20 or later. One install includes the renderer, Playwright Chromium, FFmpeg, React, Three.js, TypeScript, and `tsx`.
 
-:::warning Pre-release
+## Install the package
 
-Veena has not been published to the npm registry yet. Install it from the repository or
-from a locally packed tarball for now.
+```bash
+mkdir my-animation
+cd my-animation
+npm init -y
+npm pkg set type=module
+npm install veena-engine
+```
+
+Create a scene file, then preview or export it:
+
+```bash
+npx veena render hello.ts --preview
+npx veena render hello.ts
+npx tsx hello.ts
+```
+
+`npx veena render` bundles the scene file itself. `npx tsx` runs a file that calls `render(import.meta.url, ...)`, and that path needs `"type": "module"`.
+
+Chromium and FFmpeg download during `npm install` when dependency install scripts are allowed to run. npm 12, `npm install -g`, and `--ignore-scripts` skip those scripts. Veena downloads the missing browser and encoder on the first render, so the scene still runs after a plain install. Approve the scripts when you want that download to finish during install instead:
+
+```bash
+npm install-scripts approve @playwright/browser-chromium ffmpeg-static esbuild
+```
+
+Set `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` only when the environment already provides the matching Chromium.
+
+:::note Registry publish
+
+npm blocks the shorter name `veena` because its typosquat check treats that name as too similar to `lerna`. The package name is `veena-engine`. Publish it with `npm publish` from this repository.
+
+Until that publish, install a packed tarball from a checkout:
+
+```bash
+cd /path/to/veena
+npm pack
+cd /path/to/my-animation
+npm install /path/to/veena/veena-engine-0.1.0.tgz
+```
+
+The tarball name follows the version in `package.json`. `npm pack` builds the package and runs the tests before it writes that file.
 
 :::
 
@@ -32,38 +70,6 @@ npm run example -- hello-shapes
 
 List every available example with `npm run example -- --list`.
 
-## Use it from another local project
-
-Build and pack Veena from its repository:
-
-```bash
-cd /path/to/veena
-npm install
-npm pack
-```
-
-Then install that generated tarball in the consuming project:
-
-```bash
-cd /path/to/my-animation
-npm install /path/to/veena/veena-0.1.0.tgz
-npm install --save-dev tsx typescript
-```
-
-The tarball name follows the version in Veena's `package.json` and may change. Once Veena is
-published, this section will be replaced with registry installation instructions.
-
-Create a scene file such as `hello.ts`, then run it directly:
-
-```bash
-npx tsx hello.ts --preview
-npx tsx hello.ts
-```
-
-## Browser installation
-
-A normal `npm install` downloads the matching Playwright Chromium. Set `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` only when your environment manages that browser separately.
-
 ## LaTeX requirements
 
 `Latex`, `LatexMorph`, and `FormulaOutline` use a native LaTeX and `dvisvgm` toolchain during scene bundling. Plain `MathText` and `FormulaMorph` do not require that toolchain.
@@ -71,9 +77,9 @@ A normal `npm install` downloads the matching Playwright Chromium. Set `PLAYWRIG
 ## Verify the setup
 
 ```ts title="hello.ts"
-import { render } from "veena";
-import { Scene } from "veena/core";
-import { Circle } from "veena/primitives";
+import { render } from "veena-engine";
+import { Scene } from "veena-engine/core";
+import { Circle } from "veena-engine/primitives";
 
 class Hello extends Scene {
   override construct() {
@@ -85,4 +91,6 @@ class Hello extends Scene {
 render(import.meta.url, Hello, { output: "./output/hello.mp4" });
 ```
 
-If preview works but export does not, check output-directory permissions and ensure installation completed without skipping Playwright or FFmpeg dependencies.
+If preview works but export does not, check output-directory permissions. A missing Chromium or FFmpeg binary is downloaded on the next render unless `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD` is set.
+
+`tsc --init` turns on `skipLibCheck`. Leave that on. `@types/three` references WebGPU types that a strict check of library declarations reports as `GPUTexture`.

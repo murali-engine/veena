@@ -1,6 +1,6 @@
-import { render } from "veena";
-import { EqualizerBars } from "veena/ai";
-import { Scene, Timeline } from "veena/core";
+import { render } from "veena-engine";
+import { EqualizerBars } from "veena-engine/ai";
+import { Scene, Timeline } from "veena-engine/core";
 
 class EqualizerBarsExample extends Scene {
   override construct(): void {

@@ -9,7 +9,7 @@
   "dependencies": {
     "react": "^19.3.0",
     "three": "^0.180.0",
-    "veena": "file:.."
+    "veena-engine": "file:.."
   },
   "devDependencies": {
     "@types/react": "^19.3.0",

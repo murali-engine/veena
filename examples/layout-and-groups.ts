@@ -1,10 +1,10 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Circle, Square } from "veena/primitives";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Circle, Square } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
 const { BLUE_B, GRAY_A, GRAY_B, GOLD_C, GREEN_D, ORANGE_B, PURPLE_B, RED_B, TEAL_C, WHITE } = palette;
-import type { Tattva, Vec3 } from "veena/core";
+import type { Tattva, Vec3 } from "veena-engine/core";
 
 /** Port of Murali `examples/layout_and_groups.rs`. */
 class LayoutAndGroups extends Scene {

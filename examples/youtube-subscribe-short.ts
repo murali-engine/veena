@@ -1,7 +1,7 @@
-import { render } from "veena";
-import { Scene } from "veena/core";
-import { Label } from "veena/text";
-import { YouTubeSubscribe, YouTubeSubscribeSequence } from "veena/composite";
+import { render } from "veena-engine";
+import { Scene } from "veena-engine/core";
+import { Label } from "veena-engine/text";
+import { YouTubeSubscribe, YouTubeSubscribeSequence } from "veena-engine/composite";
 
 class YouTubeSubscribeShort extends Scene {
   constructor() {

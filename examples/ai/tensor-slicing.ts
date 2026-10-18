@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { TensorView, tensorSlicingHeads } from "veena/ai";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { TensorView, tensorSlicingHeads } from "veena-engine/ai";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
 const { GRAY_A, GRAY_B, GOLD_A, TEAL_A, WHITE } = palette;
 
 /** AI teaching example: one head, then the other, with stable token and feature ids. */

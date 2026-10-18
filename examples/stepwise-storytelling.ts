@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
-import { Stepwise } from "veena/storytelling";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
+import { Stepwise } from "veena-engine/storytelling";
 const { GRAY_B, TEAL_C, WHITE } = palette;
 
 /** Port of Murali `examples/stepwise_storytelling.rs`. The path reveals, then the signal replays it. */

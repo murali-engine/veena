@@ -1,4 +1,4 @@
-import { Scene, Square, Timeline, render } from "veena";
+import { Scene, Square, Timeline, render } from "veena-engine";
 
 class ShapeFillRevealScene extends Scene {
   override construct(): void {

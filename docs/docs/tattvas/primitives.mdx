@@ -8,7 +8,7 @@ description: Shapes, vector paths, lines, arrows, and 3D props.
 ## Shapes
 
 ```ts
-import { Circle, Ellipse, Polygon, Rectangle, Square } from "veena/primitives";
+import { Circle, Ellipse, Polygon, Rectangle, Square } from "veena-engine/primitives";
 
 Circle().radius(0.8).fill("#58c4dd").stroke({ color: "white", width: 0.04 });
 Rectangle().size([2.4, 1.2]).cornerRadius(0.18).fill("#7c3aed");
@@ -22,7 +22,7 @@ Filled shapes support geometry-aware `draw()` and `undraw()`: only the boundary 
 ## Lines, arrows, and paths
 
 ```ts
-import { Arrow, Line, Path, worldPath } from "veena/primitives";
+import { Arrow, Line, Path, worldPath } from "veena-engine/primitives";
 
 Line().from([-2, 0]).to([2, 1]).color("#9cdceb");
 Arrow().from([0, 0]).to([3, 2]).color("#ff8080");

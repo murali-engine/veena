@@ -8,8 +8,8 @@ description: Build deterministic word clouds with featured-word pacing, semantic
 `WordCloud` lays out weighted labels without overlaps. Placement, color selection, and automatic orientation are deterministic for a given seed, so previews and exported frames produce the same composition.
 
 ```ts
-import { Timeline } from "veena/core";
-import { WordCloud } from "veena/maths";
+import { Timeline } from "veena-engine/core";
+import { WordCloud } from "veena-engine/maths";
 
 const cloud = this.add(WordCloud([
   { text: "AI", weight: 100, featured: true, orientation: "horizontal" },

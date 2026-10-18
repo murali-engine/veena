@@ -12,8 +12,8 @@ Veena's built-ins are conveniences. Custom content can use Canvas 2D, normal DOM
 `CanvasTattva` owns a real HTML `<canvas>` while Veena owns its outer placement, camera projection, opacity, layer, CSS, grouping, and timeline state. Its bitmap automatically matches the output resolution implied by its world-space `size`.
 
 ```ts
-import { CanvasTattva } from "veena/adapters";
-import type { TattvaState } from "veena/core";
+import { CanvasTattva } from "veena-engine/adapters";
+import type { TattvaState } from "veena-engine/core";
 
 interface WaveState extends TattvaState { phase: number }
 
@@ -45,7 +45,7 @@ const wave = new CanvasTattva<WaveState>({
 Browsers do not expose a literal `canvas.getContext("3d")`; raw 3D canvas rendering uses WebGL or WebGPU. `Canvas3DTattva` provides a persistent WebGL2 context for custom shaders and buffers:
 
 ```ts
-import { Canvas3DTattva } from "veena/adapters";
+import { Canvas3DTattva } from "veena-engine/adapters";
 
 let program: WebGLProgram;
 
@@ -68,7 +68,7 @@ Use `Canvas3DTattva` when you want raw WebGL2. Use `ThreeTattva` when you prefer
 ## React tattva
 
 ```tsx
-import { ReactTattva, type TattvaState } from "veena/adapters";
+import { ReactTattva, type TattvaState } from "veena-engine/adapters";
 
 interface CardState extends TattvaState { progress: number }
 
@@ -93,7 +93,7 @@ Inside nested React components, `useVeenaTheme()` reads the resolved scene or gr
 ## Three tattva
 
 ```ts
-import { ThreeTattva } from "veena/adapters";
+import { ThreeTattva } from "veena-engine/adapters";
 import { Mesh, MeshStandardMaterial, SphereGeometry } from "three";
 
 const globe = new ThreeTattva({

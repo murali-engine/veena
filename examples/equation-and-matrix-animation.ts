@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { Scene, Timeline, easeInOutCubic } from "veena/core";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
-import { Equation, Matrix, continuityPlacement } from "veena/maths";
+import { render } from "veena-engine";
+import { Scene, Timeline, easeInOutCubic } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
+import { Equation, Matrix, continuityPlacement } from "veena-engine/maths";
 const { BLUE_B, GOLD_C, GRAY_A, GRAY_B, TEAL_C, WHITE } = palette;
 
 const entries = [

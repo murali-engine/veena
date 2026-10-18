@@ -1,7 +1,7 @@
-import { render } from "veena";
-import { Canvas3DTattva, type Canvas3DContext } from "veena/adapters";
-import { Scene, Timeline, type TattvaState } from "veena/core";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Canvas3DTattva, type Canvas3DContext } from "veena-engine/adapters";
+import { Scene, Timeline, type TattvaState } from "veena-engine/core";
+import { Label } from "veena-engine/text";
 
 interface BloomState extends TattvaState {
   spin: number;

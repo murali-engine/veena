@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
-import { Table } from "veena/table";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
+import { Table } from "veena-engine/table";
 const { GRAY_B, TEAL_C, WHITE } = palette;
 
 /** Port of Murali `examples/tables.rs`. Rules draw first, then the cells type on, then the table unwrites. */

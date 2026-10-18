@@ -1,9 +1,9 @@
 import * as THREE from "three";
-import { render } from "veena";
-import { Scene, clip, timeline } from "veena/core";
-import { ThreeTattva } from "veena/adapters";
-import { Label } from "veena/text";
-import type { TattvaState } from "veena/core";
+import { render } from "veena-engine";
+import { Scene, clip, timeline } from "veena-engine/core";
+import { ThreeTattva } from "veena-engine/adapters";
+import { Label } from "veena-engine/text";
+import type { TattvaState } from "veena-engine/core";
 
 interface OrbitState extends TattvaState {
   angle: number;

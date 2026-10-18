@@ -1,7 +1,7 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { fontFamily, fontFile } from "veena/style";
-import { Opening } from "veena/storytelling";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { fontFamily, fontFile } from "veena-engine/style";
+import { Opening } from "veena-engine/storytelling";
 
 const PARTICLE_PALETTE = ["#2ed1c7", "#5294ff", "#eb6190", "#ffb838", "#7adc61", "#ff6666"];
 const SATOSHI = fontFile("Satoshi", "../../assets/fonts/private/Satoshi-Bold.ttf", { weight: 700 });

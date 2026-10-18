@@ -1,6 +1,6 @@
-import { render } from "veena";
-import { Canvas3DTattva } from "veena/adapters";
-import { Scene, Timeline, type TattvaState } from "veena/core";
+import { render } from "veena-engine";
+import { Canvas3DTattva } from "veena-engine/adapters";
+import { Scene, Timeline, type TattvaState } from "veena-engine/core";
 
 interface ClearState extends TattvaState {
   amount: number;

@@ -1,6 +1,6 @@
-import { render } from "veena";
-import { VeenaLogoMark, VeenaLogoSwell } from "veena/composite";
-import { Scene } from "veena/core";
+import { render } from "veena-engine";
+import { VeenaLogoMark, VeenaLogoSwell } from "veena-engine/composite";
+import { Scene } from "veena-engine/core";
 
 /**
  * The settled mark rides one musical phrase.

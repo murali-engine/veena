@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { TensorView, TokenRow, selfAttentionLesson } from "veena/ai";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { TensorView, TokenRow, selfAttentionLesson } from "veena-engine/ai";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
 const { BLUE_A, GOLD_A, GRAY_B, GREEN_A, PINK, TEAL_A, WHITE } = palette;
 import trace from "../data/self_attention_trace.json" with { type: "json" };
 

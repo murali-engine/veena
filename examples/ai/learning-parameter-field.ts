@@ -1,6 +1,6 @@
-import { render } from "veena";
-import { LearningParameterField } from "veena/ai";
-import { Scene, Timeline, type Vec2 } from "veena/core";
+import { render } from "veena-engine";
+import { LearningParameterField } from "veena-engine/ai";
+import { Scene, Timeline, type Vec2 } from "veena-engine/core";
 
 const PARAMETERS_PER_BANK = 120;
 const BANK_COLUMNS = 12;

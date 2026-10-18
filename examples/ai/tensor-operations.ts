@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { TensorView, tensorOperationStages } from "veena/ai";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { TensorView, tensorOperationStages } from "veena-engine/ai";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
 const { GRAY_B, GOLD_A, PINK, TEAL_A, WHITE } = palette;
 
 const STYLE = { cellWidth: 0.9, cellHeight: 0.66, labelHeight: 0.18, valueHeight: 0.16 };

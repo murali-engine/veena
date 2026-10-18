@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { Scene, clip, timeline } from "veena/core";
-import { Group } from "veena/layout";
-import { Rectangle } from "veena/primitives";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, clip, timeline } from "veena-engine/core";
+import { Group } from "veena-engine/layout";
+import { Rectangle } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
 
 class CSS3DTransforms extends Scene {
   constructor() {

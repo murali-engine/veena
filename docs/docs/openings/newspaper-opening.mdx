@@ -8,7 +8,7 @@ description: Build stacked newspaper montages with selectable generated layouts,
 `NewspaperOpening` places a sequence of fully opaque newspapers into an imperfect stack, then reveals a final title page. Each sheet can use a generated layout or a real newspaper image.
 
 ```ts
-import { Newspaper, NewspaperOpening } from "veena/storytelling";
+import { Newspaper, NewspaperOpening } from "veena-engine/storytelling";
 
 const newspapers = [
   new Newspaper("A New Era Begins")
@@ -123,8 +123,8 @@ Missing values use newspaper-style defaults. Passing an empty string intentional
 Use `Newspaper.fromImage()` when a real scan, photograph, or prepared newspaper design is available. The supplied image replaces the generated masthead, headline, columns, and layout completely.
 
 ```ts
-import { imageFile } from "veena/core";
-import { Newspaper } from "veena/storytelling";
+import { imageFile } from "veena-engine/core";
+import { Newspaper } from "veena-engine/storytelling";
 
 const archive = Newspaper.fromImage(
   imageFile("./assets/archive-front-page.jpg"),

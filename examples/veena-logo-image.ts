@@ -1,6 +1,6 @@
-import { render } from "veena";
-import { VEENA_LOGO_BACKGROUND, VeenaLogoMark } from "veena/composite";
-import { Scene } from "veena/core";
+import { render } from "veena-engine";
+import { VEENA_LOGO_BACKGROUND, VeenaLogoMark } from "veena-engine/composite";
+import { Scene } from "veena-engine/core";
 
 const settings = logoImageSettings();
 

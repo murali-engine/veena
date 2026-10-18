@@ -1,12 +1,12 @@
-import { render } from "veena";
-import { Scene, SceneView, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Circle, Line, Rectangle } from "veena/primitives";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, SceneView, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Circle, Line, Rectangle } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
 const { BLUE_B, BLUE_D, GOLD_C, GRAY_A, GRAY_B, GRAY_C, GREEN_C, ORANGE_C, PINK_C, PURPLE_B, TEAL_C, WHITE } = palette;
-import type { Vec3 } from "veena/core";
-import type { CircleTattva, RectangleTattva } from "veena/primitives";
-import type { LabelTattva } from "veena/text";
+import type { Vec3 } from "veena-engine/core";
+import type { CircleTattva, RectangleTattva } from "veena-engine/primitives";
+import type { LabelTattva } from "veena-engine/text";
 
 /**
  * Port of Murali `examples/scene_view.rs`.

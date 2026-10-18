@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { Scene, Timeline, type Vec2 } from "veena/core";
-import { LinearMap2D } from "veena/maths";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, Timeline, type Vec2 } from "veena-engine/core";
+import { LinearMap2D } from "veena-engine/maths";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
 
 const { BLUE_B, GOLD_B, GRAY_B, TEAL_C, WHITE } = palette;
 

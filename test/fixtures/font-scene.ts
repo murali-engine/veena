@@ -1,4 +1,4 @@
-import { Label, Scene, fontFile, render } from "veena";
+import { Label, Scene, fontFile, render } from "veena-engine";
 
 const TEST_FONT = fontFile(
   "Veena Test Pixel",

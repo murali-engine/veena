@@ -1,12 +1,12 @@
-import { render } from "veena";
-import { Scene, Tattva, Timeline, easeInOutCubic } from "veena/core";
-import { palette } from "veena/style";
-import { Circle, worldPath } from "veena/primitives";
-import { FormulaOutline, Label } from "veena/text";
-import { epicycleLinks, epicycleTip, fourierTerms } from "veena/maths";
-import { TracedPath } from "veena/utility";
+import { render } from "veena-engine";
+import { Scene, Tattva, Timeline, easeInOutCubic } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Circle, worldPath } from "veena-engine/primitives";
+import { FormulaOutline, Label } from "veena-engine/text";
+import { epicycleLinks, epicycleTip, fourierTerms } from "veena-engine/maths";
+import { TracedPath } from "veena-engine/utility";
 const { GOLD_A, WHITE } = palette;
-import type { TattvaState, Vec2 } from "veena/core";
+import type { TattvaState, Vec2 } from "veena-engine/core";
 
 const traceStart = 1.1;
 const traceDuration = 30;

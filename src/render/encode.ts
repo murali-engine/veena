@@ -1,8 +1,8 @@
 import { spawn } from "node:child_process";
 import { mkdir } from "node:fs/promises";
-import { createRequire } from "node:module";
 import { dirname } from "node:path";
 import type { ResolvedAudioTrack } from "./audio.ts";
+import { resolveFfmpegBinary } from "./toolchain.ts";
 
 export interface Encoder {
   write: (frame: Buffer) => Promise<void>;
@@ -82,17 +82,12 @@ export async function createEncoder(
   options: EncoderOptions = {},
 ): Promise<Encoder> {
   await mkdir(dirname(output), { recursive: true });
-  const require = createRequire(import.meta.url);
-  const ffmpegStatic = require("ffmpeg-static") as string | null;
-  const binary = ffmpegStatic || "ffmpeg";
-  return createPipeEncoder(binary, createEncoderArguments(output, fps, options));
+  return createPipeEncoder(await resolveFfmpegBinary(), createEncoderArguments(output, fps, options));
 }
 
 export async function createGifEncoder(output: string, fps: number): Promise<Encoder> {
   await mkdir(dirname(output), { recursive: true });
-  const require = createRequire(import.meta.url);
-  const ffmpegStatic = require("ffmpeg-static") as string | null;
-  return createPipeEncoder(ffmpegStatic || "ffmpeg", createGifEncoderArguments(output, fps));
+  return createPipeEncoder(await resolveFfmpegBinary(), createGifEncoderArguments(output, fps));
 }
 
 function createPipeEncoder(binary: string, args: readonly string[]): Encoder {

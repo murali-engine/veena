@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { Rectangle } from "veena/primitives";
-import { Label } from "veena/text";
-import { PageTurn } from "veena/storytelling";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { Rectangle } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
+import { PageTurn } from "veena-engine/storytelling";
 
 interface PageStyle {
   background: string;

@@ -1,10 +1,10 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Group } from "veena/layout";
-import { worldPath } from "veena/primitives";
-import { Label } from "veena/text";
-import { Axes, NumberPlane, PlotLegend, ScatterPlot } from "veena/maths";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Group } from "veena-engine/layout";
+import { worldPath } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
+import { Axes, NumberPlane, PlotLegend, ScatterPlot } from "veena-engine/maths";
 const { BLUE_B, GRAY_A, GRAY_B, GOLD_C, ORANGE_B, WHITE } = palette;
 
 /** Port of Murali `examples/graphs_2d.rs`. */

@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { Prop3D, parseGlb, parseGltf } from "veena/primitives";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { Prop3D, parseGlb, parseGltf } from "veena-engine/primitives";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
 import { appleBin, appleGltf, pyramidGlb } from "./assets/props/files.ts";
 
 const { GOLD_C, GRAY_B, TEAL_C, WHITE } = palette;

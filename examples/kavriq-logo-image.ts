@@ -1,6 +1,6 @@
-import { render } from "veena";
-import { KAVRIQ_BACKGROUND, KavriqLogoMark } from "veena/composite";
-import { Scene } from "veena/core";
+import { render } from "veena-engine";
+import { KAVRIQ_BACKGROUND, KavriqLogoMark } from "veena-engine/composite";
+import { Scene } from "veena-engine/core";
 
 /** Export the simple Kavriq water-drop mark with and without its showcase background. */
 class KavriqLogoImage extends Scene {

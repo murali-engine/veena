@@ -1,7 +1,7 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Label, Latex, LatexMorph, MathText } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Label, Latex, LatexMorph, MathText } from "veena-engine/text";
 const { BLUE_B, GOLD_B, GRAY_A, GRAY_B, WHITE, TEAL_C } = palette;
 
 /**

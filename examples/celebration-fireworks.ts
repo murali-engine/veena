@@ -1,7 +1,7 @@
-import { render } from "veena";
-import { Scene, timeline } from "veena/core";
-import { Label } from "veena/text";
-import { Fireworks } from "veena/storytelling";
+import { render } from "veena-engine";
+import { Scene, timeline } from "veena-engine/core";
+import { Label } from "veena-engine/text";
+import { Fireworks } from "veena-engine/storytelling";
 
 class CelebrationFireworks extends Scene {
   constructor() {

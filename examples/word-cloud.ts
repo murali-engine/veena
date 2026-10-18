@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
-import { WordCloud } from "veena/maths";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
+import { WordCloud } from "veena-engine/maths";
 const { WHITE } = palette;
 
 const EDITORIAL_COLORS = ["#dce2ea", "#aab4c3", "#78a9a2", "#7f94b2", "#9d8fa8"];

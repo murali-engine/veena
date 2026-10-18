@@ -1,6 +1,6 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { Newspaper, NewspaperOpening } from "veena/storytelling";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { Newspaper, NewspaperOpening } from "veena-engine/storytelling";
 
 class NewspaperOpeningScene extends Scene {
   constructor() {

@@ -1,8 +1,8 @@
 import type { CSSProperties } from "react";
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { ReactTattva } from "veena/adapters";
-import type { TattvaState } from "veena/core";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { ReactTattva } from "veena-engine/adapters";
+import type { TattvaState } from "veena-engine/core";
 
 interface CardState extends TattvaState {
   progress: number;

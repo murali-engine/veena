@@ -1,6 +1,6 @@
-import { render } from "veena";
-import { Scene, Timeline, type TattvaState } from "veena/core";
-import { CanvasTattva } from "veena/adapters";
+import { render } from "veena-engine";
+import { Scene, Timeline, type TattvaState } from "veena-engine/core";
+import { CanvasTattva } from "veena-engine/adapters";
 
 interface WaveState extends TattvaState {
   phase: number;

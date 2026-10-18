@@ -8,6 +8,6 @@ Examples follow the same subject taxonomy as the public Veena API. Categorized s
 
 The remaining root scenes are retained while they are reviewed and moved into `primitives`, `text`, `layout`, `composite`, `storytelling`, `table`, `utility`, or `production`. Example discovery is recursive, so moving a scene does not remove it from `npm run preview:all`.
 
-New examples should use category imports such as `veena/ai` or `veena/maths`. The root `veena` import remains available as a compatibility prelude.
+New examples should use category imports such as `veena-engine/ai` or `veena-engine/maths`. The root `veena-engine` import remains available as a compatibility prelude.
 
 Prefer one animated teaching story over several static API samples. Variants remain separate only when their output format or runtime behavior is itself under test—for example portrait versus landscape responsiveness.

@@ -1,7 +1,7 @@
-import { render } from "veena";
-import { Scene, timeline } from "veena/core";
-import { palette } from "veena/style";
-import { FormulaMorph, Label, TextMorph } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { FormulaMorph, Label, TextMorph } from "veena-engine/text";
 
 class TextAndFormulaMorphing extends Scene {
   override construct(): void {

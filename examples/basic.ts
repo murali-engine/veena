@@ -1,7 +1,7 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { Circle } from "veena/primitives";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { Circle } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
 
 class BasicScene extends Scene {
   constructor() {

@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { BiologicalNeuron, NeuralNetwork, neuralNetwork } from "veena/ai";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { BiologicalNeuron, NeuralNetwork, neuralNetwork } from "veena-engine/ai";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
 
 const { GOLD_A, GRAY_B, GREEN_C, TEAL_C, WHITE } = palette;
 

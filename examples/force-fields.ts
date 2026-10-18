@@ -1,11 +1,11 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Circle } from "veena/primitives";
-import { Label } from "veena/text";
-import { VectorField } from "veena/maths";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Circle } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
+import { VectorField } from "veena-engine/maths";
 const { BLUE_B, GRAY_B, RED_B, TEAL_C, WHITE } = palette;
-import type { Vec2 } from "veena/core";
+import type { Vec2 } from "veena-engine/core";
 
 /** Port of Murali `examples/force_fields.rs`. Charges and arrows are both functions of scene time. */
 class ForceFields extends Scene {

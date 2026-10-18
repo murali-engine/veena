@@ -1,6 +1,6 @@
-import { render } from "veena";
-import { LearningMeterGaugeField } from "veena/ai";
-import { Scene, Timeline } from "veena/core";
+import { render } from "veena-engine";
+import { LearningMeterGaugeField } from "veena-engine/ai";
+import { Scene, Timeline } from "veena-engine/core";
 
 class LearningMeterGaugesExample extends Scene {
   override construct(): void {

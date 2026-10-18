@@ -1,10 +1,10 @@
-import { render } from "veena";
-import { Scene, Timeline, imageFile } from "veena/core";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
-import { Axes3D, ParametricSurface } from "veena/maths";
+import { render } from "veena-engine";
+import { Scene, Timeline, imageFile } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
+import { Axes3D, ParametricSurface } from "veena-engine/maths";
 const { BLUE_B, GOLD_C, GRAY_B, ORANGE_B, TEAL_C, WHITE } = palette;
-import type { Vec3 } from "veena/core";
+import type { Vec3 } from "veena-engine/core";
 const EARTH_TEXTURE = imageFile("./assets/textures/earthmap1k.jpg");
 
 /** Port of Murali `examples/textured_surface.rs`, using the same Earth surface image. */

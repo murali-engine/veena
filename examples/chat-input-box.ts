@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
-import { ChatInput } from "veena/storytelling";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
+import { ChatInput } from "veena-engine/storytelling";
 const { BLUE_C, GRAY_A, GRAY_B, WHITE } = palette;
 
 const rgba = (red: number, green: number, blue: number, alpha: number) => {

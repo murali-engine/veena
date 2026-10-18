@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Circle, Polygon, Rectangle, Square } from "veena/primitives";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Circle, Polygon, Rectangle, Square } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
 const { BLUE_D, GRAY_A, GRAY_B, GOLD_C, GREEN_D, RED_B, WHITE } = palette;
 
 /** Port of Murali `examples/hello_shapes.rs`. */

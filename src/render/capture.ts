@@ -2,6 +2,7 @@ import { chromium } from "playwright-core";
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { bundleScene } from "./bundle.ts";
+import { ensureChromium } from "./toolchain.ts";
 import { createEncoder } from "./encode.ts";
 import { frameCount } from "./frames.ts";
 import { createProgressReporter } from "./progress.ts";
@@ -62,6 +63,7 @@ export async function renderScene(scenePath: string, options: RenderOptions): Pr
   const format = resolveRenderFormat(options.output, options.format);
   validateRenderFormat(format, options.transparent === true, options.audio !== undefined);
   const bundle = await bundleScene(scenePath);
+  await ensureChromium();
   const browser = await chromium.launch({ headless: true });
   try {
     const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });

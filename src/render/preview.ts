@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import { basename, extname } from "node:path";
 import { chromium, type Page } from "playwright-core";
 import { bundleScene } from "./bundle.ts";
+import { ensureChromium } from "./toolchain.ts";
 import { frameCount } from "./frames.ts";
 import { resolveAudioTrack, type AudioTrack } from "./audio.ts";
 
@@ -32,6 +33,7 @@ export async function previewScene(
     throw new Error(`Preview auto-close delay must be a non-negative finite number; received ${options.autoCloseAfter}.`);
   }
   const bundle = await bundleScene(scenePath);
+  await ensureChromium();
   const browser = await chromium.launch({
     headless: options.headless ?? false,
     args: ["--autoplay-policy=no-user-gesture-required"],

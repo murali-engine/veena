@@ -1,14 +1,14 @@
-import { render } from "veena";
+import { render } from "veena-engine";
 import {
   ATTENTION_BLOCK_FOCUS,
   AttentionMatrix,
   SignalFlow,
   TokenRow,
   TransformerBlock,
-} from "veena/ai";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
+} from "veena-engine/ai";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
 const { GOLD_A, GOLD_C, GRAY_A, GRAY_B, TEAL_A, TEAL_C, WHITE } = palette;
 
 /** AI teaching example: stage focus is a function of scene time. */

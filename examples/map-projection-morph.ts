@@ -1,14 +1,14 @@
-import { render } from "veena";
-import { Scene, Timeline, imageFile } from "veena/core";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, Timeline, imageFile } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
 import {
   MAP_FOOTER_START,
   MapGraticule,
   ParametricSurface,
   ProjectionCaption,
   mapPoint,
-} from "veena/maths";
+} from "veena-engine/maths";
 const { GRAY_A, GRAY_B, WHITE } = palette;
 const EARTH_TEXTURE = imageFile("./assets/textures/earthmap1k.jpg");
 

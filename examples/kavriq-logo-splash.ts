@@ -1,10 +1,10 @@
-import { render } from "veena";
+import { render } from "veena-engine";
 import {
   KAVRIQ_BACKGROUND,
   KAVRIQ_SPLASH_3D_DURATION,
   KavriqSplashLogo3D,
-} from "veena/composite";
-import { Scene, Timeline } from "veena/core";
+} from "veena-engine/composite";
+import { Scene, Timeline } from "veena-engine/core";
 
 const settings = splashSettings();
 

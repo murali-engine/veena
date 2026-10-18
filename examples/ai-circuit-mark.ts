@@ -1,6 +1,6 @@
-import { AICircuitMark } from "veena/ai";
-import { Scene } from "veena/core";
-import { render } from "veena";
+import { AICircuitMark } from "veena-engine/ai";
+import { Scene } from "veena-engine/core";
+import { render } from "veena-engine";
 
 class AICircuitMarkExample extends Scene {
   constructor() {

@@ -1,6 +1,6 @@
-import { render } from "veena";
-import { CanvasTattva } from "veena/adapters";
-import { Scene, Timeline, type TattvaState } from "veena/core";
+import { render } from "veena-engine";
+import { CanvasTattva } from "veena-engine/adapters";
+import { Scene, Timeline, type TattvaState } from "veena-engine/core";
 
 interface MarkerState extends TattvaState {
   amount: number;

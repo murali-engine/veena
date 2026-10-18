@@ -1,6 +1,6 @@
-import { render } from "veena";
-import { KavriqLogoMark } from "veena/composite";
-import { Scene } from "veena/core";
+import { render } from "veena-engine";
+import { KavriqLogoMark } from "veena-engine/composite";
+import { Scene } from "veena-engine/core";
 
 abstract class MonochromeKavriqLogo extends Scene {
   protected constructor(color: string) {

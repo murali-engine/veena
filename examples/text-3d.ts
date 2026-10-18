@@ -1,6 +1,6 @@
-import { render } from "veena";
-import { Scene, timeline } from "veena/core";
-import { Text3D } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, timeline } from "veena-engine/core";
+import { Text3D } from "veena-engine/text";
 
 /** True vector-extruded text with deterministic XYZ animation. */
 class Text3DScene extends Scene {

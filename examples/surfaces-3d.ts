@@ -1,10 +1,10 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Label } from "veena/text";
-import { Axes3D, ParametricSurface } from "veena/maths";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Label } from "veena-engine/text";
+import { Axes3D, ParametricSurface } from "veena-engine/maths";
 const { BLUE_B, GOLD_C, GRAY_B, ORANGE_B, WHITE } = palette;
-import type { Vec3 } from "veena/core";
+import type { Vec3 } from "veena-engine/core";
 
 /** Port of Murali `examples/surfaces_3d.rs`. The sheet writes in by parameter row. */
 class Surfaces3D extends Scene {

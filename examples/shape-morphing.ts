@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { Scene, timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Circle, Ellipse, Polygon, Rectangle, ShapeMorph, VectorShape } from "veena/primitives";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Circle, Ellipse, Polygon, Rectangle, ShapeMorph, VectorShape } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
 
 class ShapeMorphing extends Scene {
   override construct(): void {

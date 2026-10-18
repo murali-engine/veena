@@ -8,8 +8,8 @@ description: A concise map of Veena's public packages and core entry points.
 ## Core workflow
 
 ```ts
-import { render } from "veena";
-import { Scene, Tattva, Timeline, clip, timeline } from "veena/core";
+import { render } from "veena-engine";
+import { Scene, Tattva, Timeline, clip, timeline } from "veena-engine/core";
 ```
 
 Use `Scene` to author, `Tattva` to extend, `Timeline`/`Clip` to animate, and `render()` to preview or export.
@@ -18,21 +18,21 @@ Use `Scene` to author, `Tattva` to extend, `Timeline`/`Clip` to animate, and `re
 
 | Import | Representative APIs |
 | --- | --- |
-| `veena/core` | `Scene`, `Tattva`, `Timeline`, `clip`, `timeline`, `Camera3D`, `SceneView`, `fontFile`, `imageFile` |
-| `veena/style` | `themes`, `createTheme`, `themeColor`, `palette` |
-| `veena/layout` | `Group`, `HStack`, `VStack` |
-| `veena/primitives` | Shapes, `Path`, `Line`, `Arrow`, `ShapeMorph`, `Prop3D` |
-| `veena/text` | `Label`, `MathText`, `Latex`, morphs, `CodeBlock`, `Text3D` |
-| `veena/maths` | Graphs, matrices, equations, linear algebra, fields, curves, surfaces, fractals, maps, Fourier |
-| `veena/ai` | Neural networks, semantic tensors, attention, transformers, context, sampling |
-| `veena/storytelling` | `Stepwise`, `ChatInput`, `Opening`, `Newspaper`, `NewspaperOpening`, `Fireworks` |
-| `veena/composite` | `VeenaLogoMark`, `VeenaLogoSequence`, `VeenaLogoSwell`, `WaveMesh`, `YouTubeSubscribe` |
-| `veena/table` | `Table` |
-| `veena/utility` | `TracedPath` |
-| `veena/adapters` | `CanvasTattva`, `Canvas3DTattva`, `ReactTattva`, `ThreeTattva`, `useVeenaTheme` |
-| `veena/render` | `render`, `renderScene`, render/capture types |
+| `veena-engine/core` | `Scene`, `Tattva`, `Timeline`, `clip`, `timeline`, `Camera3D`, `SceneView`, `fontFile`, `imageFile` |
+| `veena-engine/style` | `themes`, `createTheme`, `themeColor`, `palette` |
+| `veena-engine/layout` | `Group`, `HStack`, `VStack` |
+| `veena-engine/primitives` | Shapes, `Path`, `Line`, `Arrow`, `ShapeMorph`, `Prop3D` |
+| `veena-engine/text` | `Label`, `MathText`, `Latex`, morphs, `CodeBlock`, `Text3D` |
+| `veena-engine/maths` | Graphs, matrices, equations, linear algebra, fields, curves, surfaces, fractals, maps, Fourier |
+| `veena-engine/ai` | Neural networks, semantic tensors, attention, transformers, context, sampling |
+| `veena-engine/storytelling` | `Stepwise`, `ChatInput`, `Opening`, `Newspaper`, `NewspaperOpening`, `Fireworks` |
+| `veena-engine/composite` | `VeenaLogoMark`, `VeenaLogoSequence`, `VeenaLogoSwell`, `WaveMesh`, `YouTubeSubscribe` |
+| `veena-engine/table` | `Table` |
+| `veena-engine/utility` | `TracedPath` |
+| `veena-engine/adapters` | `CanvasTattva`, `Canvas3DTattva`, `ReactTattva`, `ThreeTattva`, `useVeenaTheme` |
+| `veena-engine/render` | `render`, `renderScene`, render/capture types |
 
-The root `veena` export remains available for compatibility. Prefer category imports in new code.
+The root `veena-engine` export remains available for compatibility. Prefer category imports in new code.
 
 ## Reading this documentation
 

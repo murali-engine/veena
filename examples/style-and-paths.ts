@@ -1,8 +1,8 @@
-import { render } from "veena";
-import { Scene, Timeline } from "veena/core";
-import { palette } from "veena/style";
-import { Arrow, Circle, Line, Rectangle, worldPath } from "veena/primitives";
-import { Label } from "veena/text";
+import { render } from "veena-engine";
+import { Scene, Timeline } from "veena-engine/core";
+import { palette } from "veena-engine/style";
+import { Arrow, Circle, Line, Rectangle, worldPath } from "veena-engine/primitives";
+import { Label } from "veena-engine/text";
 const { BLUE_B, BLUE_D, GRAY_A, GRAY_B, GOLD_C, GREEN_D, PURPLE_B, TEAL_C, WHITE } = palette;
 
 /** Port of Murali `examples/style_and_paths.rs`. */
