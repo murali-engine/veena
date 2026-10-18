@@ -1,7 +1,7 @@
-import { render } from "murali-js";
-import { Scene, timeline } from "murali-js/core";
-import { Label } from "murali-js/text";
-import { WaveMesh } from "murali-js/composite";
+import { render } from "veena";
+import { Scene, timeline } from "veena/core";
+import { Label } from "veena/text";
+import { WaveMesh } from "veena/composite";
 
 /** Reusable lower-screen animated mesh inspired by event-stage motion graphics. */
 class WaveMeshBackground extends Scene {
@@ -63,7 +63,7 @@ class WaveMeshBackground extends Scene {
 render(import.meta.url, WaveMeshBackground, {
   fps: 30,
   audio: {
-    source: "/Users/ravishankar/personal-work/animation/murali-js/examples/assets/audio/Raag Pahadi - Sandeep Das, Mayank Raina, Bivakar Chaudhuri.mp3",
+    source: "/Users/ravishankar/personal-work/animation/veena/examples/assets/audio/Raag Pahadi - Sandeep Das, Mayank Raina, Bivakar Chaudhuri.mp3",
     volume: 0.02,
   },
 });

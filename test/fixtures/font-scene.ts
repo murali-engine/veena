@@ -1,7 +1,7 @@
-import { Label, Scene, fontFile, render } from "murali-js";
+import { Label, Scene, fontFile, render } from "veena";
 
 const TEST_FONT = fontFile(
-  "Murali Test Pixel",
+  "Veena Test Pixel",
   "../../node_modules/playwright-core/lib/vite/traceViewer/codicon.DCmgc-ay.ttf",
   { weight: 400 },
 );

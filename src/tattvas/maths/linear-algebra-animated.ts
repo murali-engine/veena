@@ -284,7 +284,7 @@ function rightAngleMarkup(vertex: Vec2, first: Vec2, second: Vec2, size: number)
   const p = add(vertex, scale(a, size));
   const q = add(p, scale(b, size));
   const r = add(vertex, scale(b, size));
-  return polyline([vertex, p, q, r, vertex], "#f2d157", 0.027, 'data-murali-right-angle="true"');
+  return polyline([vertex, p, q, r, vertex], "#f2d157", 0.027, 'data-veena-right-angle="true"');
 }
 
 function svg(width: number, height: number, body: string): string {

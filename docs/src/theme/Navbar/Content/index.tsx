@@ -22,7 +22,7 @@ function NavbarItems({ items }: { items: NavbarItemConfig[] }): ReactNode {
         return (
           <ErrorCauseBoundary
             key={`${("label" in item ? item.label : undefined) ?? item.type ?? "item"}-${index}`}
-            onError={(error) => new Error("A Murali navbar item failed to render.", { cause: error })}
+            onError={(error) => new Error("A Veena navbar item failed to render.", { cause: error })}
           >
             <NavbarItem {...(renderedItem as NavbarItemConfig)} />
           </ErrorCauseBoundary>

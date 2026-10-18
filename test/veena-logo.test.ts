@@ -2,21 +2,21 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { Scene } from "../src/core/Scene.ts";
 import {
-  MURALI_LOGO_COLORS,
-  MURALI_LOGO_BACKGROUND,
-  MURALI_LOGO_PALETTES,
-  MuraliLogoMark,
-  MuraliLogoSequence,
-  MuraliLogoSwell,
-} from "../src/tattvas/composite/murali-logo.ts";
+  VEENA_LOGO_COLORS,
+  VEENA_LOGO_BACKGROUND,
+  VEENA_LOGO_PALETTES,
+  VeenaLogoMark,
+  VeenaLogoSequence,
+  VeenaLogoSwell,
+} from "../src/tattvas/composite/veena-logo.ts";
 
-test("builds the canonical Murali logo from three touching geometric ovals", () => {
-  const mark = MuraliLogoMark();
+test("builds the canonical Veena logo from three touching geometric ovals", () => {
+  const mark = VeenaLogoMark();
   assert.equal(mark.ovals.length, 3);
-  assert.deepEqual(MURALI_LOGO_COLORS, ["#2563eb", "#7c3aed", "#ff6b5f"]);
-  assert.match(MURALI_LOGO_BACKGROUND, /#0b233f.+#0e6c70/);
-  assert.deepEqual(MURALI_LOGO_PALETTES.candyPop, ["#54b8f3", "#fae561", "#e065b2"]);
-  assert.deepEqual(mark.ovals.map((oval) => oval.initialState.background), MURALI_LOGO_COLORS);
+  assert.deepEqual(VEENA_LOGO_COLORS, ["#2563eb", "#7c3aed", "#ff6b5f"]);
+  assert.match(VEENA_LOGO_BACKGROUND, /#0b233f.+#0e6c70/);
+  assert.deepEqual(VEENA_LOGO_PALETTES.candyPop, ["#54b8f3", "#fae561", "#e065b2"]);
+  assert.deepEqual(mark.ovals.map((oval) => oval.initialState.background), VEENA_LOGO_COLORS);
   assert.ok(mark.ovals[0].initialState.x < mark.ovals[1].initialState.x);
   assert.ok(mark.ovals[1].initialState.x < mark.ovals[2].initialState.x);
   assert.equal(
@@ -31,23 +31,23 @@ test("builds the canonical Murali logo from three touching geometric ovals", () 
     const size = oval.getLayoutSize();
     assert.ok(Math.abs(size.width - 0.96) < 1e-9);
     assert.ok(Math.abs(size.height - 1.64) < 1e-9);
-    assert.match(oval.contentHTML() ?? "", /data-murali-shape/);
+    assert.match(oval.contentHTML() ?? "", /data-veena-shape/);
     assert.match(oval.contentHTML() ?? "", /stroke="none"/);
   }
 });
 
-test("validates Murali logo geometry", () => {
-  assert.throws(() => MuraliLogoMark({ width: 0 }), /positive finite/);
-  assert.throws(() => MuraliLogoMark({ width: Number.NaN }), /positive finite/);
+test("validates Veena logo geometry", () => {
+  assert.throws(() => VeenaLogoMark({ width: 0 }), /positive finite/);
+  assert.throws(() => VeenaLogoMark({ width: Number.NaN }), /positive finite/);
 });
 
 test("animates the oval logo from one oval through a squeezed three-oval mark and back", () => {
   class LogoScene extends Scene {
-    readonly mark = MuraliLogoMark();
+    readonly mark = VeenaLogoMark();
 
     override construct(): void {
       this.add(this.mark);
-      this.play(MuraliLogoSequence(this.mark));
+      this.play(VeenaLogoSequence(this.mark));
     }
   }
 
@@ -93,16 +93,16 @@ test("animates the oval logo from one oval through a squeezed three-oval mark an
   assert.equal(end.get(middle)?.scaleX, 1);
   assert.equal(end.get(right)?.x, 0);
   assert.equal(end.get(right)?.opacity, 1);
-  assert.throws(() => MuraliLogoSequence(MuraliLogoMark(), { duration: 0 }), /positive finite/);
+  assert.throws(() => VeenaLogoSequence(VeenaLogoMark(), { duration: 0 }), /positive finite/);
 });
 
 test("springs the settled logo up from the baseline and back past rest", () => {
   class SwellScene extends Scene {
-    readonly mark = MuraliLogoMark({ width: 6.6 });
+    readonly mark = VeenaLogoMark({ width: 6.6 });
 
     override construct(): void {
       this.add(this.mark);
-      const swell = MuraliLogoSwell(this.mark);
+      const swell = VeenaLogoSwell(this.mark);
       this.updater(swell.update);
       this.wait(swell.duration);
     }
@@ -203,12 +203,12 @@ test("springs the settled logo up from the baseline and back past rest", () => {
   assert.ok(leanMax > 1 && leanMax < 2, `shared lean ${leanMax}`);
   assert.ok(quietMax - quietMin > 0.02 && quietMax < 1.04 && quietMin > 0.96);
 
-  assert.throws(() => MuraliLogoSwell(MuraliLogoMark(), { duration: 0 }), /positive finite/);
+  assert.throws(() => VeenaLogoSwell(VeenaLogoMark(), { duration: 0 }), /positive finite/);
 });
 
 test("retimes the logo swell without changing its shape", () => {
   class TimedSwell extends Scene {
-    readonly mark = MuraliLogoMark();
+    readonly mark = VeenaLogoMark();
 
     constructor(private readonly seconds: number) {
       super();
@@ -216,7 +216,7 @@ test("retimes the logo swell without changing its shape", () => {
 
     override construct(): void {
       this.add(this.mark);
-      const swell = MuraliLogoSwell(this.mark, { duration: this.seconds });
+      const swell = VeenaLogoSwell(this.mark, { duration: this.seconds });
       this.updater(swell.update);
       this.wait(swell.duration);
     }

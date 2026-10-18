@@ -1,11 +1,11 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Circle, Polygon, Rectangle, Square } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Circle, Polygon, Rectangle, Square } from "veena/primitives";
+import { Label } from "veena/text";
 const { BLUE_D, GRAY_A, GRAY_B, GOLD_C, GREEN_D, RED_B, WHITE } = palette;
 
-/** Port of Murali `examples/hello_shapes.rs`. */
+/** Port of Veena `examples/hello_shapes.rs`. */
 class HelloShapes extends Scene {
   override construct(): void {
     const title = this.add(Label("Hello Shapes").height(0.38).color(WHITE));

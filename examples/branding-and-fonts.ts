@@ -1,9 +1,9 @@
-import { render } from "murali-js";
-import { Scene } from "murali-js/core";
-import { fontFamily, fontFile, palette } from "murali-js/style";
-import { Group } from "murali-js/layout";
-import { Circle } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene } from "veena/core";
+import { fontFamily, fontFile, palette } from "veena/style";
+import { Group } from "veena/layout";
+import { Circle } from "veena/primitives";
+import { Label } from "veena/text";
 
 // This private asset is optional and Git-ignored. Rendering falls back cleanly when it is absent.
 const SATOSHI = fontFile("Satoshi", "../assets/fonts/private/Satoshi-Bold.ttf", {

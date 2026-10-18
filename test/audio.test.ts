@@ -40,7 +40,7 @@ test("validates audio timing and builds a looped, delayed, duration-bound mix", 
   assert.deepEqual(args.slice(0, 7), ["-y", "-f", "image2pipe", "-framerate", "30", "-i", "-"]);
   assert.ok(args.includes("-stream_loop"));
   assert.ok(args.includes("/tmp/music.mp3"));
-  assert.ok(args.includes("[1:a]volume=0.4,atrim=start=0:end=4.5,asetpts=PTS-STARTPTS,adelay=2500:all=1[murali_audio]"));
+  assert.ok(args.includes("[1:a]volume=0.4,atrim=start=0:end=4.5,asetpts=PTS-STARTPTS,adelay=2500:all=1[veena_audio]"));
   assert.ok(args.includes("aac"));
   assert.ok(args.includes("10"));
 });
@@ -61,7 +61,7 @@ test("uses VP9 alpha and Opus only for the WebM encoder path", () => {
 
 test("silently ignores a missing audio source", async () => {
   const audio = await resolveAudioTrack(
-    "/path-that-does-not-exist/murali-missing-audio.mp3",
+    "/path-that-does-not-exist/veena-missing-audio.mp3",
     10,
   );
   assert.equal(audio, undefined);

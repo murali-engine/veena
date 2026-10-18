@@ -1,8 +1,8 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
-import { ChatInput } from "murali-js/storytelling";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
+import { ChatInput } from "veena/storytelling";
 const { BLUE_C, GRAY_A, GRAY_B, WHITE } = palette;
 
 const rgba = (red: number, green: number, blue: number, alpha: number) => {
@@ -10,7 +10,7 @@ const rgba = (red: number, green: number, blue: number, alpha: number) => {
   return `rgba(${channel(red)}, ${channel(green)}, ${channel(blue)}, ${alpha})`;
 };
 
-/** Port of Murali `examples/chat_input_box.rs`. The box fades in, then its text types. */
+/** Port of Veena `examples/chat_input_box.rs`. The box fades in, then its text types. */
 class ChatInputScene extends Scene {
   override construct(): void {
     const title = this.add(Label("Chat Input Box").height(0.38).color(WHITE).typewriter());

@@ -14,7 +14,7 @@ export interface FontFaceAsset extends Required<FontFaceOptions> {
 
 const fileResources: Record<string, string> = {};
 
-/** Define a font whose file is embedded by the Murali scene bundler. Keep the path as a string literal. */
+/** Define a font whose file is embedded by the Veena scene bundler. Keep the path as a string literal. */
 export function fontFile(family: string, path: string, options: FontFaceOptions = {}): FontFaceAsset {
   return createFont("file", family, path, options);
 }

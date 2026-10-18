@@ -6,7 +6,7 @@ import { test } from "node:test";
 import { renderScene } from "../src/render/capture.ts";
 
 test("writes scene-authored named screenshots and an animated GIF", { timeout: 60_000 }, async () => {
-  const directory = await mkdtemp(join(tmpdir(), "murali-captures-"));
+  const directory = await mkdtemp(join(tmpdir(), "veena-captures-"));
   try {
     const result = await renderScene(resolve("examples/capture-markers.ts"), {
       output: join(directory, "still.png"),

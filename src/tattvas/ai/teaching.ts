@@ -1105,7 +1105,7 @@ export interface Matrix2 {
   columnTitle: string;
 }
 
-/** Rank-2 product. Each multiply and running sum is rounded to 32 bits, matching Murali's floats. */
+/** Rank-2 product. Each multiply and running sum is rounded to 32 bits, matching Veena's floats. */
 export function matmul2(left: Matrix2, right: Matrix2): Matrix2 {
   if (left.columns !== right.rows) throw new Error("Matrix multiply needs matching inner dimensions.");
   const values: number[] = [];

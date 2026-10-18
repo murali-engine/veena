@@ -1,7 +1,7 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { CodeBlock, Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { CodeBlock, Label } from "veena/text";
 const { GRAY_B, WHITE } = palette;
 
 const rustCode = `fn highlight(tokens: &[&str]) -> Vec<String> {
@@ -15,16 +15,16 @@ fps = 60
 background = "slate"
 `;
 
-/** Port of Murali `examples/code_blocks.rs`. Coloring is browser text, not highlight.js or Typst. */
+/** Port of Veena `examples/code_blocks.rs`. Coloring is browser text, not highlight.js or Typst. */
 class CodeBlocks extends Scene {
   override construct(): void {
     const title = this.add(Label("Re-imagined Code Blocks").height(0.38).color(WHITE).typewriter());
     this.toEdge(title, "up", { margin: 0.8 });
     const subtitle = this.add(Label(
-      "Murali now supports window decorations, line numbers, and custom themes for professional presentations.",
+      "Veena now supports window decorations, line numbers, and custom themes for professional presentations.",
     ).height(0.18).color(GRAY_B).typewriter(), { at: [0, 2.9, 0] });
     const rustHeading = this.add(Label("highlight.rs").height(0.24).color(GRAY_B).typewriter(), { at: [0, 2.1, 0] });
-    const tomlHeading = this.add(Label("murali.toml").height(0.24).color(GRAY_B).typewriter().opacity(0), { at: [0, 2.1, 0] });
+    const tomlHeading = this.add(Label("veena.toml").height(0.24).color(GRAY_B).typewriter().opacity(0), { at: [0, 2.1, 0] });
     const rust = this.add(CodeBlock(rustCode, "rust")
       .theme("dark")
       .surface("dark")
@@ -36,7 +36,7 @@ class CodeBlocks extends Scene {
     const toml = this.add(CodeBlock(tomlCode, "toml")
       .theme("light")
       .surface("light")
-      .title("murali.toml")
+      .title("veena.toml")
       .lineNumbers(true)
       .contentBox(4.2, 1.35)
       .fontSize(0.3)

@@ -1,8 +1,8 @@
-import { render } from "murali-js";
-import { TensorGrid, tensorSemanticsFrame } from "murali-js/ai";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { TensorGrid, tensorSemanticsFrame } from "veena/ai";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
 const { GRAY_B, TEAL_A, WHITE } = palette;
 
 /**

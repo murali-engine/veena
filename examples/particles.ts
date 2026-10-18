@@ -1,15 +1,15 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Circle, ParticleBelt } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Circle, ParticleBelt } from "veena/primitives";
+import { Label } from "veena/text";
 const { BLUE_B, GOLD_C, GRAY_A, GRAY_B, PURPLE_B, TEAL_C, WHITE } = palette;
 
 const evolveStart = 2.6;
 const evolveDuration = 5.6;
 const evolveSpeed = 1.05;
 
-/** Port of Murali `examples/particles.rs`. Belt phase is a function of scene time. */
+/** Port of Veena `examples/particles.rs`. Belt phase is a function of scene time. */
 class Particles extends Scene {
   constructor() {
     super({ viewWidth: 16 });

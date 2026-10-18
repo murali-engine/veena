@@ -21,7 +21,7 @@ test("builds the AI circuit mark with scalable vector layers", () => {
   assert.equal(mark.traces.initialState.color, AI_CIRCUIT_BLUE);
   assert.equal(mark.label.initialState.color, AI_CIRCUIT_GOLD);
   assert.ok(Math.abs((mark.worldSize?.width ?? 0) * mark.initialState.scaleX - 9) < 1e-9);
-  assert.match(mark.traces.contentHTML() ?? "", /data-murali-path/);
+  assert.match(mark.traces.contentHTML() ?? "", /data-veena-path/);
 });
 
 test("authors a deterministic seamless activity pulse", () => {

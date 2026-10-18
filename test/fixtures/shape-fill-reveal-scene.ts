@@ -1,4 +1,4 @@
-import { Scene, Square, Timeline, render } from "murali-js";
+import { Scene, Square, Timeline, render } from "veena";
 
 class ShapeFillRevealScene extends Scene {
   override construct(): void {

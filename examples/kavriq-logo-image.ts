@@ -1,6 +1,6 @@
-import { render } from "murali-js";
-import { KAVRIQ_BACKGROUND, KavriqLogoMark } from "murali-js/composite";
-import { Scene } from "murali-js/core";
+import { render } from "veena";
+import { KAVRIQ_BACKGROUND, KavriqLogoMark } from "veena/composite";
+import { Scene } from "veena/core";
 
 /** Export the simple Kavriq water-drop mark with and without its showcase background. */
 class KavriqLogoImage extends Scene {

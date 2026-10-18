@@ -1,6 +1,6 @@
-import { render } from "murali-js";
-import { LearningMeterGaugeField } from "murali-js/ai";
-import { Scene, Timeline } from "murali-js/core";
+import { render } from "veena";
+import { LearningMeterGaugeField } from "veena/ai";
+import { Scene, Timeline } from "veena/core";
 
 class LearningMeterGaugesExample extends Scene {
   override construct(): void {

@@ -1,8 +1,8 @@
-import { render } from "murali-js";
-import { TensorView, TokenRow, selfAttentionLesson } from "murali-js/ai";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { TensorView, TokenRow, selfAttentionLesson } from "veena/ai";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
 const { BLUE_A, GOLD_A, GRAY_B, GREEN_A, PINK, TEAL_A, WHITE } = palette;
 import trace from "../data/self_attention_trace.json" with { type: "json" };
 

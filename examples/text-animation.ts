@@ -1,11 +1,11 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { worldPath } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { worldPath } from "veena/primitives";
+import { Label } from "veena/text";
 const { BLUE_B, GRAY_A, GRAY_B, GOLD_C, PURPLE_B, TEAL_C, WHITE } = palette;
 
-/** Port of Murali `examples/text_animation.rs`. */
+/** Port of Veena `examples/text_animation.rs`. */
 class TextAnimation extends Scene {
   override construct(): void {
     const title = this.add(Label("Text Animation").height(0.38).color(WHITE));

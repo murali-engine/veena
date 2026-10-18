@@ -1,16 +1,16 @@
 ---
 sidebar_position: 2
 title: Installation
-description: Install Murali and verify preview and export.
+description: Install Veena and verify preview and export.
 ---
 
 # Installation
 
-Murali requires Node.js 20 or later. Its exporter uses the compatible Chromium distributed with Playwright and FFmpeg distributed through `ffmpeg-static`.
+Veena requires Node.js 20 or later. Its exporter uses the compatible Chromium distributed with Playwright and FFmpeg distributed through `ffmpeg-static`.
 
 :::warning Pre-release
 
-Murali has not been published to the npm registry yet. Install it from the repository or
+Veena has not been published to the npm registry yet. Install it from the repository or
 from a locally packed tarball for now.
 
 :::
@@ -18,8 +18,8 @@ from a locally packed tarball for now.
 ## Run from the repository
 
 ```bash
-git clone https://github.com/murali-engine/murali-js.git
-cd murali-js
+git clone https://github.com/murali-engine/veena.git
+cd veena
 npm install
 npm run example -- hello-shapes --preview
 ```
@@ -34,10 +34,10 @@ List every available example with `npm run example -- --list`.
 
 ## Use it from another local project
 
-Build and pack Murali from its repository:
+Build and pack Veena from its repository:
 
 ```bash
-cd /path/to/murali-js
+cd /path/to/veena
 npm install
 npm pack
 ```
@@ -46,11 +46,11 @@ Then install that generated tarball in the consuming project:
 
 ```bash
 cd /path/to/my-animation
-npm install /path/to/murali-js/murali-js-0.1.0.tgz
+npm install /path/to/veena/veena-0.1.0.tgz
 npm install --save-dev tsx typescript
 ```
 
-The tarball name follows the version in Murali's `package.json` and may change. Once Murali is
+The tarball name follows the version in Veena's `package.json` and may change. Once Veena is
 published, this section will be replaced with registry installation instructions.
 
 Create a scene file such as `hello.ts`, then run it directly:
@@ -71,9 +71,9 @@ A normal `npm install` downloads the matching Playwright Chromium. Set `PLAYWRIG
 ## Verify the setup
 
 ```ts title="hello.ts"
-import { render } from "murali-js";
-import { Scene } from "murali-js/core";
-import { Circle } from "murali-js/primitives";
+import { render } from "veena";
+import { Scene } from "veena/core";
+import { Circle } from "veena/primitives";
 
 class Hello extends Scene {
   override construct() {

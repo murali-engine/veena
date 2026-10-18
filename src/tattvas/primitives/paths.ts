@@ -97,8 +97,8 @@ export class PathTattva extends Tattva {
   override contentHTML(): string {
     const { x, y, width, height } = this.pathBounds;
     const dash = dashAttribute(this.dashLength, this.dashGap);
-    const revealFill = this.fillColor === "none" ? "" : " data-murali-reveal-fill";
-    return `<svg width="100%" height="100%" viewBox="${x} ${y} ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg"><path data-murali-path${revealFill} d="${escapeAttribute(this.pathData)}" fill="${escapeAttribute(this.fillColor)}" stroke="currentColor" stroke-width="${this.strokeWidth}" stroke-linecap="round" stroke-linejoin="round"${dash} /></svg>`;
+    const revealFill = this.fillColor === "none" ? "" : " data-veena-reveal-fill";
+    return `<svg width="100%" height="100%" viewBox="${x} ${y} ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg"><path data-veena-path${revealFill} d="${escapeAttribute(this.pathData)}" fill="${escapeAttribute(this.fillColor)}" stroke="currentColor" stroke-width="${this.strokeWidth}" stroke-linecap="round" stroke-linejoin="round"${dash} /></svg>`;
   }
 
   protected syncBounds(): void {
@@ -186,11 +186,11 @@ export class LineTattva extends Tattva {
     const arrowHeight = Math.max(this.strokeWidth * 4, 0.16);
     const lineEnd = this.arrow ? Math.max(0, width - arrowLength * 0.7) : width;
     const arrowhead = this.arrow
-      ? `<path data-murali-arrowhead d="M ${width - arrowLength} ${centerY - arrowHeight / 2} L ${width} ${centerY} L ${width - arrowLength} ${centerY + arrowHeight / 2} Z" fill="currentColor" />`
+      ? `<path data-veena-arrowhead d="M ${width - arrowLength} ${centerY - arrowHeight / 2} L ${width} ${centerY} L ${width - arrowLength} ${centerY + arrowHeight / 2} Z" fill="currentColor" />`
       : "";
-    const clipId = `murali-line-${++lineClipSequence}`;
+    const clipId = `veena-line-${++lineClipSequence}`;
     const dash = dashAttribute(this.dashLength, this.dashGap);
-    return `<svg width="100%" height="100%" viewBox="0 0 ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg"><clipPath id="${clipId}"><rect data-murali-reveal-clip x="0" y="${-height}" width="${width}" height="${height * 3}" /></clipPath><path data-murali-path d="M 0 ${centerY} L ${lineEnd} ${centerY}" fill="none" stroke="currentColor" stroke-width="${this.strokeWidth}" stroke-linecap="round" clip-path="url(#${clipId})"${dash} />${arrowhead}</svg>`;
+    return `<svg width="100%" height="100%" viewBox="0 0 ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg"><clipPath id="${clipId}"><rect data-veena-reveal-clip x="0" y="${-height}" width="${width}" height="${height * 3}" /></clipPath><path data-veena-path d="M 0 ${centerY} L ${lineEnd} ${centerY}" fill="none" stroke="currentColor" stroke-width="${this.strokeWidth}" stroke-linecap="round" clip-path="url(#${clipId})"${dash} />${arrowhead}</svg>`;
   }
 
   protected syncGeometry(): void {
@@ -299,7 +299,7 @@ export class WorldPathBuilder {
 let lineClipSequence = 0;
 
 function dashAttribute(dash: number, gap: number): string {
-  return dash > 0 ? ` data-murali-dash="${dash} ${gap}" stroke-dasharray="${dash} ${gap}"` : "";
+  return dash > 0 ? ` data-veena-dash="${dash} ${gap}" stroke-dasharray="${dash} ${gap}"` : "";
 }
 
 function escapeAttribute(value: string): string {

@@ -290,7 +290,7 @@ test("morphs arbitrary compound SVG shapes with cubic curves and holes", () => {
   assert.match(middle, /fill-rule="evenodd"/);
   assert.ok((middle.match(/\bM\b/g) ?? []).length >= 2);
   assert.ok((middle.match(/\bC\b/g) ?? []).length >= 24);
-  assert.match(ring.contentHTML(), /data-murali-vector-shape/);
+  assert.match(ring.contentHTML(), /data-veena-vector-shape/);
   assert.deepEqual(ring.worldSize, { width: 5, height: 5 });
   assert.throws(() => VectorShape("M 0 0 L 1 1"), /closed SVG path contours/);
 });
@@ -311,9 +311,9 @@ test("matches persistent text tokens while unequal text enters and leaves", () =
   const start = morph.contentHTML(0, { ...morph.initialState, morphProgress: 0 });
   const middle = morph.contentHTML(0, { ...morph.initialState, morphProgress: 0.5 });
   const target = morph.contentHTML(0, { ...morph.initialState, morphProgress: 1 });
-  assert.match(start, /data-murali-matching-morph="text"/);
-  assert.match(middle, /data-murali-morph-role="matched"/);
-  assert.match(middle, /data-murali-morph-role="arriving"/);
+  assert.match(start, /data-veena-matching-morph="text"/);
+  assert.match(middle, /data-veena-morph-role="matched"/);
+  assert.match(middle, /data-veena-morph-role="arriving"/);
   assert.match(target, />O<\/text>/);
   assert.deepEqual(morph.matchingKeys(0), ["grapheme:C", "grapheme:A", "grapheme:T"]);
   assert.equal(middle, morph.contentHTML(4, { ...morph.initialState, morphProgress: 0.5 }));
@@ -330,10 +330,10 @@ test("morphs structured formula tokens through powers radicals and fractions", (
   assert.equal(morph.morphStageCount, 3);
   const radical = morph.contentHTML(0, { ...morph.initialState, morphProgress: 1 });
   const fraction = morph.contentHTML(0, { ...morph.initialState, morphProgress: 2 });
-  assert.match(radical, /data-murali-matching-morph="formula"/);
-  assert.match(radical, /<path[^>]+data-murali-morph-role="departing"/);
-  assert.match(radical, /data-murali-morph-role="arriving"/);
-  assert.match(fraction, /<line[^>]+data-murali-morph-role/);
+  assert.match(radical, /data-veena-matching-morph="formula"/);
+  assert.match(radical, /<path[^>]+data-veena-morph-role="departing"/);
+  assert.match(radical, /data-veena-morph-role="arriving"/);
+  assert.match(fraction, /<line[^>]+data-veena-morph-role/);
   assert.ok(morph.matchingKeys(1).includes("radical"));
   assert.ok((morph.worldSize?.height ?? 0) > 0.9);
 
@@ -400,11 +400,11 @@ test("interpolates actual LaTeX glyph outlines as normalized cubic Beziers", () 
   assert.equal(outline.length, 64);
   assert.ok(Math.max(...outline.map((point) => point[1])) > 0);
   assert.ok(Math.min(...outline.map((point) => point[1])) < 0);
-  assert.match(formula.contentHTML(), /data-murali-latex="true"/);
-  assert.match(middle, /data-murali-matching-morph="latex"/);
-  assert.match(middle, /data-murali-morph-role="matched"/);
+  assert.match(formula.contentHTML(), /data-veena-latex="true"/);
+  assert.match(middle, /data-veena-matching-morph="latex"/);
+  assert.match(middle, /data-veena-morph-role="matched"/);
   assert.match(middle, /\bC[-\d]/);
-  assert.doesNotMatch(middle, /data-murali-morph-role="(?:departing|arriving)"/);
+  assert.doesNotMatch(middle, /data-veena-morph-role="(?:departing|arriving)"/);
   assert.notEqual(start, middle);
   assert.notEqual(middle, target);
   assert.equal(middle, morph.contentHTML(0, { ...morph.initialState, morphProgress: 0.5 }));
@@ -714,7 +714,7 @@ test("segments typewritten text by grapheme and rejects incompatible reveal verb
 
 test("dashes a line and pulses indicate back to rest", () => {
   const guide = Line().from([-1, 0]).to([1, 0]).stroke({ color: "tealC", width: 0.06 }).dash(0.18, 0.1);
-  assert.match(guide.contentHTML(), /data-murali-dash="0.18 0.1"/);
+  assert.match(guide.contentHTML(), /data-veena-dash="0.18 0.1"/);
   assert.throws(() => Line().dash(-1, 0.1), /non-negative/);
 
   class IndicateScene extends Scene {
@@ -943,7 +943,7 @@ test("derives animated linear-algebra diagrams from sampled mathematical state",
   const projectionMarkup = projection.contentHTML();
   assert.match(projectionMarkup, /a · b = 0\s+•\s+cos θ = 0\s+•\s+θ = 90°/);
   assert.match(projectionMarkup, /rgba\(220,232,247,.48\)/);
-  assert.match(projectionMarkup, /data-murali-right-angle="true"/);
+  assert.match(projectionMarkup, /data-veena-right-angle="true"/);
 
   class AnimatedMapScene extends Scene {
     readonly map = LinearMap2D().unitSquare().vector([1, 1]).columnDecomposition();
@@ -1745,7 +1745,7 @@ test("builds linear stepwise stories and validates cyclic scripts", () => {
 
 test("authors a reusable opening on the ordinary scene timeline", () => {
   class OpeningTestScene extends Scene {
-    readonly composition = Opening("MURALI", "DETERMINISTIC VISUALS")
+    readonly composition = Opening("VEENA", "DETERMINISTIC VISUALS")
       .style({ particleCount: 24 })
       .timing({ introDelay: 0.2, endHold: 0.4 })
       .addTo(this);
@@ -1766,9 +1766,9 @@ test("authors a reusable opening on the ordinary scene timeline", () => {
   assert.equal(scene.sampleAt(0).get(tagline)?.opacity, 0);
   assert.equal(scene.sampleAt(scene.duration).get(tagline)?.opacity, 1);
   assert.ok(openingDuration(4) > 5);
-  assert.throws(() => Opening("Murali JS", "invalid").duration(), /ASCII capitals/);
+  assert.throws(() => Opening("Veena", "invalid").duration(), /ASCII capitals/);
   assert.throws(() => Opening("   ", "invalid").duration(), /at least one capital/);
-  assert.throws(() => Opening("MURALI", "invalid").style({ particleCount: 0 }).duration(), /positive integer/);
+  assert.throws(() => Opening("VEENA", "invalid").style({ particleCount: 0 }).duration(), /positive integer/);
 });
 
 test("authors a user-configurable newspaper opening", () => {
@@ -1853,7 +1853,7 @@ test("builds true vector-extruded Text3D geometry and validates its authoring AP
   assert.ok(Math.abs((geometry.boundingBox?.min.z ?? 0) + 0.3) < 1e-6);
   geometry.dispose();
 
-  const title = Text3D("MURALI")
+  const title = Text3D("VEENA")
     .height(2)
     .depth(0.7)
     .bevel({ enabled: true, thickness: 0.04, size: 0.02, segments: 2 })
@@ -2039,8 +2039,8 @@ test("resolves scene, scoped, semantic, and explicit theme styles predictably", 
   assert.equal(scene.scopedLabel.resolvedTheme.colors.accentAlt, "#745cff");
 
   const variables = themeCSSVariables(brand);
-  assert.equal(variables["--murali-color-text-primary"], "#fef6df");
-  assert.equal(variables["--murali-typography-heading-family"], "Test Sans, sans-serif");
+  assert.equal(variables["--veena-color-text-primary"], "#fef6df");
+  assert.equal(variables["--veena-typography-heading-family"], "Test Sans, sans-serif");
   assert.equal(palette.TEAL_C, "#5cd0b3");
   assert.throws(() => createTheme({ name: "" }), /cannot be empty/);
   assert.throws(() => createTheme({ effects: { mutedOpacity: 2 } }), /between 0 and 1/);
@@ -2080,7 +2080,7 @@ test("registers selectable font faces and positions persistent branding in the o
 
 test("lays out word clouds deterministically without overlapping labels", () => {
   const entries = [
-    { text: "Murali JS", weight: 10 },
+    { text: "Veena", weight: 10 },
     { text: "timeline", weight: 8 },
     { text: "CSS", weight: 6 },
     { text: "camera", weight: 5 },
@@ -2193,7 +2193,7 @@ test("sizes a multiline label from its longest line", () => {
   assert.equal(label.getLayoutSize().width, Label("three!!").height(0.2).getLayoutSize().width);
 });
 
-test("resolves Murali palette names and draws solid shapes", () => {
+test("resolves Veena palette names and draws solid shapes", () => {
   assert.equal(resolveColor("redB"), RED_B);
   assert.equal(resolveColor("RED_B"), RED_B);
   assert.equal(resolveColor("grey"), "#888888");
@@ -2214,8 +2214,8 @@ test("resolves Murali palette names and draws solid shapes", () => {
   assert.equal(scene.square.initialState.background, RED_B);
   assert.equal(scene.sampleAt(0).get(scene.square)?.revealProgress, 0);
   assert.equal(scene.sampleAt(1).get(scene.square)?.revealProgress, 0.5);
-  assert.match(scene.square.contentHTML() ?? "", /data-murali-shape/);
-  assert.match(scene.square.contentHTML() ?? "", /data-murali-reveal-fill/);
+  assert.match(scene.square.contentHTML() ?? "", /data-veena-shape/);
+  assert.match(scene.square.contentHTML() ?? "", /data-veena-reveal-fill/);
 });
 
 test("configures and deterministically animates the scene-owned perspective camera", () => {
@@ -2285,7 +2285,7 @@ test("gives every scene an orthographic camera matching its logical frame", () =
   assert.equal(scene.camera.initialState.cameraTargetZ, 0);
 });
 
-test("provides Murali-parity camera geometry and orthographic framing helpers", () => {
+test("provides Veena-parity camera geometry and orthographic framing helpers", () => {
   class EmptyScene extends Scene {
     override construct(): void {}
   }

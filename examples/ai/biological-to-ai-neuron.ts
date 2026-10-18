@@ -1,8 +1,8 @@
-import { render } from "murali-js";
-import { BiologicalNeuron, NeuralNetwork, neuralNetwork } from "murali-js/ai";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { BiologicalNeuron, NeuralNetwork, neuralNetwork } from "veena/ai";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
 
 const { GOLD_A, GRAY_B, GREEN_C, TEAL_C, WHITE } = palette;
 

@@ -53,7 +53,7 @@ export function projectLonLat(blend: ProjectionBlend, longitude: number, latitud
   return [start[0] + (end[0] - start[0]) * mix, start[1] + (end[1] - start[1]) * mix];
 }
 
-/** Eight Newton iterations, matching Murali's Mollweide solve. */
+/** Eight Newton iterations, matching Veena's Mollweide solve. */
 export function solveMollweideTheta(latitude: number): number {
   if (Math.PI / 2 - Math.abs(latitude) < 1e-4) return Math.sign(latitude) * Math.PI / 2;
   let theta = latitude;

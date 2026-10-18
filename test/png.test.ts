@@ -7,10 +7,10 @@ import { inflateSync } from "node:zlib";
 import { renderScene } from "../src/render/capture.ts";
 
 test("writes a transparent PNG of one sampled frame and overrides the scene background", { timeout: 60_000 }, async () => {
-  const directory = await mkdtemp(join(tmpdir(), "murali-png-"));
+  const directory = await mkdtemp(join(tmpdir(), "veena-png-"));
   const output = join(directory, "logo.png");
   try {
-    const result = await renderScene(resolve("examples/murali-logo-image.ts"), {
+    const result = await renderScene(resolve("examples/veena-logo-image.ts"), {
       output,
       transparent: true,
       at: 0,

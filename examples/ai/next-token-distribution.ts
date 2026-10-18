@@ -1,8 +1,8 @@
-import { render } from "murali-js";
-import { EntropyBar, NextTokenBoard, nextTokenChoice } from "murali-js/ai";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { EntropyBar, NextTokenBoard, nextTokenChoice } from "veena/ai";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
 const { GOLD_A, GOLD_C, GRAY_B, GRAY_D, WHITE } = palette;
 
 const TOKENS = ["scattered", "blue", "across", "through", "softly", "above", "dark"];

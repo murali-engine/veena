@@ -1,6 +1,6 @@
-import { render } from "murali-js";
-import { Scene, Timeline, type TattvaState } from "murali-js/core";
-import { CanvasTattva } from "murali-js/adapters";
+import { render } from "veena";
+import { Scene, Timeline, type TattvaState } from "veena/core";
+import { CanvasTattva } from "veena/adapters";
 
 interface WaveState extends TattvaState {
   phase: number;

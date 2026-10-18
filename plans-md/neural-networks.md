@@ -1,6 +1,6 @@
 # Neural-network diagrams
 
-Murali JS separates a neural network's semantic model from its rendered and animated state. Layers, nodes, and edges have stable IDs, so examples can explain actual values and weights without hand-positioned overlays.
+Veena separates a neural network's semantic model from its rendered and animated state. Layers, nodes, and edges have stable IDs, so examples can explain actual values and weights without hand-positioned overlays.
 
 ## Build a model
 

@@ -1,7 +1,7 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { Circle } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { Circle } from "veena/primitives";
+import { Label } from "veena/text";
 
 class BasicScene extends Scene {
   constructor() {

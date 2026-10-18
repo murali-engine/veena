@@ -1,6 +1,6 @@
-import { render } from "murali-js";
-import { KavriqLogoMark } from "murali-js/composite";
-import { Scene } from "murali-js/core";
+import { render } from "veena";
+import { KavriqLogoMark } from "veena/composite";
+import { Scene } from "veena/core";
 
 abstract class MonochromeKavriqLogo extends Scene {
   protected constructor(color: string) {

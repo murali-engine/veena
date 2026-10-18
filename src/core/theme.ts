@@ -76,7 +76,7 @@ export interface ThemeColorRef {
 export type ColorInput = string | ThemeColorRef;
 
 const DARK_THEME: Theme = {
-  name: "murali-dark",
+  name: "veena-dark",
   colors: {
     background: "#080b12",
     surface: "#18181b",
@@ -110,7 +110,7 @@ const DARK_THEME: Theme = {
 };
 
 const LIGHT_THEME: Theme = mergeTheme(DARK_THEME, {
-  name: "murali-light",
+  name: "veena-light",
   colors: {
     background: "#f7f4ed",
     surface: "#e0e5ea",
@@ -168,22 +168,22 @@ export function mergeTheme(base: Theme, patch: ThemePatch = {}): Theme {
   };
 }
 
-export function themeCSSVariables(theme: Theme): Record<`--murali-${string}`, string> {
-  const values: Record<`--murali-${string}`, string> = {};
+export function themeCSSVariables(theme: Theme): Record<`--veena-${string}`, string> {
+  const values: Record<`--veena-${string}`, string> = {};
   for (const [name, value] of Object.entries(theme.colors)) {
-    values[`--murali-color-${kebab(name)}`] = value;
+    values[`--veena-color-${kebab(name)}`] = value;
   }
   for (const [name, value] of Object.entries(theme.typography)) {
-    values[`--murali-typography-${kebab(name)}`] = String(value);
+    values[`--veena-typography-${kebab(name)}`] = String(value);
   }
   for (const [name, value] of Object.entries(theme.strokes)) {
-    values[`--murali-stroke-${kebab(name)}`] = String(value);
+    values[`--veena-stroke-${kebab(name)}`] = String(value);
   }
   for (const [name, value] of Object.entries(theme.radii)) {
-    values[`--murali-radius-${kebab(name)}`] = String(value);
+    values[`--veena-radius-${kebab(name)}`] = String(value);
   }
   for (const [name, value] of Object.entries(theme.effects)) {
-    values[`--murali-effect-${kebab(name)}`] = String(value);
+    values[`--veena-effect-${kebab(name)}`] = String(value);
   }
   return values;
 }

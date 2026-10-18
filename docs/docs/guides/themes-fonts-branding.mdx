@@ -10,7 +10,7 @@ description: Semantic color roles, palette swatches, local fonts, and persistent
 Themes describe reusable intent: background, surfaces, text, accents, status colors, strokes, typography, radii, and effects.
 
 ```ts
-import { createTheme, themeColor, themes } from "murali-js/style";
+import { createTheme, themeColor, themes } from "veena/style";
 
 const kavriq = createTheme(themes.dark, {
   name: "kavriq",
@@ -33,14 +33,14 @@ class ThemedScene extends Scene {
 }
 ```
 
-Explicit object styles win over inherited theme values. A `Group` can override a subtree with `.theme({ colors: ... })`. Resolved roles are also exposed as `--murali-*` CSS variables.
+Explicit object styles win over inherited theme values. A `Group` can override a subtree with `.theme({ colors: ... })`. Resolved roles are also exposed as `--veena-*` CSS variables.
 
 ## Fixed palette
 
 Use semantic roles for reusable components. Use `palette` when a specific swatch is intentionally part of the artwork.
 
 ```ts
-import { palette } from "murali-js/style";
+import { palette } from "veena/style";
 
 Circle().fill(palette.TEAL_C);
 ```
@@ -56,7 +56,7 @@ Label("Editorial title").font("Georgia, serif").fontWeight(700);
 Embed a local TTF, OTF, WOFF, or WOFF2 file:
 
 ```ts
-import { fontFile } from "murali-js/core";
+import { fontFile } from "veena/core";
 
 const satoshi = fontFile("Satoshi", "./assets/Satoshi-Bold.ttf", { weight: 700 });
 

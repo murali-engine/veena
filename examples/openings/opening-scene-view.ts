@@ -1,11 +1,11 @@
-import { render } from "murali-js";
-import { Scene, SceneView, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Circle, Line, Rectangle } from "murali-js/primitives";
-import { Label } from "murali-js/text";
-import { Opening } from "murali-js/storytelling";
+import { render } from "veena";
+import { Scene, SceneView, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Circle, Line, Rectangle } from "veena/primitives";
+import { Label } from "veena/text";
+import { Opening } from "veena/storytelling";
 const { BLUE_D, GOLD_C, GRAY_A, GREEN_C, PINK_C, TEAL_C, WHITE } = palette;
-import type { Tattva, Vec3 } from "murali-js/core";
+import type { Tattva, Vec3 } from "veena/core";
 
 const BACKGROUND = "#0a121c";
 
@@ -19,7 +19,7 @@ class OpeningScene extends Scene {
       .perspective({ fov: 43, near: 0.1, far: 80 })
       .position([0, 2.15, 10.8])
       .lookAt([0, -0.35, 0]);
-    const opening = Opening("MURALI", "PROGRAMMATIC VISUALS")
+    const opening = Opening("VEENA", "PROGRAMMATIC VISUALS")
       .texture("blackMarble")
       .style({
         letterHeight: 2.15,
@@ -37,7 +37,7 @@ class OpeningScene extends Scene {
   }
 }
 
-/** Port of Murali `examples/opening_scene_view.rs`. */
+/** Port of Veena `examples/opening_scene_view.rs`. */
 class OpeningSceneView extends Scene {
   constructor() {
     super({ width: 1280, height: 720, background: BACKGROUND });

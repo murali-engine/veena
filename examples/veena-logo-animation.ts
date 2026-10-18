@@ -1,6 +1,6 @@
-import { render } from "murali-js";
-import { MuraliLogoMark, MuraliLogoSwell } from "murali-js/composite";
-import { Scene } from "murali-js/core";
+import { render } from "veena";
+import { VeenaLogoMark, VeenaLogoSwell } from "veena/composite";
+import { Scene } from "veena/core";
 
 /**
  * The settled mark rides one musical phrase.
@@ -8,20 +8,20 @@ import { Scene } from "murali-js/core";
  * and coral swells ahead of them. The rise and the return both ease,
  * and the phrase closes on the same breath it opens on.
  */
-class MuraliLogoAnimation extends Scene {
+class VeenaLogoAnimation extends Scene {
   constructor() {
     super({ frame: "square", background: "#f7f4ed" });
   }
 
   override construct(): void {
-    const mark = this.add(MuraliLogoMark({ width: 6.6 }));
-    const swell = MuraliLogoSwell(mark);
+    const mark = this.add(VeenaLogoMark({ width: 6.6 }));
+    const swell = VeenaLogoSwell(mark);
     this.updater(swell.update);
     this.wait(swell.duration);
   }
 }
 
-render(import.meta.url, MuraliLogoAnimation, {
-  output: "./output/murali-logo-animation.webm",
+render(import.meta.url, VeenaLogoAnimation, {
+  output: "./output/veena-logo-animation.webm",
   transparent: true,
 });

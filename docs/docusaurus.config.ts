@@ -5,7 +5,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 const rustDocsUrl = "https://github.com/murali-engine/murali-rs/tree/main/docs";
 
 const config: Config = {
-  title: "Murali",
+  title: "Veena",
   tagline: "Mathematics, beautifully in motion.",
   favicon: "img/favicon_io/favicon.ico",
 
@@ -52,12 +52,12 @@ const config: Config = {
     },
   ],
 
-  url: "https://muraliengine.com",
+  url: "https://veenaengine.com",
   baseUrl: "/",
   trailingSlash: true,
 
   organizationName: "murali-engine",
-  projectName: "murali-js",
+  projectName: "veena",
 
   onBrokenLinks: "throw",
   markdown: {
@@ -78,7 +78,7 @@ const config: Config = {
         docs: {
           routeBasePath: "docs",
           sidebarPath: "./sidebars.ts",
-          editUrl: "https://github.com/murali-engine/murali-js/tree/main/docs/",
+          editUrl: "https://github.com/murali-engine/veena/tree/main/docs/",
           lastVersion: "current",
           versions: {
             current: {
@@ -100,10 +100,10 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: "Murali",
+      title: "Veena",
       logo: {
-        alt: "Murali logo",
-        src: "img/murali-mark.svg",
+        alt: "Veena logo",
+        src: "img/veena-mark.svg",
       },
       items: [
         {
@@ -128,11 +128,11 @@ const config: Config = {
           title: "Project",
           items: [
             { label: "Home", to: "/" },
-            { label: "GitHub", href: "https://github.com/murali-engine/murali-js" },
+            { label: "GitHub", href: "https://github.com/murali-engine/veena" },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Murali Engine.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Veena Engine.`,
     },
     prism: {
       theme: prismThemes.github,

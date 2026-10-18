@@ -33,7 +33,7 @@ export async function captureAuthoredArtifacts(
   const screenshots: string[] = [];
   let unnamedIndex = 0;
   for (const capture of metadata.screenshotCaptures) {
-    await page.evaluate((time) => window.__murali?.renderFrame(time), capture.time);
+    await page.evaluate((time) => window.__veena?.renderFrame(time), capture.time);
     const png = await stage.screenshot({ type: "png", omitBackground: options.transparent === true });
     const path = capture.name === undefined
       ? join(artifactDirectory, "captures", `capture_${String(unnamedIndex++).padStart(5, "0")}.png`)
@@ -48,7 +48,7 @@ export async function captureAuthoredArtifacts(
     const path = join(artifactDirectory, "gifs", `${sanitizeStem(capture.name)}.gif`);
     const encoder = await createGifEncoder(path, capture.fps ?? options.fps);
     for (const time of capture.times) {
-      await page.evaluate((sampled) => window.__murali?.renderFrame(sampled), time);
+      await page.evaluate((sampled) => window.__veena?.renderFrame(sampled), time);
       await encoder.write(await stage.screenshot({ type: "png", omitBackground: options.transparent === true }));
     }
     await encoder.finish();

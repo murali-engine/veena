@@ -1,6 +1,6 @@
 ---
 title: API map
-description: A concise map of Murali's public packages and core entry points.
+description: A concise map of Veena's public packages and core entry points.
 ---
 
 # API map
@@ -8,8 +8,8 @@ description: A concise map of Murali's public packages and core entry points.
 ## Core workflow
 
 ```ts
-import { render } from "murali-js";
-import { Scene, Tattva, Timeline, clip, timeline } from "murali-js/core";
+import { render } from "veena";
+import { Scene, Tattva, Timeline, clip, timeline } from "veena/core";
 ```
 
 Use `Scene` to author, `Tattva` to extend, `Timeline`/`Clip` to animate, and `render()` to preview or export.
@@ -18,21 +18,21 @@ Use `Scene` to author, `Tattva` to extend, `Timeline`/`Clip` to animate, and `re
 
 | Import | Representative APIs |
 | --- | --- |
-| `murali-js/core` | `Scene`, `Tattva`, `Timeline`, `clip`, `timeline`, `Camera3D`, `SceneView`, `fontFile`, `imageFile` |
-| `murali-js/style` | `themes`, `createTheme`, `themeColor`, `palette` |
-| `murali-js/layout` | `Group`, `HStack`, `VStack` |
-| `murali-js/primitives` | Shapes, `Path`, `Line`, `Arrow`, `ShapeMorph`, `Prop3D` |
-| `murali-js/text` | `Label`, `MathText`, `Latex`, morphs, `CodeBlock`, `Text3D` |
-| `murali-js/maths` | Graphs, matrices, equations, linear algebra, fields, curves, surfaces, fractals, maps, Fourier |
-| `murali-js/ai` | Neural networks, semantic tensors, attention, transformers, context, sampling |
-| `murali-js/storytelling` | `Stepwise`, `ChatInput`, `Opening`, `Newspaper`, `NewspaperOpening`, `Fireworks` |
-| `murali-js/composite` | `MuraliLogoMark`, `MuraliLogoSequence`, `MuraliLogoSwell`, `WaveMesh`, `YouTubeSubscribe` |
-| `murali-js/table` | `Table` |
-| `murali-js/utility` | `TracedPath` |
-| `murali-js/adapters` | `CanvasTattva`, `Canvas3DTattva`, `ReactTattva`, `ThreeTattva`, `useMuraliTheme` |
-| `murali-js/render` | `render`, `renderScene`, render/capture types |
+| `veena/core` | `Scene`, `Tattva`, `Timeline`, `clip`, `timeline`, `Camera3D`, `SceneView`, `fontFile`, `imageFile` |
+| `veena/style` | `themes`, `createTheme`, `themeColor`, `palette` |
+| `veena/layout` | `Group`, `HStack`, `VStack` |
+| `veena/primitives` | Shapes, `Path`, `Line`, `Arrow`, `ShapeMorph`, `Prop3D` |
+| `veena/text` | `Label`, `MathText`, `Latex`, morphs, `CodeBlock`, `Text3D` |
+| `veena/maths` | Graphs, matrices, equations, linear algebra, fields, curves, surfaces, fractals, maps, Fourier |
+| `veena/ai` | Neural networks, semantic tensors, attention, transformers, context, sampling |
+| `veena/storytelling` | `Stepwise`, `ChatInput`, `Opening`, `Newspaper`, `NewspaperOpening`, `Fireworks` |
+| `veena/composite` | `VeenaLogoMark`, `VeenaLogoSequence`, `VeenaLogoSwell`, `WaveMesh`, `YouTubeSubscribe` |
+| `veena/table` | `Table` |
+| `veena/utility` | `TracedPath` |
+| `veena/adapters` | `CanvasTattva`, `Canvas3DTattva`, `ReactTattva`, `ThreeTattva`, `useVeenaTheme` |
+| `veena/render` | `render`, `renderScene`, render/capture types |
 
-The root `murali-js` export remains available for compatibility. Prefer category imports in new code.
+The root `veena` export remains available for compatibility. Prefer category imports in new code.
 
 ## Reading this documentation
 

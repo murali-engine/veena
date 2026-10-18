@@ -1,12 +1,12 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
-import { Axes3D, ParametricSurface } from "murali-js/maths";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
+import { Axes3D, ParametricSurface } from "veena/maths";
 const { BLUE_B, GOLD_C, GRAY_B, ORANGE_B, TEAL_C, WHITE } = palette;
-import type { Vec3 } from "murali-js/core";
+import type { Vec3 } from "veena/core";
 
-/** Port of Murali `examples/wireframe_surfaces.rs`. */
+/** Port of Veena `examples/wireframe_surfaces.rs`. */
 class WireframeSurfaces extends Scene {
   override construct(): void {
     this.camera.perspective({ fov: 42, near: 0.1, far: 100 }).position([-4.6, 2.4, 6.4]).lookAt([0, 0, 0]);

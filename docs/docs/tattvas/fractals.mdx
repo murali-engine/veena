@@ -5,10 +5,10 @@ description: Deterministic recursive line geometry for illustrations, teaching s
 
 # Fractals
 
-Murali represents a line fractal as one batched `FractalPathTattva`. It does not create a DOM element for every segment. Each recursion stage is generated once, and a fractional `iteration` cross-fades the two neighbouring stages during animation.
+Veena represents a line fractal as one batched `FractalPathTattva`. It does not create a DOM element for every segment. Each recursion stage is generated once, and a fractional `iteration` cross-fades the two neighbouring stages during animation.
 
 ```ts
-import { KochSnowflake } from "murali-js/maths";
+import { KochSnowflake } from "veena/maths";
 
 const snowflake = this.add(
   KochSnowflake({ iterations: 6, radius: 2.4 })

@@ -1,6 +1,6 @@
-import { render } from "murali-js";
-import { Scene, timeline } from "murali-js/core";
-import { Text3D } from "murali-js/text";
+import { render } from "veena";
+import { Scene, timeline } from "veena/core";
+import { Text3D } from "veena/text";
 
 /** True vector-extruded text with deterministic XYZ animation. */
 class Text3DScene extends Scene {
@@ -15,7 +15,7 @@ class Text3DScene extends Scene {
       .lookAt([0, 0, 0]);
 
     const title = this.add(
-      Text3D("MURALI")
+      Text3D("VEENA")
         .height(2)
         .depth(0.72)
         .bevel({ enabled: true, thickness: 0.06, size: 0.035, segments: 3 })

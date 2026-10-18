@@ -122,7 +122,7 @@ export class ShapeTattva extends Tattva {
     const width = this.worldSize?.width ?? 0;
     const height = this.worldSize?.height ?? 0;
     if (width <= 0 || height <= 0) return undefined;
-    return `<svg width="100%" height="100%" viewBox="0 0 ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg"><path data-murali-path data-murali-shape data-murali-reveal-fill d="${this.shapePath(width, height)}" fill="${escapeAttribute(this.shapeFill)}" stroke="${escapeAttribute(this.shapeStroke)}" stroke-width="${this.shapeStrokeWidth}" stroke-linejoin="round" stroke-linecap="round" /></svg>`;
+    return `<svg width="100%" height="100%" viewBox="0 0 ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg"><path data-veena-path data-veena-shape data-veena-reveal-fill d="${this.shapePath(width, height)}" fill="${escapeAttribute(this.shapeFill)}" stroke="${escapeAttribute(this.shapeStroke)}" stroke-width="${this.shapeStrokeWidth}" stroke-linejoin="round" stroke-linecap="round" /></svg>`;
   }
 }
 
@@ -311,7 +311,7 @@ export class VectorShapeTattva extends ShapeTattva {
 
   override contentHTML(): string {
     const { x, y, width, height } = this.vectorViewBox;
-    return `<svg width="100%" height="100%" viewBox="${x} ${y} ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg"><path data-murali-path data-murali-vector-shape data-murali-reveal-fill d="${escapeAttribute(this.vectorPath)}" fill="${escapeAttribute(this.shapeFill)}" fill-rule="evenodd" stroke="${escapeAttribute(this.shapeStroke)}" stroke-width="${this.shapeStrokeWidth}" stroke-linejoin="round" stroke-linecap="round" /></svg>`;
+    return `<svg width="100%" height="100%" viewBox="${x} ${y} ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg"><path data-veena-path data-veena-vector-shape data-veena-reveal-fill d="${escapeAttribute(this.vectorPath)}" fill="${escapeAttribute(this.shapeFill)}" fill-rule="evenodd" stroke="${escapeAttribute(this.shapeStroke)}" stroke-width="${this.shapeStrokeWidth}" stroke-linejoin="round" stroke-linecap="round" /></svg>`;
   }
 
   private validatePath(): void {
@@ -374,7 +374,7 @@ export class ShapeMorphTattva extends Tattva<ShapeMorphState> {
     const width = this.worldSize?.width ?? 1;
     const height = this.worldSize?.height ?? 1;
     const path = cubicContoursPath(contours);
-    return `<svg width="100%" height="100%" viewBox="${-width / 2} ${-height / 2} ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg"><path data-murali-morph-path d="${path}" fill="${escapeAttribute(fill)}" fill-rule="evenodd" stroke="${escapeAttribute(stroke)}" stroke-width="${strokeWidth}" stroke-linejoin="round" stroke-linecap="round" /></svg>`;
+    return `<svg width="100%" height="100%" viewBox="${-width / 2} ${-height / 2} ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg"><path data-veena-morph-path d="${path}" fill="${escapeAttribute(fill)}" fill-rule="evenodd" stroke="${escapeAttribute(stroke)}" stroke-width="${strokeWidth}" stroke-linejoin="round" stroke-linecap="round" /></svg>`;
   }
 
   protected override onThemeResolved(theme: Theme): void {

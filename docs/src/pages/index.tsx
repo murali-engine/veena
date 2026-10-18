@@ -32,7 +32,7 @@ const learningPaths = [
   {
     label: "Start",
     title: "Create your first scene",
-    body: "Install Murali, preview a scene, and render the result.",
+    body: "Install Veena, preview a scene, and render the result.",
     to: "/docs/getting-started/",
   },
   {
@@ -45,7 +45,7 @@ const learningPaths = [
     label: "Build",
     title: "Browse working examples",
     body: "Use the repository examples as executable studies while the guides continue to grow.",
-    href: "https://github.com/murali-engine/murali-js/tree/main/examples",
+    href: "https://github.com/murali-engine/veena/tree/main/examples",
   },
   {
     label: "Reference",
@@ -55,7 +55,7 @@ const learningPaths = [
   },
 ] as const;
 
-function MuraliMark(): ReactNode {
+function VeenaMark(): ReactNode {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -85,9 +85,9 @@ function MuraliMark(): ReactNode {
   return (
     <div className={styles.markStage} aria-hidden="true">
       <video ref={videoRef} className={styles.mark} autoPlay muted loop playsInline preload="auto">
-        <source src="/img/murali-logo-animation.webm" type="video/webm" media={MARK_MEDIA} />
+        <source src="/img/veena-logo-animation.webm" type="video/webm" media={MARK_MEDIA} />
       </video>
-      <img className={styles.markStill} src="/img/murali-mark.svg" alt="" />
+      <img className={styles.markStill} src="/img/veena-mark.svg" alt="" />
     </div>
   );
 }
@@ -114,7 +114,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title="Mathematics, beautifully in motion"
-      description="Murali is a code-first animation engine for mathematical and visual storytelling."
+      description="Veena is a code-first animation engine for mathematical and visual storytelling."
     >
       <main className={styles.home}>
         <section className={styles.hero}>
@@ -133,19 +133,19 @@ export default function Home(): ReactNode {
               </Link>
               <Link
                 className={styles.secondaryAction}
-                href="https://github.com/murali-engine/murali-js/tree/main/examples"
+                href="https://github.com/murali-engine/veena/tree/main/examples"
               >
                 Explore examples
               </Link>
             </div>
-            <div className={styles.constructs} aria-label="Murali building blocks">
+            <div className={styles.constructs} aria-label="Veena building blocks">
               <span>Scene</span><span>Timeline</span><span>Tattvas</span><span>Renderer</span>
             </div>
           </div>
-          <MuraliMark />
+          <VeenaMark />
         </section>
 
-        <section className={styles.foundationStrip} aria-label="Murali foundations">
+        <section className={styles.foundationStrip} aria-label="Veena foundations">
           {foundations.map(([number, title, description]) => (
             <article key={number}>
               <span>{number}</span>
@@ -161,7 +161,7 @@ export default function Home(): ReactNode {
           <SectionHeading
             eyebrow="Overview"
             title="One coherent system for visual explanation."
-            body="Murali brings geometry, motion, rendering, and storytelling together so an idea can grow from a sketch into a polished animation without changing tools."
+            body="Veena brings geometry, motion, rendering, and storytelling together so an idea can grow from a sketch into a polished animation without changing tools."
           />
           <div className={styles.capabilityGrid}>
             {capabilities.map((capability, index) => (
@@ -209,7 +209,7 @@ export default function Home(): ReactNode {
           <SectionHeading
             eyebrow="Learning paths"
             title="Begin with a scene, then grow from there."
-            body="The documentation is the natural path into Murali—from the first preview to reusable components and deeper API areas."
+            body="The documentation is the natural path into Veena—from the first preview to reusable components and deeper API areas."
           />
           <div className={styles.pathGrid}>
             {learningPaths.map((path) => (
@@ -235,7 +235,7 @@ export default function Home(): ReactNode {
               Need a native engine?
             </Heading>
             <p>
-              Murali is the main path for creating visual stories. For specialised projects that
+              Veena is the main path for creating visual stories. For specialised projects that
               need lower-level native control, a Rust implementation and its documentation remain
               available on GitHub.
             </p>

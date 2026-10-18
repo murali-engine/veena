@@ -1,11 +1,11 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
-import { Stepwise } from "murali-js/storytelling";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
+import { Stepwise } from "veena/storytelling";
 const { GRAY_B, TEAL_C, WHITE } = palette;
 
-/** Port of Murali `examples/stepwise_storytelling.rs`. The path reveals, then the signal replays it. */
+/** Port of Veena `examples/stepwise_storytelling.rs`. The path reveals, then the signal replays it. */
 class StepwiseStory extends Scene {
   override construct(): void {
     const title = this.add(Label("Stepwise Storytelling").height(0.38).color(WHITE).typewriter(), { at: [0, 3, 0] });

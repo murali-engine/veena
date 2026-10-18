@@ -6,7 +6,7 @@ export interface Canvas3DContext {
   /** The WebGL canvas owned by this Tattva. */
   readonly canvas: HTMLCanvasElement;
   readonly gl: WebGL2RenderingContext;
-  /** Output pixels per Murali world unit. */
+  /** Output pixels per Veena world unit. */
   readonly pixelsPerUnit: number;
   readonly theme: Theme;
 }

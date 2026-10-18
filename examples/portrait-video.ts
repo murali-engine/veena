@@ -1,11 +1,11 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Circle } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Circle } from "veena/primitives";
+import { Label } from "veena/text";
 const { BLUE_D, GREEN_D, WHITE } = palette;
 
-/** Port of Murali `examples/portrait_video.rs`. */
+/** Port of Veena `examples/portrait_video.rs`. */
 class PortraitVideo extends Scene {
   constructor() {
     super({ frame: "portrait" });

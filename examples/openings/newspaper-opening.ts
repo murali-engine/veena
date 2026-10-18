@@ -1,6 +1,6 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { Newspaper, NewspaperOpening } from "murali-js/storytelling";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { Newspaper, NewspaperOpening } from "veena/storytelling";
 
 class NewspaperOpeningScene extends Scene {
   constructor() {

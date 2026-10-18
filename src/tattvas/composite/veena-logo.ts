@@ -4,49 +4,49 @@ import type { Tattva, TattvaState } from "../../core/Tattva.ts";
 import { GroupTattva } from "../layout/Group.ts";
 import { Ellipse, type EllipseTattva } from "../primitives/shapes.ts";
 
-export type MuraliLogoColors = readonly [
+export type VeenaLogoColors = readonly [
   blue: ColorInput,
   violet: ColorInput,
   coral: ColorInput,
 ];
 
-export const MURALI_LOGO_COLORS = Object.freeze([
+export const VEENA_LOGO_COLORS = Object.freeze([
   "#2563eb",
   "#7c3aed",
   "#ff6b5f",
-]) satisfies MuraliLogoColors;
+]) satisfies VeenaLogoColors;
 
-/** Canonical opaque backdrop shared with the Murali documentation hero. */
-export const MURALI_LOGO_BACKGROUND = "radial-gradient(circle at 78% 18%, rgb(14 108 112 / 72%), transparent 30%), linear-gradient(125deg, #0b233f 0%, #123d59 58%, #0e6c70 100%)";
+/** Canonical opaque backdrop shared with the Veena documentation hero. */
+export const VEENA_LOGO_BACKGROUND = "radial-gradient(circle at 78% 18%, rgb(14 108 112 / 72%), transparent 30%), linear-gradient(125deg, #0b233f 0%, #123d59 58%, #0e6c70 100%)";
 
-export const MURALI_LOGO_PALETTES = Object.freeze({
-  primary: MURALI_LOGO_COLORS,
+export const VEENA_LOGO_PALETTES = Object.freeze({
+  primary: VEENA_LOGO_COLORS,
   candyPop: Object.freeze([
     "#54b8f3",
     "#fae561",
     "#e065b2",
-  ]) satisfies MuraliLogoColors,
+  ]) satisfies VeenaLogoColors,
 });
 
-export interface MuraliLogoMarkOptions {
+export interface VeenaLogoMarkOptions {
   /** Overall width in world units. */
   readonly width?: number;
   /** Flat fills for the left, middle, and right ovals. */
-  readonly colors?: MuraliLogoColors;
+  readonly colors?: VeenaLogoColors;
 }
 
-export interface MuraliLogoSequenceOptions {
+export interface VeenaLogoSequenceOptions {
   /** Total length of one complete, seamless logo gesture. Defaults to 6.4 seconds. */
   readonly duration?: number;
 }
 
-export interface MuraliLogoSwellOptions {
+export interface VeenaLogoSwellOptions {
   /** Length of one rest, swell, and settle phrase. Defaults to 6 seconds. */
   readonly duration?: number;
 }
 
 /** A seek-safe updater. The pose is a function of scene time, not of earlier samples. */
-export interface MuraliLogoSwellMotion {
+export interface VeenaLogoSwellMotion {
   readonly duration: number;
   readonly update: (time: number, states: Map<Tattva<any>, TattvaState>) => void;
 }
@@ -54,12 +54,12 @@ export interface MuraliLogoSwellMotion {
 const OVAL_RADIUS_X = 0.48;
 const OVAL_RADIUS_Y = 0.82;
 
-/** Murali's canonical three-touching-oval logo mark. */
-export class MuraliLogoMarkTattva extends GroupTattva {
+/** Veena's canonical three-touching-oval logo mark. */
+export class VeenaLogoMarkTattva extends GroupTattva {
   readonly ovals: readonly [EllipseTattva, EllipseTattva, EllipseTattva];
 
-  constructor(options: MuraliLogoMarkOptions = {}) {
-    const colors = options.colors ?? MURALI_LOGO_COLORS;
+  constructor(options: VeenaLogoMarkOptions = {}) {
+    const colors = options.colors ?? VEENA_LOGO_COLORS;
     const ovals = colors.map((color) =>
       Ellipse().radii([OVAL_RADIUS_X, OVAL_RADIUS_Y]).fill(color),
     ) as unknown as [EllipseTattva, EllipseTattva, EllipseTattva];
@@ -71,14 +71,14 @@ export class MuraliLogoMarkTattva extends GroupTattva {
 
   /** Resize while preserving the oval proportions and spacing. */
   width(value: number): this {
-    const width = positive(value, "MuraliLogoMark width");
+    const width = positive(value, "VeenaLogoMark width");
     this.recomputeBounds();
     return this.scale(width / (this.worldSize?.width ?? width));
   }
 }
 
-export function MuraliLogoMark(options: MuraliLogoMarkOptions = {}): MuraliLogoMarkTattva {
-  return new MuraliLogoMarkTattva(options);
+export function VeenaLogoMark(options: VeenaLogoMarkOptions = {}): VeenaLogoMarkTattva {
+  return new VeenaLogoMarkTattva(options);
 }
 
 /**
@@ -88,11 +88,11 @@ export function MuraliLogoMark(options: MuraliLogoMarkOptions = {}): MuraliLogoM
  * splits, compresses on contact, separates, settles into the exact authored
  * logo spacing, and returns to its starting state so it can loop cleanly.
  */
-export function MuraliLogoSequence(
-  mark: MuraliLogoMarkTattva,
-  options: MuraliLogoSequenceOptions = {},
+export function VeenaLogoSequence(
+  mark: VeenaLogoMarkTattva,
+  options: VeenaLogoSequenceOptions = {},
 ): Timeline {
-  const duration = positive(options.duration ?? 6.4, "MuraliLogoSequence duration");
+  const duration = positive(options.duration ?? 6.4, "VeenaLogoSequence duration");
   const at = (progress: number): number => progress * duration;
   const forDuration = (progress: number): number => progress * duration;
   const [left, middle, right] = mark.ovals;
@@ -186,11 +186,11 @@ export function MuraliLogoSequence(
  * swell. Quiet time keeps a 2.5% breath at a different phase on each oval.
  * The phrase starts and ends on that breath, so a loop has no seam.
  */
-export function MuraliLogoSwell(
-  mark: MuraliLogoMarkTattva,
-  options: MuraliLogoSwellOptions = {},
-): MuraliLogoSwellMotion {
-  const duration = positive(options.duration ?? SWELL_DURATION, "MuraliLogoSwell duration");
+export function VeenaLogoSwell(
+  mark: VeenaLogoMarkTattva,
+  options: VeenaLogoSwellOptions = {},
+): VeenaLogoSwellMotion {
+  const duration = positive(options.duration ?? SWELL_DURATION, "VeenaLogoSwell duration");
   const track = swellTrack();
   const halves = mark.ovals.map((oval) => ovalHalfExtents(oval)) as [
     OvalHalfExtents,

@@ -1,11 +1,11 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Circle, Square } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Circle, Square } from "veena/primitives";
+import { Label } from "veena/text";
 const { BLUE_D, GRAY_A, GRAY_B, GOLD_C, RED_B, TEAL_C, WHITE } = palette;
 
-/** Port of Murali `examples/motion_basics.rs`. */
+/** Port of Veena `examples/motion_basics.rs`. */
 class MotionBasics extends Scene {
   override construct(): void {
     const title = this.add(Label("Motion Basics").height(0.38).color(WHITE));

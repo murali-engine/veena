@@ -1,8 +1,8 @@
-import { render } from "murali-js";
-import { Scene, timeline } from "murali-js/core";
-import { KochSnowflake, FractalTree } from "murali-js/maths";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, timeline } from "veena/core";
+import { KochSnowflake, FractalTree } from "veena/maths";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
 
 class FractalBackground extends Scene {
   constructor() {

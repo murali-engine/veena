@@ -5,7 +5,7 @@ export interface CanvasContext {
   /** The canvas owned by this Tattva. Its bitmap matches the rendered output resolution. */
   readonly canvas: HTMLCanvasElement;
   readonly context: CanvasRenderingContext2D;
-  /** Output pixels per Murali world unit. */
+  /** Output pixels per Veena world unit. */
   readonly pixelsPerUnit: number;
   readonly theme: Theme;
 }

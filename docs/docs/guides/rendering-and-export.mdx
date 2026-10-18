@@ -15,7 +15,7 @@ render(import.meta.url, MyScene, {
 });
 ```
 
-`import.meta.url` identifies the source entry so Murali can bundle it for Chromium.
+`import.meta.url` identifies the source entry so Veena can bundle it for Chromium.
 
 ## Preview
 
@@ -31,7 +31,7 @@ Preview opens a real-time window and does not encode video. It uses the same vir
 
 An `.mp4` output captures every frame at the effective FPS and streams it to FFmpeg. The scene's FPS is used unless the render options override it.
 
-MP4/H.264 remains Murali's normal video format. An opaque render never switches to WebM implicitly.
+MP4/H.264 remains Veena's normal video format. An opaque render never switches to WebM implicitly.
 
 ## Transparent WebM
 
@@ -42,9 +42,9 @@ render(import.meta.url, OverlayScene, {
 });
 ```
 
-Transparent video is encoded as WebM with VP9 alpha. WebM is available only when `transparent: true`; a normal `.webm` export is rejected. Likewise, transparent `.mp4` output is rejected because Murali's standard H.264 MP4 path has no alpha channel.
+Transparent video is encoded as WebM with VP9 alpha. WebM is available only when `transparent: true`; a normal `.webm` export is rejected. Likewise, transparent `.mp4` output is rejected because Veena's standard H.264 MP4 path has no alpha channel.
 
-When no output path is supplied, `transparent: true` changes the default extension from `.mp4` to `.webm`. From the CLI, use `murali render scene.ts --transparent`, or supply `-o output/overlay.webm` explicitly.
+When no output path is supplied, `transparent: true` changes the default extension from `.mp4` to `.webm`. From the CLI, use `veena render scene.ts --transparent`, or supply `-o output/overlay.webm` explicitly.
 
 ## PNG and transparency
 
@@ -58,7 +58,7 @@ render(import.meta.url, LogoScene, {
 
 PNG export samples exactly one scene time. The same `transparent` flag removes the authored scene background for still images.
 
-## `murali.json` and environment variables
+## `veena.json` and environment variables
 
 ```json
 {
@@ -71,7 +71,7 @@ PNG export samples exactly one scene time. The same `transparent` flag removes t
 }
 ```
 
-Supported overrides include `MURALI_OUTPUT`, `MURALI_OUTPUT_DIR`, `MURALI_FPS`, `MURALI_PROGRESS`, `MURALI_TRANSPARENT`, `MURALI_AT`, and `MURALI_AUDIO`. Explicit `render()` options take precedence.
+Supported overrides include `VEENA_OUTPUT`, `VEENA_OUTPUT_DIR`, `VEENA_FPS`, `VEENA_PROGRESS`, `VEENA_TRANSPARENT`, `VEENA_AT`, and `VEENA_AUDIO`. Explicit `render()` options take precedence.
 
 ## Progress
 

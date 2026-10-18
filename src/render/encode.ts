@@ -34,9 +34,9 @@ export function createEncoderArguments(
       "-stream_loop", "-1",
       "-i", options.audio.source,
       "-filter_complex",
-      `[1:a]volume=${options.audio.volume},atrim=start=0:end=${activeDuration},asetpts=PTS-STARTPTS,adelay=${delayMilliseconds}:all=1[murali_audio]`,
+      `[1:a]volume=${options.audio.volume},atrim=start=0:end=${activeDuration},asetpts=PTS-STARTPTS,adelay=${delayMilliseconds}:all=1[veena_audio]`,
       "-map", "0:v:0",
-      "-map", "[murali_audio]",
+      "-map", "[veena_audio]",
     );
   }
   const format = options.format ?? "mp4";

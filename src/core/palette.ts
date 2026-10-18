@@ -1,4 +1,4 @@
-/** Murali and Manim palette. Shade A is lightest, E is darkest, and the bare name is shade C. */
+/** Veena and Manim palette. Shade A is lightest, E is darkest, and the bare name is shade C. */
 export const WHITE = "#ffffff";
 export const BLACK = "#000000";
 
@@ -85,7 +85,7 @@ export const PURE_GREEN = "#00ff00";
 export const PURE_BLUE = "#0000ff";
 
 /**
- * Murali's fixed compatibility palette. Prefer semantic theme roles for
+ * Veena's fixed compatibility palette. Prefer semantic theme roles for
  * reusable components; use this namespace when a specific swatch is intended.
  */
 export const palette = Object.freeze({
@@ -128,7 +128,7 @@ for (const [name, hex] of Object.entries(namedColors)) {
   if (name.startsWith("GRAY")) lookup.set(normalizeColorName(name.replace("GRAY", "GREY")), hex);
 }
 
-/** Resolve a Murali palette name (`RED_B` or `redB`) to hex. Other CSS colors pass through. */
+/** Resolve a Veena palette name (`RED_B` or `redB`) to hex. Other CSS colors pass through. */
 export function resolveColor(value: string): string {
   return lookup.get(normalizeColorName(value)) ?? value;
 }

@@ -14,7 +14,7 @@ interface FileRenderConfig {
   audio?: AudioTrack;
 }
 
-interface MuraliConfig {
+interface VeenaConfig {
   render?: FileRenderConfig;
 }
 
@@ -59,15 +59,15 @@ export async function resolveRenderOptions(
     ? fileURLToPath(source)
     : resolve(source);
   const projectDirectory = process.cwd();
-  const configPath = resolve(projectDirectory, overrides.configFile ?? "murali.json");
+  const configPath = resolve(projectDirectory, overrides.configFile ?? "veena.json");
   const configContents = await readOptional(configPath);
-  const config = configContents ? JSON.parse(configContents) as MuraliConfig : {};
+  const config = configContents ? JSON.parse(configContents) as VeenaConfig : {};
   const envContents = await readOptional(resolve(projectDirectory, ".env"));
   const fileEnv = envContents ? parseEnv(envContents) : {};
   const env = { ...fileEnv, ...process.env };
   const renderConfig = config.render ?? {};
 
-  const configuredFps = env.MURALI_FPS;
+  const configuredFps = env.VEENA_FPS;
   const fps = overrides.fps
     ?? (configuredFps === undefined ? renderConfig.fps : Number.parseFloat(configuredFps));
   if (fps !== undefined && (!Number.isFinite(fps) || fps <= 0)) {
@@ -75,27 +75,27 @@ export async function resolveRenderOptions(
   }
 
   const progress = overrides.progress
-    ?? parseBoolean(env.MURALI_PROGRESS, "Render progress")
+    ?? parseBoolean(env.VEENA_PROGRESS, "Render progress")
     ?? renderConfig.progress
     ?? true;
   const transparent = overrides.transparent
-    ?? parseBoolean(env.MURALI_TRANSPARENT, "Render transparency")
+    ?? parseBoolean(env.VEENA_TRANSPARENT, "Render transparency")
     ?? renderConfig.transparent
     ?? false;
   const sourceName = basename(sourcePath, extname(sourcePath));
-  const outputDirectory = env.MURALI_OUTPUT_DIR ?? renderConfig.outputDir ?? "./output";
+  const outputDirectory = env.VEENA_OUTPUT_DIR ?? renderConfig.outputDir ?? "./output";
   const output = overrides.output
-    ?? env.MURALI_OUTPUT
+    ?? env.VEENA_OUTPUT
     ?? renderConfig.output
     ?? join(outputDirectory, `${sourceName}.${transparent ? "webm" : "mp4"}`);
-  const configuredAt = env.MURALI_AT;
+  const configuredAt = env.VEENA_AT;
   const at = overrides.at
     ?? (configuredAt === undefined ? renderConfig.at : Number.parseFloat(configuredAt));
   if (at !== undefined && (!Number.isFinite(at) || at < 0)) {
     throw new Error(`PNG sample time must be a non-negative number; received ${String(at)}.`);
   }
   const audio = overrides.audio
-    ?? env.MURALI_AUDIO
+    ?? env.VEENA_AUDIO
     ?? renderConfig.audio;
 
   return {

@@ -1,7 +1,7 @@
-import { render } from "murali-js";
-import { Scene } from "murali-js/core";
-import { Label } from "murali-js/text";
-import { YouTubeSubscribe, YouTubeSubscribeSequence } from "murali-js/composite";
+import { render } from "veena";
+import { Scene } from "veena/core";
+import { Label } from "veena/text";
+import { YouTubeSubscribe, YouTubeSubscribeSequence } from "veena/composite";
 
 class YouTubeSubscribeShort extends Scene {
   constructor() {

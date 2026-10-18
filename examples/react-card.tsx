@@ -1,8 +1,8 @@
 import type { CSSProperties } from "react";
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { ReactTattva } from "murali-js/adapters";
-import type { TattvaState } from "murali-js/core";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { ReactTattva } from "veena/adapters";
+import type { TattvaState } from "veena/core";
 
 interface CardState extends TattvaState {
   progress: number;

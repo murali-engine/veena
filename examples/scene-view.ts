@@ -1,15 +1,15 @@
-import { render } from "murali-js";
-import { Scene, SceneView, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Circle, Line, Rectangle } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, SceneView, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Circle, Line, Rectangle } from "veena/primitives";
+import { Label } from "veena/text";
 const { BLUE_B, BLUE_D, GOLD_C, GRAY_A, GRAY_B, GRAY_C, GREEN_C, ORANGE_C, PINK_C, PURPLE_B, TEAL_C, WHITE } = palette;
-import type { Vec3 } from "murali-js/core";
-import type { CircleTattva, RectangleTattva } from "murali-js/primitives";
-import type { LabelTattva } from "murali-js/text";
+import type { Vec3 } from "veena/core";
+import type { CircleTattva, RectangleTattva } from "veena/primitives";
+import type { LabelTattva } from "veena/text";
 
 /**
- * Port of Murali `examples/scene_view.rs`.
+ * Port of Veena `examples/scene_view.rs`.
  * The network is a child scene whose clock loops while the parent explains it.
  */
 class HandBuiltTransformer extends Scene {

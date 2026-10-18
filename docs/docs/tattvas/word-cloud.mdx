@@ -8,8 +8,8 @@ description: Build deterministic word clouds with featured-word pacing, semantic
 `WordCloud` lays out weighted labels without overlaps. Placement, color selection, and automatic orientation are deterministic for a given seed, so previews and exported frames produce the same composition.
 
 ```ts
-import { Timeline } from "murali-js/core";
-import { WordCloud } from "murali-js/maths";
+import { Timeline } from "veena/core";
+import { WordCloud } from "veena/maths";
 
 const cloud = this.add(WordCloud([
   { text: "AI", weight: 100, featured: true, orientation: "horizontal" },
@@ -34,7 +34,7 @@ const cloud = this.add(WordCloud([
   .seed(2026));
 ```
 
-Larger weights produce larger words. `minimumWordSize` is a hard readability floor, while `maximumWordSize` controls the upper end of the hierarchy. When space is tight, Murali compresses larger words toward the minimum without crossing it. If the words still cannot fit, layout fails with a clear error instead of silently producing illegible text.
+Larger weights produce larger words. `minimumWordSize` is a hard readability floor, while `maximumWordSize` controls the upper end of the hierarchy. When space is tight, Veena compresses larger words toward the minimum without crossing it. If the words still cannot fit, layout fails with a clear error instead of silently producing illegible text.
 
 The `colors` array defines the word-color pool. Featured words consistently use its first color; filler words are assigned deterministic colors from the complete set. A word's own `color` still takes precedence.
 
@@ -48,7 +48,7 @@ The `colors` array defines the word-color pool. Featured words consistently use 
 | `featured` | Places the word in the first, spelled-out reveal group. |
 | `orientation` | Optional `"horizontal"` or `"vertical"` preference. |
 
-Orientation is semantic rather than degree-based. A horizontal word stays at zero rotation. For a vertical word, Murali deterministically chooses one of the two vertical reading directions. When `orientation` is omitted, Murali chooses from its default orientation mix.
+Orientation is semantic rather than degree-based. A horizontal word stays at zero rotation. For a vertical word, Veena deterministically chooses one of the two vertical reading directions. When `orientation` is omitted, Veena chooses from its default orientation mix.
 
 ## Paced reveal
 

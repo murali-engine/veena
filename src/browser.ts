@@ -18,7 +18,7 @@ import type { RenderResult } from "./render/capture.ts";
 
 declare global {
   interface Window {
-    __muraliSceneClass?: SceneConstructor;
+    __veenaSceneClass?: SceneConstructor;
   }
 }
 
@@ -27,6 +27,6 @@ export async function render(
   scene: SceneConstructor,
   _overrides: RenderOverrides = {},
 ): Promise<RenderResult> {
-  window.__muraliSceneClass = scene;
+  window.__veenaSceneClass = scene;
   return { frames: 0, duration: 0, screenshots: [], gifs: [] };
 }

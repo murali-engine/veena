@@ -1,8 +1,8 @@
-import { render } from "murali-js";
-import { Scene, clip, timeline } from "murali-js/core";
-import { Group } from "murali-js/layout";
-import { Rectangle } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, clip, timeline } from "veena/core";
+import { Group } from "veena/layout";
+import { Rectangle } from "veena/primitives";
+import { Label } from "veena/text";
 
 class CSS3DTransforms extends Scene {
   constructor() {

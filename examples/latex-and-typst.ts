@@ -1,11 +1,11 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label, Latex, LatexMorph, MathText } from "murali-js/text";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Label, Latex, LatexMorph, MathText } from "veena/text";
 const { BLUE_B, GOLD_B, GRAY_A, GRAY_B, WHITE, TEAL_C } = palette;
 
 /**
- * Port of Murali `examples/latex_and_typst.rs`.
+ * Port of Veena `examples/latex_and_typst.rs`.
  * Static comparison uses browser MathML. The final sequence uses native LaTeX
  * vector outlines and glyph-to-glyph cubic Bezier interpolation.
  */

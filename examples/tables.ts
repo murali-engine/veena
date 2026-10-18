@@ -1,11 +1,11 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
-import { Table } from "murali-js/table";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
+import { Table } from "veena/table";
 const { GRAY_B, TEAL_C, WHITE } = palette;
 
-/** Port of Murali `examples/tables.rs`. Rules draw first, then the cells type on, then the table unwrites. */
+/** Port of Veena `examples/tables.rs`. Rules draw first, then the cells type on, then the table unwrites. */
 class Tables extends Scene {
   override construct(): void {
     const title = this.add(Label("Tables").height(0.38).color(WHITE).typewriter());

@@ -1,4 +1,4 @@
-# Murali JS authoring ergonomics
+# Veena authoring ergonomics
 
 Status: active authoring contract. Most of this contract is implemented across the runnable examples. Known deviations and their work order are tracked in [`roadmap.md`](./roadmap.md); this document describes the intended coherent API, not evidence of completeness.
 
@@ -6,9 +6,9 @@ Status: active authoring contract. Most of this contract is implemented across t
 
 Full determinism is the first priority. Code-first authoring and the web are how scenes are built. Neither one relaxes the rule: the picture at time `t` is fixed by the scene and `t`. The same scene, sampled in any order or rendered again, produces the same frames.
 
-Manim and Murali are the baseline for that model. Murali JS keeps code-first scenes, semantic objects, and a timeline that can be sampled at any virtual time and exported frame by frame. Authoring records the schedule. It does not play a wall clock.
+Manim and Veena are the baseline for that model. Veena keeps code-first scenes, semantic objects, and a timeline that can be sampled at any virtual time and exported frame by frame. Authoring records the schedule. It does not play a wall clock.
 
-The web changes what a scene may contain, not how time works. Construction is not limited to the objects Murali JS implements. Anything the browser can draw can be in a scene, provided its visible state is a function of scene time. Built-in shapes cover the baseline. DOM, CSS, React, and other browser content enter the same timeline without a new engine primitive. They do not bring their own clock.
+The web changes what a scene may contain, not how time works. Construction is not limited to the objects Veena implements. Anything the browser can draw can be in a scene, provided its visible state is a function of scene time. Built-in shapes cover the baseline. DOM, CSS, React, and other browser content enter the same timeline without a new engine primitive. They do not bring their own clock.
 
 ```text
 Scene → anything the web can draw → Timeline → play → preview or export
@@ -32,10 +32,10 @@ CSS is a first-class styling and transformation language, not an implementation 
 ## Target scene shape
 
 ```ts
-import { render } from "murali-js";
-import { Scene, clip, timeline } from "murali-js/core";
-import { Circle } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, clip, timeline } from "veena/core";
+import { Circle } from "veena/primitives";
+import { Label } from "veena/text";
 
 class MotionBasics extends Scene {
   construct() {
@@ -119,7 +119,7 @@ Animation builders use the grammar:
 animate(target) → at(time) → duration(seconds) → ease(curve) → terminal verb
 ```
 
-Terminal verbs register an immutable animation specification immediately. JavaScript authoring does not require Murali's Rust-era `.spawn()` commit step.
+Terminal verbs register an immutable animation specification immediately. JavaScript authoring does not require Veena's Rust-era `.spawn()` commit step.
 
 ```ts
 timeline
@@ -225,12 +225,12 @@ Output resolution changes pixel quality, not composition.
 Every DOM-backed visual uses two layers:
 
 ```html
-<div class="murali-transform">
-  <div class="murali-content"></div>
+<div class="veena-transform">
+  <div class="veena-content"></div>
 </div>
 ```
 
-Murali JS owns the outer transform wrapper and composes translation, rotation, scale, opacity, and layer there. Authors own the inner content and may apply arbitrary CSS—including `transform`—without replacing scene placement.
+Veena owns the outer transform wrapper and composes translation, rotation, scale, opacity, and layer there. Authors own the inner content and may apply arbitrary CSS—including `transform`—without replacing scene placement.
 
 CSS can be animated through the same timeline grammar:
 
@@ -243,7 +243,7 @@ timeline
   .setStyle({ filter: "blur(0px)", borderRadius: "32px" });
 ```
 
-Murali JS deterministically interpolates numbers, compatible numeric CSS functions, lengths with matching structure, standalone hex colors, and custom properties with compatible numeric values. Incompatible or discrete values retain their starting value and switch when the animation completes.
+Veena deterministically interpolates numbers, compatible numeric CSS functions, lengths with matching structure, standalone hex colors, and custom properties with compatible numeric values. Incompatible or discrete values retain their starting value and switch when the animation completes.
 
 ## Layout
 
@@ -271,13 +271,13 @@ A scene stays in one executable file:
 render(import.meta.url, MyScene, { fps: 60 });
 ```
 
-Configuration currently reads `.env` and `murali.json` from the process working directory. The intended behavior is to walk upward from the scene file and use the nearest project configuration; that correction is tracked in the roadmap. Precedence is:
+Configuration currently reads `.env` and `veena.json` from the process working directory. The intended behavior is to walk upward from the scene file and use the nearest project configuration; that correction is tracked in the roadmap. Precedence is:
 
 ```text
-render call overrides → environment → discovered murali.json → engine defaults
+render call overrides → environment → discovered veena.json → engine defaults
 ```
 
-Environment variables are intended for environment-specific overrides. Stable project settings belong in `murali.json`.
+Environment variables are intended for environment-specific overrides. Stable project settings belong in `veena.json`.
 
 ## Built-in 3D camera
 

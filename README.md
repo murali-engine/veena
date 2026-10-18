@@ -1,10 +1,10 @@
-# Murali JS
+# Veena
 
-Murali JS is a fully deterministic video tool. That is the first priority. It is also code-first and built on the web, and neither of those changes the rule: the same scene always produces the same frames.
+Veena is a fully deterministic video tool. That is the first priority. It is also code-first and built on the web, and neither of those changes the rule: the same scene always produces the same frames.
 
-Manim and Murali are the baseline. A scene is ordinary code, objects sit in a world, and a timeline samples them at a virtual time. Rendering seeks that time. It does not play a wall clock.
+Manim and Veena are the baseline. A scene is ordinary code, objects sit in a world, and a timeline samples them at a virtual time. Rendering seeks that time. It does not play a wall clock.
 
-The web is why scene construction is not limited to the built-in library. The shapes Murali JS ships are conveniences. If the browser can draw it — DOM, CSS, React, another web library, or Three.js — it can be in the scene, on that same timeline, and rendered frame-by-frame to an MP4. Web content is allowed only when its picture is a function of scene time.
+The web is why scene construction is not limited to the built-in library. The shapes Veena ships are conveniences. If the browser can draw it — DOM, CSS, React, another web library, or Three.js — it can be in the scene, on that same timeline, and rendered frame-by-frame to an MP4. Web content is allowed only when its picture is a function of scene time.
 
 ## Quick start
 
@@ -19,7 +19,7 @@ Pass `--preview` to open the scene in a window instead. Nothing is encoded. Play
 ```bash
 npm run example -- hello-shapes --preview
 ```
-Murali JS depends on Playwright's Chromium package, so the compatible browser is downloaded during a normal npm installation. Set `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` before installing only when your environment manages browsers separately.
+Veena depends on Playwright's Chromium package, so the compatible browser is downloaded during a normal npm installation. Set `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` before installing only when your environment manages browsers separately.
 The local package is also compiled automatically during `npm install`, so files can be run directly from the examples directory with `npx tsx hello-shapes.ts`. Add `--preview` to open a window instead of exporting: `npx tsx hello-shapes.ts --preview`.
 
 To render a specific example, pass its short name:
@@ -52,26 +52,26 @@ npm run preview:all -- --from maths/linear-algebra/03-matrix-as-linear-map
 npm run preview:all -- --skip 20
 ```
 
-From the repository root, use `npm run preview:all --workspace @murali-js/examples`; options still follow the final `--`.
+From the repository root, use `npm run preview:all --workspace @veena/examples`; options still follow the final `--`.
 
 Every preview prints its stable one-based gallery index. Use `--skip N` to omit the first N examples and resume numerically; when combined with `--match`, the count applies after filtering. `--skip` and `--from` are alternative ways to choose the starting point and cannot be combined.
 
 The runner continues after a broken example and reports failures at the end; add `--stop-on-error` to stop immediately. `--headless` is available for automated smoke runs. Supporting TypeScript modules under `examples/assets` and `examples/data` are excluded from discovery.
 
-## Use Murali JS as a package
+## Use Veena as a package
 
 Define and render the animation from one entry point:
 
 ```ts
 // hello.ts
-import { render } from "murali-js";
-import { Scene, clip, timeline } from "murali-js/core";
-import { Circle } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, clip, timeline } from "veena/core";
+import { Circle } from "veena/primitives";
+import { Label } from "veena/text";
 
 class HelloScene extends Scene {
   override construct() {
-    const title = this.add(Label("Hello, Murali JS").height(0.5).color("white"));
+    const title = this.add(Label("Hello, Veena").height(0.5).color("white"));
     this.toEdge(title, "up", { margin: 0.8 });
 
     const circle = this.add(
@@ -93,24 +93,24 @@ render(import.meta.url, HelloScene, {
 });
 ```
 
-Run it with `npx tsx hello.ts`. `import.meta.url` identifies the current source file so Murali JS can bundle the scene for Chromium. The CLI remains available as an optional convenience.
+Run it with `npx tsx hello.ts`. `import.meta.url` identifies the current source file so Veena can bundle the scene for Chromium. The CLI remains available as an optional convenience.
 
 The package root above remains a compatibility prelude. For larger scenes, category imports make ownership and autocomplete clearer:
 
 ```ts
-import { Scene, clip, timeline } from "murali-js/core";
-import { Circle } from "murali-js/primitives";
-import { Label } from "murali-js/text";
-import { render } from "murali-js";
+import { Scene, clip, timeline } from "veena/core";
+import { Circle } from "veena/primitives";
+import { Label } from "veena/text";
+import { render } from "veena";
 ```
 
 Available domains include `core`, `style`, `adapters`, `layout`, `primitives`, `text`, `maths`, `ai`, `composite`, `storytelling`, `table`, `utility`, and the Node-only `render` pipeline. See [`docs/code-organization.md`](./docs/code-organization.md).
 
-Murali JS displays frame progress by default while rendering. Disable it for scripts or CI with `render(import.meta.url, HelloScene, { progress: false })`, or provide `onProgress(completed, total)` for custom reporting.
+Veena displays frame progress by default while rendering. Disable it for scripts or CI with `render(import.meta.url, HelloScene, { progress: false })`, or provide `onProgress(completed, total)` for custom reporting.
 
 ### Frame formats and transparent exports
 
-Murali has three resolution-independent frame presets. Landscape uses a logical `16 x 9` world, portrait uses `9 x 16`, and square uses `9 x 9`. Square coordinates therefore run from `-4.5` to `4.5` on both axes, regardless of the output pixel resolution:
+Veena has three resolution-independent frame presets. Landscape uses a logical `16 x 9` world, portrait uses `9 x 16`, and square uses `9 x 9`. Square coordinates therefore run from `-4.5` to `4.5` on both axes, regardless of the output pixel resolution:
 
 ```ts
 class SquareScene extends Scene {
@@ -134,7 +134,7 @@ render(import.meta.url, SquareScene, {
 });
 ```
 
-The equivalent CLI command is `murali render square-scene.ts -o output/square-mark.png --at 1.5 --transparent`. Project configuration accepts `render.transparent` and `render.at`; the matching environment variables are `MURALI_TRANSPARENT` and `MURALI_AT`.
+The equivalent CLI command is `veena render square-scene.ts -o output/square-mark.png --at 1.5 --transparent`. Project configuration accepts `render.transparent` and `render.at`; the matching environment variables are `VEENA_TRANSPARENT` and `VEENA_AT`.
 
 Transparent video uses WebM with VP9 alpha:
 
@@ -145,51 +145,51 @@ render(import.meta.url, SquareScene, {
 });
 ```
 
-Ordinary video remains MP4/H.264. WebM is deliberately reserved for `transparent: true`, and transparent MP4 is rejected because the normal MP4 path has no alpha channel. When no output path is provided, enabling transparency chooses a `.webm` path automatically. The CLI equivalent is `murali render square-scene.ts --transparent`; add `-o output/square-mark.webm` to choose its location.
+Ordinary video remains MP4/H.264. WebM is deliberately reserved for `transparent: true`, and transparent MP4 is rejected because the normal MP4 path has no alpha channel. When no output path is provided, enabling transparency chooses a `.webm` path automatically. The CLI equivalent is `veena render square-scene.ts --transparent`; add `-o output/square-mark.webm` to choose its location.
 
-### Murali logo assets
+### Veena logo assets
 
-The canonical logo is `MuraliLogoMark`: three touching blue, violet, and coral ovals with no text or outline. [`examples/murali-logo-image.ts`](./examples/murali-logo-image.ts) always exports two square PNGs in one run: `murali-logo-background.png` using the supplied background, and `murali-logo-transparent.png` with alpha. The opaque asset uses the documentation hero's navy-to-teal brand gradient by default:
+The canonical logo is `VeenaLogoMark`: three touching blue, violet, and coral ovals with no text or outline. [`examples/veena-logo-image.ts`](./examples/veena-logo-image.ts) always exports two square PNGs in one run: `veena-logo-background.png` using the supplied background, and `veena-logo-transparent.png` with alpha. The opaque asset uses the documentation hero's navy-to-teal brand gradient by default:
 
 ```bash
 cd examples
-npx tsx murali-logo-image.ts
-npx tsx murali-logo-image.ts -- --background "linear-gradient(145deg, #0b233f, #0e6c70)"
+npx tsx veena-logo-image.ts
+npx tsx veena-logo-image.ts -- --background "linear-gradient(145deg, #0b233f, #0e6c70)"
 ```
 
 Choose another destination directory when needed:
 
 ```bash
-npx tsx murali-logo-image.ts -- \
+npx tsx veena-logo-image.ts -- \
   --background "#071426" \
   --output-dir ./output/brand
 ```
 
-### Reusable Murali logo animation
+### Reusable Veena logo animation
 
-`MuraliLogoSequence` turns the canonical three-oval mark into a complete, seamless brand gesture: one oval breathes, splits into three, compresses on contact, separates, settles into the logo, and folds back into one oval.
+`VeenaLogoSequence` turns the canonical three-oval mark into a complete, seamless brand gesture: one oval breathes, splits into three, compresses on contact, separates, settles into the logo, and folds back into one oval.
 
 ```ts
-import { MuraliLogoMark, MuraliLogoSequence } from "murali-js/composite";
+import { VeenaLogoMark, VeenaLogoSequence } from "veena/composite";
 
-const mark = this.add(MuraliLogoMark({ width: 6.6 }));
-this.play(MuraliLogoSequence(mark));
+const mark = this.add(VeenaLogoMark({ width: 6.6 }));
+this.play(VeenaLogoSequence(mark));
 ```
 
 The default duration is 6.4 seconds. Pass `{ duration: 4 }` to retime the whole gesture without changing its relative choreography.
 
-`MuraliLogoSwell` keeps the settled mark and lets one phrase disturb it. Each oval grows from the shared baseline, narrows by `1 / sqrt(height)` so it stays plump, and springs back past rest. Left takes the low swell, the middle a smaller nudge, and the right a short transient. [`examples/murali-logo-animation.ts`](./examples/murali-logo-animation.ts) renders that phrase to `murali-logo-animation.webm` with VP9 alpha.
+`VeenaLogoSwell` keeps the settled mark and lets one phrase disturb it. Each oval grows from the shared baseline, narrows by `1 / sqrt(height)` so it stays plump, and springs back past rest. Left takes the low swell, the middle a smaller nudge, and the right a short transient. [`examples/veena-logo-animation.ts`](./examples/veena-logo-animation.ts) renders that phrase to `veena-logo-animation.webm` with VP9 alpha.
 
 ### Themes and the system palette
 
 Scenes accept typed semantic themes. Built-in Tattvas inherit the scene theme, a `Group` can override a subtree, and explicit object styles continue to win:
 
 ```ts
-import { Scene } from "murali-js/core";
-import { Group } from "murali-js/layout";
-import { Circle } from "murali-js/primitives";
-import { createTheme, themeColor, themes } from "murali-js/style";
-import { Label } from "murali-js/text";
+import { Scene } from "veena/core";
+import { Group } from "veena/layout";
+import { Circle } from "veena/primitives";
+import { createTheme, themeColor, themes } from "veena/style";
+import { Label } from "veena/text";
 
 const kavriq = createTheme(themes.dark, {
   name: "kavriq",
@@ -216,12 +216,12 @@ class ThemedScene extends Scene {
 }
 ```
 
-The same resolved theme is exposed as `--murali-*` CSS variables and passed into React and Three.js render contexts. `useMuraliTheme()` is available inside custom React components.
+The same resolved theme is exposed as `--veena-*` CSS variables and passed into React and Three.js render contexts. `useVeenaTheme()` is available inside custom React components.
 
-Fixed Murali/Manim swatches now live under `palette` rather than as top-level exports:
+Fixed Veena/Manim swatches now live under `palette` rather than as top-level exports:
 
 ```ts
-import { palette } from "murali-js/style";
+import { palette } from "veena/style";
 
 Circle().fill(palette.TEAL_C);
 ```
@@ -345,7 +345,7 @@ override construct(): void {
 }
 ```
 
-Murali embeds registered local fonts into preview and export, waits for them before exposing the first frame, and falls back cleanly when an optional private file is absent. `fontUrl(...)` supports browser-loadable URLs and data URLs. File declarations currently need to appear directly in the entry scene as `fontFile(..., "literal/path.ttf")` so the bundler can discover them.
+Veena embeds registered local fonts into preview and export, waits for them before exposing the first frame, and falls back cleanly when an optional private file is absent. `fontUrl(...)` supports browser-loadable URLs and data URLs. File declarations currently need to appear directly in the entry scene as `fontFile(..., "literal/path.ttf")` so the bundler can discover them.
 
 Use `addBranding()` for a visual that remains in the camera-independent overlay throughout the scene:
 
@@ -363,7 +363,7 @@ The private Satoshi file has been copied to `assets/fonts/private/Satoshi-Bold.t
 
 ### Shape writing
 
-Solid-filled shapes use geometry-aware writing. During `.draw()`, Murali closes the boundary portion already written into a temporary polygon and fills only that region; `.undraw()` contracts the same region in reverse. The complete fill is used only once the boundary is complete. This applies to built-in shapes, `VectorShape` compound paths and holes, and explicitly filled `Path` objects.
+Solid-filled shapes use geometry-aware writing. During `.draw()`, Veena closes the boundary portion already written into a temporary polygon and fills only that region; `.undraw()` contracts the same region in reverse. The complete fill is used only once the boundary is complete. This applies to built-in shapes, `VectorShape` compound paths and holes, and explicitly filled `Path` objects.
 
 ### Shape morphing
 
@@ -502,7 +502,7 @@ render(import.meta.url, HelloScene, {
 });
 ```
 
-`volume` is linear from `0` (silent) to `1` (the source level) and defaults to `1`. The audio is repeated and trimmed to the exact interval; it never changes the video duration. Relative paths resolve from the working directory. If the file is missing, Murali renders or previews the scene silently instead of failing. The CLI equivalents are `--audio`, `--audio-start`, `--audio-end`, and `--audio-volume`.
+`volume` is linear from `0` (silent) to `1` (the source level) and defaults to `1`. The audio is repeated and trimmed to the exact interval; it never changes the video duration. Relative paths resolve from the working directory. If the file is missing, Veena renders or previews the scene silently instead of failing. The CLI equivalents are `--audio`, `--audio-start`, `--audio-end`, and `--audio-volume`.
 
 ### Scene-authored screenshots and GIFs
 
@@ -533,7 +533,7 @@ These artifacts are generated during an export, not during interactive preview. 
 
 ### Shared render configuration
 
-Murali JS reads `murali.json` and `.env` from the working directory. Explicit options passed to `render()` have the highest priority, followed by environment settings, followed by `murali.json`.
+Veena reads `veena.json` and `.env` from the working directory. Explicit options passed to `render()` have the highest priority, followed by environment settings, followed by `veena.json`.
 
 ```json
 {
@@ -544,7 +544,7 @@ Murali JS reads `murali.json` and `.env` from the working directory. Explicit op
 }
 ```
 
-Supported environment variables are `MURALI_FPS`, `MURALI_OUTPUT`, `MURALI_OUTPUT_DIR`, and `MURALI_PROGRESS`. Any individual scene can override them:
+Supported environment variables are `VEENA_FPS`, `VEENA_OUTPUT`, `VEENA_OUTPUT_DIR`, and `VEENA_PROGRESS`. Any individual scene can override them:
 
 ```ts
 render(import.meta.url, HelloScene, {
@@ -561,7 +561,7 @@ render(import.meta.url, HelloScene, {
 
 ```ts
 const title = this.add(
-  Text3D("MURALI")
+  Text3D("VEENA")
     .height(2)
     .depth(0.7)
     .bevel({ enabled: true, thickness: 0.05, size: 0.03, segments: 3 })
@@ -687,7 +687,7 @@ timeline.animate(flow).duration(2.8).to({ reveal: 1 });
 timeline.animate(flow).at(3).duration(3).to({ signal: 1 });
 ```
 
-If connections are omitted, Murali JS creates a linear chain. A cyclic graph must provide an explicit `sequence()`. See [`examples/stepwise-storytelling.ts`](./examples/stepwise-storytelling.ts).
+If connections are omitted, Veena creates a linear chain. A cyclic graph must provide an explicit `sequence()`. See [`examples/stepwise-storytelling.ts`](./examples/stepwise-storytelling.ts).
 
 ### Word clouds
 
@@ -719,7 +719,7 @@ cloud.animate(timeline, {
 });
 ```
 
-Entries marked `featured` are spelled out first. The animation pauses, reveals all remaining filler words, holds the complete cloud, and then erases it. Every phase is independently configurable. Set an entry's optional `orientation` to `"horizontal"` or `"vertical"`; when it is omitted, Murali chooses the orientation automatically. The builder also supports rectangular clouds, custom padding, font family, font weight, and per-word colors. See [`examples/word-cloud.ts`](./examples/word-cloud.ts).
+Entries marked `featured` are spelled out first. The animation pauses, reveals all remaining filler words, holds the complete cloud, and then erases it. Every phase is independently configurable. Set an entry's optional `orientation` to `"horizontal"` or `"vertical"`; when it is omitted, Veena chooses the orientation automatically. The builder also supports rectangular clouds, custom padding, font family, font weight, and per-word colors. See [`examples/word-cloud.ts`](./examples/word-cloud.ts).
 
 ## Commands
 
@@ -741,7 +741,7 @@ npm test
 npm run test:package
 ```
 
-`test:package` creates an npm tarball, installs it into a clean temporary project, and verifies both `"murali-js"` and `"murali-js/render"`. This catches missing build output and incorrect package exports before publishing.
+`test:package` creates an npm tarball, installs it into a clean temporary project, and verifies both `"veena"` and `"veena/render"`. This catches missing build output and incorrect package exports before publishing.
 
 ## Architecture
 
@@ -757,7 +757,7 @@ The core has no dependency on Chromium, esbuild, or ffmpeg; those concerns stay 
 
 - [`docs/ergonomics.md`](./docs/ergonomics.md) defines the intended authoring experience.
 - [`docs/roadmap.md`](./docs/roadmap.md) is the single current plan and code-health summary.
-- [`docs/feature-parity.md`](./docs/feature-parity.md) tracks capability evidence against Murali and Manim.
-- [`docs/example-parity.md`](./docs/example-parity.md) tracks all 51 Murali reference examples.
+- [`docs/feature-parity.md`](./docs/feature-parity.md) tracks capability evidence against Veena and Manim.
+- [`docs/example-parity.md`](./docs/example-parity.md) tracks all 51 Veena reference examples.
 
-Murali JS represents the lessons from all 51 Murali examples in 45 runnable scenes; ten static linear-algebra ports became five animated stories, and the separate GLB/glTF demonstrations became one format-comparison scene. Example coverage is not the same as complete Rust API parity. A source-level Rust gap audit and the still-unprioritized candidate set are recorded in [`docs/feature-parity.md`](./docs/feature-parity.md#rust-capability-audit-29-september-2026) and [`docs/roadmap.md`](./docs/roadmap.md#rust-parity-audit-snapshot). The next planning step is to rank those gaps alongside web-native investments before changing the roadmap order.
+Veena represents the lessons from all 51 Veena examples in 45 runnable scenes; ten static linear-algebra ports became five animated stories, and the separate GLB/glTF demonstrations became one format-comparison scene. Example coverage is not the same as complete Rust API parity. A source-level Rust gap audit and the still-unprioritized candidate set are recorded in [`docs/feature-parity.md`](./docs/feature-parity.md#rust-capability-audit-29-september-2026) and [`docs/roadmap.md`](./docs/roadmap.md#rust-parity-audit-snapshot). The next planning step is to rank those gaps alongside web-native investments before changing the roadmap order.

@@ -1,13 +1,13 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Group } from "murali-js/layout";
-import { worldPath } from "murali-js/primitives";
-import { Label } from "murali-js/text";
-import { Axes, NumberPlane, PlotLegend, ScatterPlot } from "murali-js/maths";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Group } from "veena/layout";
+import { worldPath } from "veena/primitives";
+import { Label } from "veena/text";
+import { Axes, NumberPlane, PlotLegend, ScatterPlot } from "veena/maths";
 const { BLUE_B, GRAY_A, GRAY_B, GOLD_C, ORANGE_B, WHITE } = palette;
 
-/** Port of Murali `examples/graphs_2d.rs`. */
+/** Port of Veena `examples/graphs_2d.rs`. */
 class Graphs2D extends Scene {
   override construct(): void {
     const title = this.add(Label("2D Graphs").height(0.38).color(WHITE));

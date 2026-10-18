@@ -1,8 +1,8 @@
-import { render } from "murali-js";
-import { TensorView, tensorOperationStages } from "murali-js/ai";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { TensorView, tensorOperationStages } from "veena/ai";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
 const { GRAY_B, GOLD_A, PINK, TEAL_A, WHITE } = palette;
 
 const STYLE = { cellWidth: 0.9, cellHeight: 0.66, labelHeight: 0.18, valueHeight: 0.16 };

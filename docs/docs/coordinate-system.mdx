@@ -6,7 +6,7 @@ description: Landscape, portrait, square, world units, depth modes, and layout h
 
 # Frames, coordinates, and layout
 
-Murali uses a centered, y-up coordinate system. Positive x is right, positive y is up, and positive z participates in 3D depth.
+Veena uses a centered, y-up coordinate system. Positive x is right, positive y is up, and positive z participates in 3D depth.
 
 ## Frame presets
 
@@ -42,7 +42,7 @@ this.alignTo(caption, title, "centerX");
 ## Groups and stacks
 
 ```ts
-import { Group, HStack, VStack } from "murali-js/layout";
+import { Group, HStack, VStack } from "veena/layout";
 
 const row = Group([Circle().radius(0.45), Square().size(0.9)])
   .layout(HStack, { gap: 0.4 });

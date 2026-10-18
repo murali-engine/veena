@@ -1,12 +1,12 @@
 # Themes
 
-Murali themes are typed, deterministic design-token trees shared by DOM, SVG, React, and Three.js content. Themes provide semantic defaults; they do not prevent an individual Tattva from selecting an explicit style.
+Veena themes are typed, deterministic design-token trees shared by DOM, SVG, React, and Three.js content. Themes provide semantic defaults; they do not prevent an individual Tattva from selecting an explicit style.
 
 ## Create and select a theme
 
 ```ts
-import { Scene } from "murali-js/core";
-import { createTheme, themes } from "murali-js/style";
+import { Scene } from "veena/core";
+import { createTheme, themes } from "veena/style";
 
 const brand = createTheme(themes.dark, {
   name: "brand",
@@ -29,7 +29,7 @@ class BrandScene extends Scene {
 }
 ```
 
-`themes.dark` preserves Murali JS's existing dark appearance. `themes.light` provides a warm classroom-oriented light theme. `createTheme(patch)` extends the dark theme, while `createTheme(base, patch)` extends an explicit base.
+`themes.dark` preserves Veena's existing dark appearance. `themes.light` provides a warm classroom-oriented light theme. `createTheme(patch)` extends the dark theme, while `createTheme(base, patch)` extends an explicit base.
 
 ## Semantic colors
 
@@ -70,10 +70,10 @@ Resolution order is: built-in theme, scene theme, group scope, then explicit Tat
 The renderer installs the resolved values on the scene stage and every logical theme scope:
 
 ```css
-color: var(--murali-color-text-primary);
-background: var(--murali-color-surface);
-border-color: var(--murali-color-stroke-muted);
-font-family: var(--murali-typography-body-family);
+color: var(--veena-color-text-primary);
+background: var(--veena-color-surface);
+border-color: var(--veena-color-stroke-muted);
+font-family: var(--veena-typography-body-family);
 ```
 
 Custom Tattvas can also read their `resolvedTheme` after scene preparation.
@@ -88,7 +88,7 @@ new ReactTattva((state, { theme }) => (
 ));
 ```
 
-Nested React components can call `useMuraliTheme()`.
+Nested React components can call `useVeenaTheme()`.
 
 ## Three.js
 
@@ -108,15 +108,15 @@ Hex and CSS colors are authored as sRGB values. Three.js converts those inputs i
 
 ## System palette
 
-The fixed Murali/Manim palette is deliberately separate from semantic theming:
+The fixed Veena/Manim palette is deliberately separate from semantic theming:
 
 ```ts
-import { palette } from "murali-js/style";
+import { palette } from "veena/style";
 
 const { TEAL_C, GOLD_C } = palette;
 ```
 
-Use these swatches for intentionally fixed artwork or compatibility with an existing Murali scene. Reusable components should prefer semantic roles.
+Use these swatches for intentionally fixed artwork or compatibility with an existing Veena scene. Reusable components should prefer semantic roles.
 
 ## Current boundary
 

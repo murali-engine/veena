@@ -5,7 +5,7 @@ export interface ImageFileAsset {
 
 const fileResources: Record<string, string> = {};
 
-/** Define an image embedded by the Murali scene bundler. Keep the path as a string literal. */
+/** Define an image embedded by the Veena scene bundler. Keep the path as a string literal. */
 export function imageFile(path: string): ImageFileAsset {
   if (path.trim().length === 0) throw new Error("Image path must not be empty.");
   return Object.freeze({ kind: "file", source: path });

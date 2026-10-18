@@ -1,9 +1,9 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Circle, Line } from "murali-js/primitives";
-import { Label } from "murali-js/text";
-import { TracedPath } from "murali-js/utility";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Circle, Line } from "veena/primitives";
+import { Label } from "veena/text";
+import { TracedPath } from "veena/utility";
 const { BLUE_B, GOLD_C, GRAY_A, GRAY_B, TEAL_C, WHITE } = palette;
 
 const groundY = -1.15;
@@ -13,7 +13,7 @@ const rollDuration = 5.4;
 const startX = -3.45;
 const totalTheta = Math.PI * 4;
 
-/** Port of Murali `examples/traced_paths.rs`. The trace is resampled from scene time. */
+/** Port of Veena `examples/traced_paths.rs`. The trace is resampled from scene time. */
 class TracedPaths extends Scene {
   constructor() {
     super({ viewWidth: 16 });

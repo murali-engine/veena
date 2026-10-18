@@ -106,7 +106,7 @@ abstract class MatchingMorphTattva extends Tattva<MatchingMorphState> {
     const markup = renderTransition(source, target, amount, this.ink, this.fontFamily(), this.unmatchedMode, this.keyMap);
     const width = this.worldSize?.width ?? 1;
     const height = this.worldSize?.height ?? 1;
-    return `<svg data-murali-matching-morph="${this.morphKind()}" width="100%" height="100%" viewBox="${-width / 2} ${-height / 2} ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg">${markup}</svg>`;
+    return `<svg data-veena-matching-morph="${this.morphKind()}" width="100%" height="100%" viewBox="${-width / 2} ${-height / 2} ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg">${markup}</svg>`;
   }
 
   protected override onThemeResolved(theme: Theme): void {
@@ -219,11 +219,11 @@ interface LatexTransition {
 }
 
 const latexResourceGlobal = globalThis as typeof globalThis & {
-  __muraliLatexResources?: Map<string, LatexVectorResource>;
+  __veenaLatexResources?: Map<string, LatexVectorResource>;
 };
 
 function latexResourceRegistry(): Map<string, LatexVectorResource> {
-  return latexResourceGlobal.__muraliLatexResources ??= new Map<string, LatexVectorResource>();
+  return latexResourceGlobal.__veenaLatexResources ??= new Map<string, LatexVectorResource>();
 }
 
 /** Installed by the render bundler before a scene containing LatexMorph is constructed. */
@@ -326,7 +326,7 @@ export class LatexMorphTattva extends Tattva<MatchingMorphState> {
     }
     const width = this.worldSize?.width ?? 1;
     const height = this.worldSize?.height ?? 1;
-    return `<svg data-murali-matching-morph="latex" width="100%" height="100%" viewBox="${-width / 2} ${-height / 2} ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg">${paths.join("")}</svg>`;
+    return `<svg data-veena-matching-morph="latex" width="100%" height="100%" viewBox="${-width / 2} ${-height / 2} ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg">${paths.join("")}</svg>`;
   }
 
   protected override onThemeResolved(theme: Theme): void {
@@ -405,7 +405,7 @@ export class LatexTattva extends Tattva<TattvaState> {
     ).join("");
     const width = this.worldSize?.width ?? 1;
     const height = this.worldSize?.height ?? 1;
-    return `<svg data-murali-latex="true" width="100%" height="100%" viewBox="${-width / 2} ${-height / 2} ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg">${paths}</svg>`;
+    return `<svg data-veena-latex="true" width="100%" height="100%" viewBox="${-width / 2} ${-height / 2} ${width} ${height}" overflow="visible" xmlns="http://www.w3.org/2000/svg">${paths}</svg>`;
   }
 
   protected override onThemeResolved(theme: Theme): void {
@@ -629,7 +629,7 @@ function latexPath(
     ).join(" ");
     return `M${format(first.p0[0])} ${format(first.p0[1])} ${curves}${contour.closed ? " Z" : ""}`;
   }).join(" ");
-  return `<path data-murali-morph-role="${role}" d="${path}" transform="translate(${format(center[0])} ${format(center[1])}) scale(${format(scale)})" fill="${escapeAttribute(color)}" fill-rule="evenodd" opacity="${format(opacity)}" />`;
+  return `<path data-veena-morph-role="${role}" d="${path}" transform="translate(${format(center[0])} ${format(center[1])}) scale(${format(scale)})" fill="${escapeAttribute(color)}" fill-rule="evenodd" opacity="${format(opacity)}" />`;
 }
 
 function parseSvgCubicPath(data: string): CubicContour[] {
@@ -1110,7 +1110,7 @@ function renderPart(
 ): string {
   const transform = `translate(${format(part.x)} ${format(-part.y)}) scale(${format(scale)})`;
   if (part.kind === "line") {
-    return `<line data-murali-morph-role="${role}" x1="${format(-part.width / 2)}" y1="0" x2="${format(part.width / 2)}" y2="0" transform="${transform}" stroke="${escapeAttribute(color)}" stroke-width="${format(Math.max(0.018, part.height))}" stroke-linecap="round" opacity="${format(opacity)}" />`;
+    return `<line data-veena-morph-role="${role}" x1="${format(-part.width / 2)}" y1="0" x2="${format(part.width / 2)}" y2="0" transform="${transform}" stroke="${escapeAttribute(color)}" stroke-width="${format(Math.max(0.018, part.height))}" stroke-linecap="round" opacity="${format(opacity)}" />`;
   }
   if (part.kind === "radical") {
     const width = part.width;
@@ -1122,10 +1122,10 @@ function renderPart(
       `L ${format(width * 0.16)} ${format(-height * 0.48)}`,
       `L ${format(width / 2)} ${format(-height * 0.48)}`,
     ].join(" ");
-    return `<path data-murali-morph-role="${role}" d="${path}" transform="${transform}" fill="none" stroke="${escapeAttribute(color)}" stroke-width="${format(Math.max(0.025, part.fontSize * 0.07))}" stroke-linecap="round" stroke-linejoin="round" opacity="${format(opacity)}" />`;
+    return `<path data-veena-morph-role="${role}" d="${path}" transform="${transform}" fill="none" stroke="${escapeAttribute(color)}" stroke-width="${format(Math.max(0.025, part.fontSize * 0.07))}" stroke-linecap="round" stroke-linejoin="round" opacity="${format(opacity)}" />`;
   }
   const widthFit = part.fitWidth ? ` textLength="${format(part.width)}" lengthAdjust="spacingAndGlyphs"` : "";
-  return `<text data-murali-morph-role="${role}" x="0" y="0" transform="${transform}" fill="${escapeAttribute(color)}" opacity="${format(opacity)}" font-size="${format(part.fontSize)}" font-family="${escapeAttribute(fontFamily)}" text-anchor="middle" dominant-baseline="central"${widthFit}>${escapeHtml(part.text ?? "")}</text>`;
+  return `<text data-veena-morph-role="${role}" x="0" y="0" transform="${transform}" fill="${escapeAttribute(color)}" opacity="${format(opacity)}" font-size="${format(part.fontSize)}" font-family="${escapeAttribute(fontFamily)}" text-anchor="middle" dominant-baseline="central"${widthFit}>${escapeHtml(part.text ?? "")}</text>`;
 }
 
 type FormulaNode =

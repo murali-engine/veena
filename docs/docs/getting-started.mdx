@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: Your first scene
-description: Build, preview, and render a complete Murali scene.
+description: Build, preview, and render a complete Veena scene.
 ---
 
 # Your first scene
@@ -9,10 +9,10 @@ description: Build, preview, and render a complete Murali scene.
 This example introduces the complete workflow: create a scene, add tattvas, arrange them, author a timeline, preview it, and export it.
 
 ```ts title="first-scene.ts"
-import { render } from "murali-js";
-import { Scene, clip, timeline } from "murali-js/core";
-import { Circle, Square } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, clip, timeline } from "veena/core";
+import { Circle, Square } from "veena/primitives";
+import { Label } from "veena/text";
 
 class FirstScene extends Scene {
   constructor() {
@@ -20,7 +20,7 @@ class FirstScene extends Scene {
   }
 
   override construct() {
-    const title = this.add(Label("My first Murali scene").height(0.58).color("#ffffff").typewriter());
+    const title = this.add(Label("My first Veena scene").height(0.58).color("#ffffff").typewriter());
     this.toEdge(title, "up", { margin: 0.75 });
 
     const square = this.add(Square().size(1.4).fill("#7c3aed"), { at: [-3.5, -0.4] });

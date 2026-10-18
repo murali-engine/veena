@@ -1,6 +1,6 @@
-import { render } from "murali-js";
-import { EqualizerBars } from "murali-js/ai";
-import { Scene, Timeline } from "murali-js/core";
+import { render } from "veena";
+import { EqualizerBars } from "veena/ai";
+import { Scene, Timeline } from "veena/core";
 
 class EqualizerBarsExample extends Scene {
   override construct(): void {

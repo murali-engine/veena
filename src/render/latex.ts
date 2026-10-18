@@ -51,7 +51,7 @@ export const extractLatexMorphSources = extractLatexSources;
 export function compileLatexVector(source: string): LatexVectorResource {
   const cached = resourceCache.get(source);
   if (cached) return cached;
-  const directory = mkdtempSync(join(tmpdir(), "murali-latex-"));
+  const directory = mkdtempSync(join(tmpdir(), "veena-latex-"));
   try {
     const texPath = join(directory, "formula.tex");
     writeFileSync(texPath, latexDocument(source));

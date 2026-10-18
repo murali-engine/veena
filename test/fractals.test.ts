@@ -20,7 +20,7 @@ test("built-in fractal generators produce predictable recursive segment counts",
 test("fractional fractal iterations cross-fade two batched paths", () => {
   const fractal = KochSnowflake({ iterations: 3 }).iteration(0);
   const html = fractal.contentHTML(0, { ...fractal.initialState, iteration: 1.25 });
-  assert.equal((html.match(/data-murali-path/g) ?? []).length, 2);
+  assert.equal((html.match(/data-veena-path/g) ?? []).length, 2);
   assert.match(html, /opacity="0\.75"/);
   assert.match(html, /opacity="0\.25"/);
 });

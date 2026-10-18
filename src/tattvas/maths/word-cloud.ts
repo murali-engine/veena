@@ -8,7 +8,7 @@ export interface WordCloudWord {
   text: string;
   weight: number;
   color?: string;
-  /** Preferred text orientation. When omitted, Murali chooses automatically. */
+  /** Preferred text orientation. When omitted, Veena chooses automatically. */
   orientation?: "horizontal" | "vertical";
   /** Reveal this word in the opening, spelled-out group before the cloud fills. */
   featured?: boolean;

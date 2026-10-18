@@ -1,13 +1,13 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Circle } from "murali-js/primitives";
-import { Label } from "murali-js/text";
-import { VectorField } from "murali-js/maths";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Circle } from "veena/primitives";
+import { Label } from "veena/text";
+import { VectorField } from "veena/maths";
 const { BLUE_B, GRAY_B, RED_B, TEAL_C, WHITE } = palette;
-import type { Vec2 } from "murali-js/core";
+import type { Vec2 } from "veena/core";
 
-/** Port of Murali `examples/force_fields.rs`. Charges and arrows are both functions of scene time. */
+/** Port of Veena `examples/force_fields.rs`. Charges and arrows are both functions of scene time. */
 class ForceFields extends Scene {
   constructor() {
     super({ viewWidth: 16 });

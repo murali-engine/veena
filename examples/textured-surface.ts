@@ -1,13 +1,13 @@
-import { render } from "murali-js";
-import { Scene, Timeline, imageFile } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
-import { Axes3D, ParametricSurface } from "murali-js/maths";
+import { render } from "veena";
+import { Scene, Timeline, imageFile } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
+import { Axes3D, ParametricSurface } from "veena/maths";
 const { BLUE_B, GOLD_C, GRAY_B, ORANGE_B, TEAL_C, WHITE } = palette;
-import type { Vec3 } from "murali-js/core";
+import type { Vec3 } from "veena/core";
 const EARTH_TEXTURE = imageFile("./assets/textures/earthmap1k.jpg");
 
-/** Port of Murali `examples/textured_surface.rs`, using the same Earth surface image. */
+/** Port of Veena `examples/textured_surface.rs`, using the same Earth surface image. */
 class TexturedSurface extends Scene {
   override construct(): void {
     this.camera.perspective({ fov: 42, near: 0.1, far: 100 }).position([-3.2, 1.9, 5.8]).lookAt([0, 0, 0]);

@@ -1,12 +1,12 @@
-# Murali JS roadmap
+# Veena roadmap
 
 Status: current plan as of September 2026.
 
-This is the single ordered implementation plan for Murali JS. Work from the numbered list in order unless a production bug requires an earlier correction. The authoring contract lives in [`ergonomics.md`](./ergonomics.md); Murali capability and example evidence live in [`feature-parity.md`](./feature-parity.md) and [`example-parity.md`](./example-parity.md).
+This is the single ordered implementation plan for Veena. Work from the numbered list in order unless a production bug requires an earlier correction. The authoring contract lives in [`ergonomics.md`](./ergonomics.md); Veena capability and example evidence live in [`feature-parity.md`](./feature-parity.md) and [`example-parity.md`](./example-parity.md).
 
 ## Product direction
 
-Murali JS is a deterministic, code-first animation package for JavaScript and TypeScript. It combines a useful built-in library of Tattvas with the full visual vocabulary of the web. Built-ins make common animation work concise; they must never become a boundary that prevents an author from introducing a completely new visual construct.
+Veena is a deterministic, code-first animation package for JavaScript and TypeScript. It combines a useful built-in library of Tattvas with the full visual vocabulary of the web. Built-ins make common animation work concise; they must never become a boundary that prevents an author from introducing a completely new visual construct.
 
 The intended authoring loop is:
 
@@ -14,7 +14,7 @@ The intended authoring loop is:
 one scene file -> built-in or user-defined web content -> one timeline -> preview or render
 ```
 
-DOM, CSS, SVG, Canvas, React, Three.js, and future browser libraries must be able to participate in the same scene graph, camera, timeline, layout, and deterministic sampling rules. An author should not need a new Murali JS release merely because their visual is new.
+DOM, CSS, SVG, Canvas, React, Three.js, and future browser libraries must be able to participate in the same scene graph, camera, timeline, layout, and deterministic sampling rules. An author should not need a new Veena release merely because their visual is new.
 
 Implementation modules, package exports, and runnable examples are being organized with Rust-aligned domains. The category subpaths and migration rules are documented in [`code-organization.md`](./code-organization.md). Existing root imports remain a compatibility prelude while examples move incrementally to their canonical category imports.
 
@@ -23,13 +23,13 @@ Implementation modules, package exports, and runnable examples are being organiz
 These are product decisions, not open roadmap questions:
 
 1. **Virtual time and FPS define the render.** Authors schedule in seconds. FPS selects the sampling interval, and frame index and timestamp are derived as `time = frame / fps`. Frame number is useful metadata, not the primary authoring unit.
-2. **Wall-clock time never defines an exported frame.** Preview may use the wall clock to choose which virtual time to display, but the displayed state is sampled from Murali JS's virtual timeline.
+2. **Wall-clock time never defines an exported frame.** Preview may use the wall clock to choose which virtual time to display, but the displayed state is sampled from Veena's virtual timeline.
 3. **Logical world coordinates are resolution independent.** Landscape uses a `16 x 9` world, portrait uses `9 x 16`, and square uses `9 x 9` by default. Output pixels change image quality, not composition. Custom frames may override these defaults.
-4. **The web platform is the visual foundation.** CSS remains directly available. Raw DOM, SVG, Canvas, React, Three.js, and future browser libraries are valid scene content when driven by Murali JS's sampled time.
-5. **Built-in Tattvas remain a first-class convenience library.** Shapes, text, diagrams, teaching components, and higher-level artifacts are valuable, but users can create equally capable custom constructs without modifying Murali JS internals.
+4. **The web platform is the visual foundation.** CSS remains directly available. Raw DOM, SVG, Canvas, React, Three.js, and future browser libraries are valid scene content when driven by Veena's sampled time.
+5. **Built-in Tattvas remain a first-class convenience library.** Shapes, text, diagrams, teaching components, and higher-level artifacts are valuable, but users can create equally capable custom constructs without modifying Veena internals.
 6. **The fluent builder API remains the preferred code-first ergonomics.** Custom web content should gain the same placement, grouping, styling, camera, and timeline grammar as built-ins.
 7. **React and Three.js adapter separation is desirable but not urgent by itself.** Refactor when it simplifies the runtime or unlocks other browser renderers; do not split packages merely for architectural purity.
-8. **Murali JS is the JavaScript implementation of Murali Engine.** The original Rust/Python engine remains the parity baseline and historical source of useful ideas, but it does not constrain the web implementation's internal architecture.
+8. **Veena is the JavaScript implementation of Veena Engine.** The original Rust/Python engine remains the parity baseline and historical source of useful ideas, but it does not constrain the web implementation's internal architecture.
 
 ## Current state
 
@@ -45,13 +45,13 @@ The project is already a broad working implementation, not an early prototype.
 | Composition | Child scenes, independent child clocks, looping and playback modes | Visual parity proof and lifecycle semantics |
 | Runtime | Preview, MP4, PNG, transparency, progress, looping audio with volume and intervals, scene-authored screenshot sets and GIFs, npm installation, bundled Chromium | Source-relative config discovery, unified CLI behavior, diagnostics |
 | Teaching components | Linear algebra; semantic weighted/sparse neural networks with snapshot animation and unique-edge flow; transformers; tensors; probability; normalization; chat; stepwise stories; reusable 3D openings | Timeline-native tensor morphs, composable chat objects, large-network visual compression, specialized architecture views, API curation |
-| Murali coverage | All 51 reference lessons are represented by 45 Murali JS scenes after linear-algebra and 3D-format consolidation | Systematic rendered comparisons and documented intentional differences |
+| Veena coverage | All 51 reference lessons are represented by 45 Veena scenes after linear-algebra and 3D-format consolidation | Systematic rendered comparisons and documented intentional differences |
 
 The verification baseline is 90 deterministic tests plus a package smoke test that installs the packed npm artifact and imports the root, render pipeline, and every public category subpath.
 
 ## Rust parity audit snapshot
 
-A source-level comparison against the Rust engine was refreshed on **29 September 2026**. All 51 reference examples are ported, but the following public Rust capabilities remain absent or materially incomplete in Murali JS:
+A source-level comparison against the Rust engine was refreshed on **29 September 2026**. All 51 reference examples are ported, but the following public Rust capabilities remain absent or materially incomplete in Veena:
 
 - general object match-transform, semantic TeX-token correspondence, Typst parity, and richer equation continuity; closed-shape, semantic text, structural formulas, native LaTeX vector typesetting, and cubic glyph-outline interpolation are implemented;
 - scene removal/clear operations remain; typed per-frame updater handles, active ranges, and removal are implemented;
@@ -64,7 +64,7 @@ A source-level comparison against the Rust engine was refreshed on **29 Septembe
 - a versioned, validated AI trace ingestion model;
 - specialized built-ins including procedural noisy shapes/fields, `Cube`, standalone `ChatBubble`, reusable letter particles, decision-boundary/optimization views, and typed agent-flow components. `Ellipse` is now implemented.
 
-The native Rust renderer also provides one geometric depth space and shared GPU ownership. Murali JS instead shares camera state across separately composited DOM/SVG/React and Three.js surfaces. That is an intentional platform tradeoff unless a real scene demonstrates that unified cross-surface intersection is worth a different renderer architecture. Rust's ECS is likewise not a parity requirement.
+The native Rust renderer also provides one geometric depth space and shared GPU ownership. Veena instead shares camera state across separately composited DOM/SVG/React and Three.js surfaces. That is an intentional platform tradeoff unless a real scene demonstrates that unified cross-surface intersection is worth a different renderer architecture. Rust's ECS is likewise not a parity requirement.
 
 This snapshot is an inventory, **not a new priority order**. The next planning step is to rank these gaps against web-native investments by user value, reuse, determinism risk, implementation cost, and whether an adequate browser escape hatch already exists. The detailed evidence is in [`feature-parity.md`](./feature-parity.md#rust-capability-audit-29-september-2026).
 
@@ -96,7 +96,7 @@ Completion criteria:
 
 ### 2. Add a first-class custom web-content primitive
 
-This is the main architectural expansion. A user must be able to create a visual Murali JS has never heard of without changing the renderer.
+This is the main architectural expansion. A user must be able to create a visual Veena has never heard of without changing the renderer.
 
 Completed foundation:
 
@@ -106,9 +106,9 @@ Completed foundation:
 - Support author-created HTML elements and document fragments without requiring raw HTML strings.
 - Support inline SVG as ordinary scene content; Canvas 2D is now available through `CanvasTattva`.
 - Allow a custom construct to declare strongly typed animation state and receive its sampled state and virtual-time context.
-- Preserve Murali JS's outer transform wrapper so user CSS transforms do not replace world placement, camera projection, opacity, or grouping.
+- Preserve Veena's outer transform wrapper so user CSS transforms do not replace world placement, camera projection, opacity, or grouping.
 - Give custom content the standard builders: position, full XYZ transform, opacity, layer/depth mode, class, CSS, CSS variables, grouping, and timeline animation.
-- Provide a safe escape hatch for integrating another browser library without adding a new hard-coded `kind` to Murali JS.
+- Provide a safe escape hatch for integrating another browser library without adding a new hard-coded `kind` to Veena.
 - Add concise examples for raw DOM/CSS, SVG, Canvas, and one small third-party-style adapter.
 
 The sampled context may expose derived conveniences such as `time`, `fps`, `frame`, `duration`, and `progress`, but `time` and FPS remain authoritative. A frame value is derived from them rather than becoming a second clock.
@@ -138,7 +138,7 @@ Completion criteria:
 
 ### 4. Add deterministic guardrails for custom web content
 
-Murali JS cannot prevent arbitrary JavaScript from being stateful, but it should make the deterministic path obvious and convenient.
+Veena cannot prevent arbitrary JavaScript from being stateful, but it should make the deterministic path obvious and convenient.
 
 - Provide a scene-owned seeded random service for procedural authoring, for example `scene.random("stars")`. The same scene seed and stream name must produce the same values on every construction.
 - Keep component-level seeds such as `WordCloud(...).seed(42)` when a reusable artifact needs an explicit local override.
@@ -183,7 +183,7 @@ Completion criteria:
 
 ### 6. Stabilize package and render ergonomics
 
-- Resolve `.env` and `murali.json` relative to the source scene or nearest project root, not the shell working directory.
+- Resolve `.env` and `veena.json` relative to the source scene or nearest project root, not the shell working directory.
 - Route direct `render()` usage and the optional CLI through the same option-resolution and progress path.
 - Make `npm run typecheck` independent of generated `dist` output by resolving workspace imports to source.
 - Curate the root package API and move specialized or experimental domains behind intentional subpath exports where useful.
@@ -219,8 +219,8 @@ Completion criteria:
 Runnable examples demonstrate coverage but do not by themselves prove parity.
 
 - Add a small manifest of representative timestamps for each parity scene.
-- Capture deterministic Murali JS frames at those timestamps.
-- Maintain approved Murali reference frames or side-by-side comparison sheets.
+- Capture deterministic Veena frames at those timestamps.
+- Maintain approved Veena reference frames or side-by-side comparison sheets.
 - Record intentional browser differences next to each comparison.
 - Start with stepwise stories, chat, tensor operations, tensor slicing, and self-attention.
 - Then review primitives, layout, linear algebra, procedural scenes, 3D, and child scenes in dependency order.
@@ -266,20 +266,20 @@ Completion criteria:
 - CI visual comparisons run in a pinned environment;
 - performance work does not introduce playback-history-dependent frames.
 
-## Completed foundation: Murali port coverage
+## Completed foundation: Veena port coverage
 
 - The reusable opening composite is implemented with configurable texture, typography, particles, style, timing, and deterministic timeline choreography.
 - `kavriq_opening` and `opening_scene_view` are ported and render successfully.
-- All 51 Murali reference lessons are represented by runnable Murali JS scenes; ten static linear-algebra ports were consolidated into five animated scenes.
+- All 51 Veena reference lessons are represented by runnable Veena scenes; ten static linear-algebra ports were consolidated into five animated scenes.
 - Visual comparison of the complete set remains part of roadmap item 8.
 
 ## Definition of done
 
 A capability is complete only when it has:
 
-1. A coherent authoring API consistent with the rest of Murali JS.
+1. A coherent authoring API consistent with the rest of Veena.
 2. Deterministic arbitrary-time and reverse-order sampling tests where relevant.
-3. A runnable example that consumes Murali JS as a package.
+3. A runnable example that consumes Veena as a package.
 4. Render or preview verification for visual behavior.
 5. Documentation of constraints and intentional browser differences.
 6. A user-extension story when the capability introduces a new kind of visual content.
@@ -291,7 +291,7 @@ Passing unit tests alone means the implementation is working; it does not establ
 - [`../README.md`](../README.md): installation, first scene, everyday commands, and a concise feature overview.
 - [`ergonomics.md`](./ergonomics.md): the intended public authoring contract.
 - [`roadmap.md`](./roadmap.md): the numbered implementation order and completion criteria.
-- [`feature-parity.md`](./feature-parity.md): capability-level evidence against Murali and Manim.
+- [`feature-parity.md`](./feature-parity.md): capability-level evidence against Veena and Manim.
 - [`example-parity.md`](./example-parity.md): example-level implementation and comparison ledger.
 
 Historical milestone sequencing is available in Git history. It is intentionally not maintained as a second roadmap.

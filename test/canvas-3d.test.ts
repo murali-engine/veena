@@ -19,8 +19,8 @@ test("Canvas3DTattva draws WebGL2 frames from arbitrary sampled times", { timeou
   await previewScene(resolve("test/fixtures/canvas-3d-scene.ts"), {
     headless: true,
     async ready(page) {
-      await page.locator("#murali-play").click();
-      const inspect = () => page.locator("[data-murali-canvas3d]").evaluate((element) => {
+      await page.locator("#veena-play").click();
+      const inspect = () => page.locator("[data-veena-canvas3d]").evaluate((element) => {
         const canvas = element as HTMLCanvasElement;
         const gl = canvas.getContext("webgl2");
         if (!gl) throw new Error("Missing WebGL2 context.");
@@ -35,7 +35,7 @@ test("Canvas3DTattva draws WebGL2 frames from arbitrary sampled times", { timeou
         };
       });
 
-      await page.evaluate(() => window.__murali?.renderFrame(1));
+      await page.evaluate(() => window.__veena?.renderFrame(1));
       const end = await inspect();
       assert.equal(end.width, 400);
       assert.equal(end.height, 200);
@@ -43,7 +43,7 @@ test("Canvas3DTattva draws WebGL2 frames from arbitrary sampled times", { timeou
       assert.deepEqual(end.sample, { time: 1, fps: 20, frame: 20, duration: 1, progress: 1 });
       assert.deepEqual(end.pixel, [0, 255, 0, 255]);
 
-      await page.evaluate(() => window.__murali?.renderFrame(0));
+      await page.evaluate(() => window.__veena?.renderFrame(0));
       const start = await inspect();
       assert.deepEqual(start.sample, { time: 0, fps: 20, frame: 0, duration: 1, progress: 0 });
       assert.deepEqual(start.pixel, [255, 0, 0, 255]);

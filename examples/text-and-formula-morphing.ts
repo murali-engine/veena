@@ -1,7 +1,7 @@
-import { render } from "murali-js";
-import { Scene, timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { FormulaMorph, Label, TextMorph } from "murali-js/text";
+import { render } from "veena";
+import { Scene, timeline } from "veena/core";
+import { palette } from "veena/style";
+import { FormulaMorph, Label, TextMorph } from "veena/text";
 
 class TextAndFormulaMorphing extends Scene {
   override construct(): void {

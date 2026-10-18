@@ -21,7 +21,7 @@ Use `.reserveText(longestPossibleText)` for a dynamic readout so its layout boun
 ## Math text and native LaTeX
 
 ```ts
-import { Latex, MathText } from "murali-js/text";
+import { Latex, MathText } from "veena/text";
 
 MathText("E = mc^2").height(0.7);
 Latex(String.raw`\int_0^1 x^2\,dx = \frac{1}{3}`).height(0.8);
@@ -51,7 +51,7 @@ The current syntax selector accepts `rust` and `toml`; the displayed source can 
 ## True 3D text
 
 ```ts
-Text3D("MURALI", {
+Text3D("VEENA", {
   height: 1.2,
   depth: 0.35,
   faceColor: "#fffaf0",

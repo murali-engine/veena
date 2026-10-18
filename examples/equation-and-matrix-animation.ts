@@ -1,8 +1,8 @@
-import { render } from "murali-js";
-import { Scene, Timeline, easeInOutCubic } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
-import { Equation, Matrix, continuityPlacement } from "murali-js/maths";
+import { render } from "veena";
+import { Scene, Timeline, easeInOutCubic } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
+import { Equation, Matrix, continuityPlacement } from "veena/maths";
 const { BLUE_B, GOLD_C, GRAY_A, GRAY_B, TEAL_C, WHITE } = palette;
 
 const entries = [
@@ -11,7 +11,7 @@ const entries = [
   ["0", "-1", "2"],
 ] as const;
 
-/** Port of Murali `examples/equation_and_matrix_animation.rs`. */
+/** Port of Veena `examples/equation_and_matrix_animation.rs`. */
 class EquationAndMatrixAnimation extends Scene {
   constructor() {
     super({ viewWidth: 16 });

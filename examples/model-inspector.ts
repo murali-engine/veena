@@ -1,5 +1,5 @@
-import { render } from "murali-js";
-import { Scene } from "murali-js/core";
+import { render } from "veena";
+import { Scene } from "veena/core";
 import {
   Prop3D,
   centeredPropPosition,
@@ -8,9 +8,9 @@ import {
   modelCenter,
   modelDimensions,
   parseGltf,
-} from "murali-js/primitives";
-import { Label } from "murali-js/text";
-import type { Vec3 } from "murali-js/core";
+} from "veena/primitives";
+import { Label } from "veena/text";
+import type { Vec3 } from "veena/core";
 import { appleBin, appleGltf } from "./assets/props/files.ts";
 
 const FOV = 42;
@@ -18,7 +18,7 @@ const ASPECT = 16 / 9;
 const TURN_SPEED = 24;
 
 /**
- * Port of Murali's default `examples/model_inspector.rs` preview.
+ * Port of Veena's default `examples/model_inspector.rs` preview.
  * The apple is fitted and turns with scene time. Pointer orbit is not part of the recording.
  */
 class ModelInspector extends Scene {

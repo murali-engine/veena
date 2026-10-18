@@ -1,19 +1,19 @@
-import { render } from "murali-js";
-import { Scene, Tattva, Timeline, easeInOutCubic } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Circle, worldPath } from "murali-js/primitives";
-import { FormulaOutline, Label } from "murali-js/text";
-import { epicycleLinks, epicycleTip, fourierTerms } from "murali-js/maths";
-import { TracedPath } from "murali-js/utility";
+import { render } from "veena";
+import { Scene, Tattva, Timeline, easeInOutCubic } from "veena/core";
+import { palette } from "veena/style";
+import { Circle, worldPath } from "veena/primitives";
+import { FormulaOutline, Label } from "veena/text";
+import { epicycleLinks, epicycleTip, fourierTerms } from "veena/maths";
+import { TracedPath } from "veena/utility";
 const { GOLD_A, WHITE } = palette;
-import type { TattvaState, Vec2 } from "murali-js/core";
+import type { TattvaState, Vec2 } from "veena/core";
 
 const traceStart = 1.1;
 const traceDuration = 30;
 const harmonics = 34;
 
 /**
- * Port of Murali `examples/fourier_formula_trace.rs`.
+ * Port of Veena `examples/fourier_formula_trace.rs`.
  * The π is sampled from its real typeset vector outline before applying the DFT.
  */
 class FourierFormulaTrace extends Scene {

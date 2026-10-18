@@ -1,6 +1,6 @@
-import { render } from "murali-js";
-import { LearningParameterField } from "murali-js/ai";
-import { Scene, Timeline, type Vec2 } from "murali-js/core";
+import { render } from "veena";
+import { LearningParameterField } from "veena/ai";
+import { Scene, Timeline, type Vec2 } from "veena/core";
 
 const PARAMETERS_PER_BANK = 120;
 const BANK_COLUMNS = 12;

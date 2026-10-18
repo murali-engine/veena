@@ -35,23 +35,23 @@ test("preview seeks the scene without writing a video", { timeout: 60_000 }, asy
   const result = await previewScene(resolve("examples/basic.ts"), {
     headless: true,
     async ready(page) {
-      await page.locator("#murali-scrub").evaluate((input) => {
+      await page.locator("#veena-scrub").evaluate((input) => {
         const scrub = input as HTMLInputElement;
         scrub.value = "0";
         scrub.dispatchEvent(new Event("input", { bubbles: true }));
       });
-      const hidden = await page.locator(".murali-transform").first().evaluate((element) => {
+      const hidden = await page.locator(".veena-transform").first().evaluate((element) => {
         return (element as HTMLElement).style.opacity;
       });
-      await page.locator("#murali-scrub").evaluate((input) => {
+      await page.locator("#veena-scrub").evaluate((input) => {
         const scrub = input as HTMLInputElement;
         scrub.value = "0.9";
         scrub.dispatchEvent(new Event("input", { bubbles: true }));
       });
-      const shown = await page.locator(".murali-transform").first().evaluate((element) => {
+      const shown = await page.locator(".veena-transform").first().evaluate((element) => {
         return (element as HTMLElement).style.opacity;
       });
-      const readout = await page.locator("#murali-readout").innerText();
+      const readout = await page.locator("#veena-readout").innerText();
       assert.equal(hidden, "0");
       assert.equal(shown, "1");
       assert.match(readout, /0\.90s/);
@@ -64,11 +64,11 @@ test("preview embeds and waits for a registered local font", { timeout: 60_000 }
   await previewScene(resolve("test/fixtures/font-scene.ts"), {
     headless: true,
     async ready(page) {
-      const font = await page.locator(".murali-content").first().evaluate((element) => ({
+      const font = await page.locator(".veena-content").first().evaluate((element) => ({
         family: getComputedStyle(element).fontFamily,
-        loaded: document.fonts.check('400 16px "Murali Test Pixel"'),
+        loaded: document.fonts.check('400 16px "Veena Test Pixel"'),
       }));
-      assert.match(font.family, /Murali Test Pixel/);
+      assert.match(font.family, /Veena Test Pixel/);
       assert.equal(font.loaded, true);
     },
   });
@@ -78,7 +78,7 @@ test("preview updates sampled label text from a targeted updater", { timeout: 60
   await previewScene(resolve("examples/updater-coordinate-readout.ts"), {
     headless: true,
     async ready(page) {
-      const seek = (time: number) => page.locator("#murali-scrub").evaluate((input, value) => {
+      const seek = (time: number) => page.locator("#veena-scrub").evaluate((input, value) => {
         const scrub = input as HTMLInputElement;
         scrub.value = String(value);
         scrub.dispatchEvent(new Event("input", { bubbles: true }));
@@ -98,7 +98,7 @@ test("context-window headings and row labels stay inside their layout columns", 
   await previewScene(resolve("examples/ai/context-window.ts"), {
     headless: true,
     async ready(page) {
-      const svg = await page.locator(".murali-content svg").boundingBox();
+      const svg = await page.locator(".veena-content svg").boundingBox();
       const heading = await page.locator("[data-context-heading]").boundingBox();
       const budget = await page.locator("[data-context-budget]").boundingBox();
       assert.ok(svg && heading && budget);
@@ -123,19 +123,19 @@ test("preview scrubs semantic text and path reveals", { timeout: 60_000 }, async
   await previewScene(resolve("examples/style-and-paths.ts"), {
     headless: true,
     async ready(page) {
-      const seek = (time: number) => page.locator("#murali-scrub").evaluate((input, value) => {
+      const seek = (time: number) => page.locator("#veena-scrub").evaluate((input, value) => {
         const scrub = input as HTMLInputElement;
         scrub.value = String(value);
         scrub.dispatchEvent(new Event("input", { bubbles: true }));
       }, time);
 
       await seek(0.5);
-      const partialTitle = await page.locator(".murali-content").first().innerText();
+      const partialTitle = await page.locator(".veena-content").first().innerText();
       assert.ok(partialTitle.length > 0);
       assert.ok(partialTitle.length < "Style And Paths".length);
 
       await seek(6.9);
-      const authoredPaths = await page.locator("[data-murali-path]").evaluateAll((paths) => paths.map((path) => ({
+      const authoredPaths = await page.locator("[data-veena-path]").evaluateAll((paths) => paths.map((path) => ({
         color: getComputedStyle(path).stroke,
         offset: path.getAttribute("stroke-dashoffset"),
       })));
@@ -150,13 +150,13 @@ test("grows and contracts a shape fill with its written boundary", { timeout: 60
   await previewScene(resolve("test/fixtures/shape-fill-reveal-scene.ts"), {
     headless: true,
     async ready(page) {
-      const seek = (time: number) => page.locator("#murali-scrub").evaluate((input, value) => {
+      const seek = (time: number) => page.locator("#veena-scrub").evaluate((input, value) => {
         const scrub = input as HTMLInputElement;
         scrub.value = String(value);
         scrub.dispatchEvent(new Event("input", { bubbles: true }));
       }, time);
-      const source = page.locator("[data-murali-shape]");
-      const transient = page.locator("[data-murali-transient-fill]");
+      const source = page.locator("[data-veena-shape]");
+      const transient = page.locator("[data-veena-transient-fill]");
 
       await seek(0);
       assert.equal(await source.getAttribute("fill"), "none");
@@ -182,14 +182,14 @@ test("preview composes hierarchical XYZ transforms while overlays stay camera-in
   await previewScene(resolve("examples/css-3d-transforms.ts"), {
     headless: true,
     async ready(page) {
-      const seek = (time: number) => page.locator("#murali-scrub").evaluate((input, value) => {
+      const seek = (time: number) => page.locator("#veena-scrub").evaluate((input, value) => {
         const scrub = input as HTMLInputElement;
         scrub.value = String(value);
         scrub.dispatchEvent(new Event("input", { bubbles: true }));
       }, time);
-      const worldRoot = page.locator('[data-murali-layer="world"] > .murali-transform').first();
-      const child = worldRoot.locator(".murali-transform").first();
-      const overlay = page.locator('[data-murali-layer="overlay"] > .murali-transform').first();
+      const worldRoot = page.locator('[data-veena-layer="world"] > .veena-transform').first();
+      const child = worldRoot.locator(".veena-transform").first();
+      const overlay = page.locator('[data-veena-layer="overlay"] > .veena-transform').first();
 
       await seek(0);
       const initialRootTransform = await worldRoot.evaluate((element) => (element as HTMLElement).style.transform);

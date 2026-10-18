@@ -1,14 +1,14 @@
-import { render } from "murali-js";
+import { render } from "veena";
 import {
   ATTENTION_BLOCK_FOCUS,
   AttentionMatrix,
   SignalFlow,
   TokenRow,
   TransformerBlock,
-} from "murali-js/ai";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
+} from "veena/ai";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
 const { GOLD_A, GOLD_C, GRAY_A, GRAY_B, TEAL_A, TEAL_C, WHITE } = palette;
 
 /** AI teaching example: stage focus is a function of scene time. */

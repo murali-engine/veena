@@ -13,12 +13,12 @@ const rustDocsUrl = "https://github.com/murali-engine/murali-rs/tree/main/docs";
 const landingItems: NavbarItemConfig[] = [
   { to: "/docs/", label: "Docs", position: "left" },
   {
-    href: "https://github.com/murali-engine/murali-js/tree/main/examples",
+    href: "https://github.com/murali-engine/veena/tree/main/examples",
     label: "Examples",
     position: "left",
   },
   {
-    href: "https://www.youtube.com/@muraliengine",
+    href: "https://www.youtube.com/@veenaengine",
     label: "Showcase",
     position: "left",
   },
@@ -28,7 +28,7 @@ const landingItems: NavbarItemConfig[] = [
     position: "right",
   },
   {
-    href: "https://github.com/murali-engine/murali-js",
+    href: "https://github.com/murali-engine/veena",
     label: "GitHub",
     position: "right",
   },
@@ -53,7 +53,7 @@ const docsItems: NavbarItemConfig[] = [
     position: "right",
   },
   {
-    href: "https://github.com/murali-engine/murali-js",
+    href: "https://github.com/murali-engine/veena",
     label: "GitHub",
     position: "right",
   },

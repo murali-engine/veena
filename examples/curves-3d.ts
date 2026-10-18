@@ -1,12 +1,12 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
-import { Axes3D, ParametricCurve } from "murali-js/maths";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
+import { Axes3D, ParametricCurve } from "veena/maths";
 const { BLUE_B, GOLD_A, GOLD_C, GRAY_B, ORANGE_B, WHITE } = palette;
-import type { Vec3 } from "murali-js/core";
+import type { Vec3 } from "veena/core";
 
-/** Port of Murali `examples/curves_3d.rs`. The curve is a Three.js line revealed by scene time. */
+/** Port of Veena `examples/curves_3d.rs`. The curve is a Three.js line revealed by scene time. */
 class Curves3D extends Scene {
   override construct(): void {
     this.camera.perspective({ fov: 45, near: 0.1, far: 100 }).position([0, 0.8, 12.8]).lookAt([0, 0.1, 0]);

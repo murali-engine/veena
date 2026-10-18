@@ -1,11 +1,11 @@
-import { render } from "murali-js";
-import { MURALI_LOGO_BACKGROUND, MuraliLogoMark } from "murali-js/composite";
-import { Scene } from "murali-js/core";
+import { render } from "veena";
+import { VEENA_LOGO_BACKGROUND, VeenaLogoMark } from "veena/composite";
+import { Scene } from "veena/core";
 
 const settings = logoImageSettings();
 
-/** Export the standalone Murali mark as two square PNG variants. */
-class MuraliLogoImage extends Scene {
+/** Export the standalone Veena mark as two square PNG variants. */
+class VeenaLogoImage extends Scene {
   constructor() {
     super({
       frame: "square",
@@ -16,20 +16,20 @@ class MuraliLogoImage extends Scene {
   }
 
   override construct(): void {
-    this.add(MuraliLogoMark({ width: 6.6 }));
+    this.add(VeenaLogoMark({ width: 6.6 }));
   }
 }
 
-await render(import.meta.url, MuraliLogoImage, {
-  output: `${settings.outputDirectory}/murali-logo-background.png`,
+await render(import.meta.url, VeenaLogoImage, {
+  output: `${settings.outputDirectory}/veena-logo-background.png`,
   format: "png",
   transparent: false,
   at: 0,
   args: { background: settings.background },
 });
 
-await render(import.meta.url, MuraliLogoImage, {
-  output: `${settings.outputDirectory}/murali-logo-transparent.png`,
+await render(import.meta.url, VeenaLogoImage, {
+  output: `${settings.outputDirectory}/veena-logo-transparent.png`,
   format: "png",
   transparent: true,
   at: 0,
@@ -42,7 +42,7 @@ interface LogoImageSettings {
 }
 
 function logoImageSettings(): LogoImageSettings {
-  const injected = (globalThis as { __muraliArgs?: { background?: string } }).__muraliArgs;
+  const injected = (globalThis as { __veenaArgs?: { background?: string } }).__veenaArgs;
   if (injected?.background) {
     return {
       background: injected.background,
@@ -52,7 +52,7 @@ function logoImageSettings(): LogoImageSettings {
 
   const argv = typeof process === "undefined" ? [] : process.argv.slice(2);
   return {
-    background: argumentValue(argv, "--background") ?? MURALI_LOGO_BACKGROUND,
+    background: argumentValue(argv, "--background") ?? VEENA_LOGO_BACKGROUND,
     outputDirectory: trimTrailingSlash(argumentValue(argv, "--output-dir") ?? "./output"),
   };
 }

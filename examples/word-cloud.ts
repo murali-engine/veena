@@ -1,8 +1,8 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
-import { WordCloud } from "murali-js/maths";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
+import { WordCloud } from "veena/maths";
 const { WHITE } = palette;
 
 const EDITORIAL_COLORS = ["#dce2ea", "#aab4c3", "#78a9a2", "#7f94b2", "#9d8fa8"];

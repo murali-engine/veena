@@ -1,6 +1,6 @@
-import { AICircuitMark } from "murali-js/ai";
-import { Scene } from "murali-js/core";
-import { render } from "murali-js";
+import { AICircuitMark } from "veena/ai";
+import { Scene } from "veena/core";
+import { render } from "veena";
 
 class AICircuitMarkExample extends Scene {
   constructor() {

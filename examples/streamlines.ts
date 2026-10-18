@@ -1,16 +1,16 @@
-import { render } from "murali-js";
-import { Scene, Timeline, easeInOutQuad } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Circle } from "murali-js/primitives";
-import { Label } from "murali-js/text";
-import { StreamLines, circleSeeds } from "murali-js/maths";
+import { render } from "veena";
+import { Scene, Timeline, easeInOutQuad } from "veena/core";
+import { palette } from "veena/style";
+import { Circle } from "veena/primitives";
+import { Label } from "veena/text";
+import { StreamLines, circleSeeds } from "veena/maths";
 const { GOLD_C, GRAY_A, GRAY_B, TEAL_C, WHITE } = palette;
-import type { Vec2 } from "murali-js/core";
+import type { Vec2 } from "veena/core";
 
 const growthStart = 2;
 const growthDuration = 2.8;
 
-/** Port of Murali `examples/streamlines.rs`. Step count and opacity are functions of scene time. */
+/** Port of Veena `examples/streamlines.rs`. Step count and opacity are functions of scene time. */
 class Streamlines extends Scene {
   constructor() {
     super({ viewWidth: 16 });

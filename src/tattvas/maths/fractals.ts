@@ -273,7 +273,7 @@ function stagePath(
   gap: number,
 ): string {
   const dashAttribute = dash === 0 && gap === 0 ? "" : ` stroke-dasharray="${number(dash)} ${number(gap)}"`;
-  return `<path data-murali-path d="${path}" fill="none" stroke="currentColor" stroke-width="${number(width)}" stroke-linecap="round" stroke-linejoin="round" opacity="${number(opacity)}"${dashAttribute} />`;
+  return `<path data-veena-path d="${path}" fill="none" stroke="currentColor" stroke-width="${number(width)}" stroke-linecap="round" stroke-linejoin="round" opacity="${number(opacity)}"${dashAttribute} />`;
 }
 
 function pathDataForSegments(segments: readonly FractalSegment[]): string {

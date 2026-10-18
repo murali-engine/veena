@@ -1,7 +1,7 @@
-import { render } from "murali-js";
-import { Canvas3DTattva, type Canvas3DContext } from "murali-js/adapters";
-import { Scene, Timeline, type TattvaState } from "murali-js/core";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Canvas3DTattva, type Canvas3DContext } from "veena/adapters";
+import { Scene, Timeline, type TattvaState } from "veena/core";
+import { Label } from "veena/text";
 
 interface BloomState extends TattvaState {
   spin: number;

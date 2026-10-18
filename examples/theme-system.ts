@@ -1,10 +1,10 @@
-import { render } from "murali-js";
-import { Scene } from "murali-js/core";
-import { ReactTattva, ThreeTattva } from "murali-js/adapters";
-import { createTheme, themeColor, themes } from "murali-js/style";
-import { Group } from "murali-js/layout";
-import { Circle, Rectangle } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene } from "veena/core";
+import { ReactTattva, ThreeTattva } from "veena/adapters";
+import { createTheme, themeColor, themes } from "veena/style";
+import { Group } from "veena/layout";
+import { Circle, Rectangle } from "veena/primitives";
+import { Label } from "veena/text";
 import { createElement } from "react";
 import { Mesh, MeshStandardMaterial, TorusGeometry } from "three";
 

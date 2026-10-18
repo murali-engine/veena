@@ -1,8 +1,8 @@
-import { render } from "murali-js";
-import { Scene, Timeline, type Vec2 } from "murali-js/core";
-import { LinearMap2D } from "murali-js/maths";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, Timeline, type Vec2 } from "veena/core";
+import { LinearMap2D } from "veena/maths";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
 
 const { BLUE_B, GOLD_B, GRAY_B, TEAL_C, WHITE } = palette;
 

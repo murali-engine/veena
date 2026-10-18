@@ -19,8 +19,8 @@ test("CanvasTattva draws deterministic independently sampled frames", { timeout:
   await previewScene(resolve("test/fixtures/canvas-scene.ts"), {
     headless: true,
     async ready(page) {
-      await page.locator("#murali-play").click();
-      const inspect = () => page.locator("[data-murali-canvas]").evaluate((element) => {
+      await page.locator("#veena-play").click();
+      const inspect = () => page.locator("[data-veena-canvas]").evaluate((element) => {
         const canvas = element as HTMLCanvasElement;
         const context = canvas.getContext("2d");
         if (!context) throw new Error("Missing Canvas 2D context.");
@@ -34,7 +34,7 @@ test("CanvasTattva draws deterministic independently sampled frames", { timeout:
         };
       });
 
-      await page.evaluate(() => window.__murali?.renderFrame(1));
+      await page.evaluate(() => window.__veena?.renderFrame(1));
       const end = await inspect();
       assert.equal(end.width, 400);
       assert.equal(end.height, 200);
@@ -43,7 +43,7 @@ test("CanvasTattva draws deterministic independently sampled frames", { timeout:
       assert.deepEqual(end.left, [0, 0, 0, 0]);
       assert.deepEqual(end.right, [0, 255, 0, 255]);
 
-      await page.evaluate(() => window.__murali?.renderFrame(0));
+      await page.evaluate(() => window.__veena?.renderFrame(0));
       const start = await inspect();
       assert.deepEqual(start.sample, { time: 0, fps: 20, frame: 0, duration: 1, progress: 0 });
       assert.deepEqual(start.left, [255, 0, 0, 255]);

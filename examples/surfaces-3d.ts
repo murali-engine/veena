@@ -1,12 +1,12 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Label } from "murali-js/text";
-import { Axes3D, ParametricSurface } from "murali-js/maths";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Label } from "veena/text";
+import { Axes3D, ParametricSurface } from "veena/maths";
 const { BLUE_B, GOLD_C, GRAY_B, ORANGE_B, WHITE } = palette;
-import type { Vec3 } from "murali-js/core";
+import type { Vec3 } from "veena/core";
 
-/** Port of Murali `examples/surfaces_3d.rs`. The sheet writes in by parameter row. */
+/** Port of Veena `examples/surfaces_3d.rs`. The sheet writes in by parameter row. */
 class Surfaces3D extends Scene {
   override construct(): void {
     this.camera.perspective({ fov: 42, near: 0.1, far: 100 }).position([-5.6, 2.25, 8.2]).lookAt([0, 0.24, 0]);

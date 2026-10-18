@@ -1,10 +1,10 @@
 # Code organization
 
-Murali JS uses the same broad collection taxonomy as Murali Rust. Each collection is also an intentional package subpath, so specialized APIs no longer need to accumulate at the package root.
+Veena uses the same broad collection taxonomy as Veena Rust. Each collection is also an intentional package subpath, so specialized APIs no longer need to accumulate at the package root.
 
 ## Tattva domains
 
-The target internal structure mirrors the useful parts of Murali Rust's collections without copying its module depth mechanically:
+The target internal structure mirrors the useful parts of Veena Rust's collections without copying its module depth mechanically:
 
 ```text
 src/tattvas/
@@ -28,19 +28,19 @@ src/adapters/        React and Three.js Tattva adapters
 src/render/          capture, preview, audio and encoding
 ```
 
-The public entry points are `murali-js/core`, `/style`, `/adapters`, `/layout`, `/primitives`, `/text`, `/maths`, `/ai`, `/composite`, `/storytelling`, `/table`, `/utility`, and `/render`. Tattva implementation files physically live in their owning collection; category `index.ts` files are public barrels over sibling implementations, not facades over the former flat `src/tattvas/*.ts` layout.
+The public entry points are `veena/core`, `/style`, `/adapters`, `/layout`, `/primitives`, `/text`, `/maths`, `/ai`, `/composite`, `/storytelling`, `/table`, `/utility`, and `/render`. Tattva implementation files physically live in their owning collection; category `index.ts` files are public barrels over sibling implementations, not facades over the former flat `src/tattvas/*.ts` layout.
 
 For example:
 
 ```ts
-import { Scene, Timeline } from "murali-js/core";
-import { Circle, Arrow } from "murali-js/primitives";
-import { Label, LatexMorph } from "murali-js/text";
-import { Matrix, VectorField } from "murali-js/maths";
-import { NeuralNetwork } from "murali-js/ai";
+import { Scene, Timeline } from "veena/core";
+import { Circle, Arrow } from "veena/primitives";
+import { Label, LatexMorph } from "veena/text";
+import { Matrix, VectorField } from "veena/maths";
+import { NeuralNetwork } from "veena/ai";
 ```
 
-The package root is a compatibility prelude during the migration. Existing scenes can keep importing from `murali-js`, while new examples and documentation should use category imports. Once the repository and downstream scenes have migrated, the root can be reduced to the frequently used authoring grammar in a deliberate release.
+The package root is a compatibility prelude during the migration. Existing scenes can keep importing from `veena`, while new examples and documentation should use category imports. Once the repository and downstream scenes have migrated, the root can be reduced to the frequently used authoring grammar in a deliberate release.
 
 The `ai/` category currently has these focused entry points:
 
@@ -51,7 +51,7 @@ The `ai/` category currently has these focused entry points:
 - `tensors.ts`
 - `sampling.ts`
 
-The obsolete `src/tattvas/teaching.ts` compatibility barrel has been removed. AI consumers import from `murali-js/ai`, while the category's focused source entry points own discovery within the repository. Shared implementation belongs in private `internal/` modules; there is no public `common` or `internal` package export.
+The obsolete `src/tattvas/teaching.ts` compatibility barrel has been removed. AI consumers import from `veena/ai`, while the category's focused source entry points own discovery within the repository. Shared implementation belongs in private `internal/` modules; there is no public `common` or `internal` package export.
 
 ## Splitting rules
 

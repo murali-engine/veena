@@ -1,11 +1,11 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Arrow, Circle, Line, Rectangle, worldPath } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Arrow, Circle, Line, Rectangle, worldPath } from "veena/primitives";
+import { Label } from "veena/text";
 const { BLUE_B, BLUE_D, GRAY_A, GRAY_B, GOLD_C, GREEN_D, PURPLE_B, TEAL_C, WHITE } = palette;
 
-/** Port of Murali `examples/style_and_paths.rs`. */
+/** Port of Veena `examples/style_and_paths.rs`. */
 class StyleAndPaths extends Scene {
   override construct(): void {
     const title = this.add(Label("Style And Paths").height(0.38).color(WHITE), { at: [0, 3, 0] });

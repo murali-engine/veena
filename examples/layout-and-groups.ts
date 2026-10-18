@@ -1,12 +1,12 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Circle, Square } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Circle, Square } from "veena/primitives";
+import { Label } from "veena/text";
 const { BLUE_B, GRAY_A, GRAY_B, GOLD_C, GREEN_D, ORANGE_B, PURPLE_B, RED_B, TEAL_C, WHITE } = palette;
-import type { Tattva, Vec3 } from "murali-js/core";
+import type { Tattva, Vec3 } from "veena/core";
 
-/** Port of Murali `examples/layout_and_groups.rs`. */
+/** Port of Veena `examples/layout_and_groups.rs`. */
 class LayoutAndGroups extends Scene {
   override construct(): void {
     const title = this.add(

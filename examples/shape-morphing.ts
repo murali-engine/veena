@@ -1,8 +1,8 @@
-import { render } from "murali-js";
-import { Scene, timeline } from "murali-js/core";
-import { palette } from "murali-js/style";
-import { Circle, Ellipse, Polygon, Rectangle, ShapeMorph, VectorShape } from "murali-js/primitives";
-import { Label } from "murali-js/text";
+import { render } from "veena";
+import { Scene, timeline } from "veena/core";
+import { palette } from "veena/style";
+import { Circle, Ellipse, Polygon, Rectangle, ShapeMorph, VectorShape } from "veena/primitives";
+import { Label } from "veena/text";
 
 class ShapeMorphing extends Scene {
   override construct(): void {

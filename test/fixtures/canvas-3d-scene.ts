@@ -1,6 +1,6 @@
-import { render } from "murali-js";
-import { Canvas3DTattva } from "murali-js/adapters";
-import { Scene, Timeline, type TattvaState } from "murali-js/core";
+import { render } from "veena";
+import { Canvas3DTattva } from "veena/adapters";
+import { Scene, Timeline, type TattvaState } from "veena/core";
 
 interface ClearState extends TattvaState {
   amount: number;

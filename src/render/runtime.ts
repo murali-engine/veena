@@ -12,7 +12,7 @@ import {
   WebGLRenderer,
 } from "three";
 import type { Camera } from "three";
-import { MuraliThemeContext, type ReactTattva } from "../core/ReactTattva.ts";
+import { VeenaThemeContext, type ReactTattva } from "../core/ReactTattva.ts";
 import type { CanvasContext, CanvasTattva } from "../core/CanvasTattva.ts";
 import type { Canvas3DContext, Canvas3DTattva } from "../core/Canvas3DTattva.ts";
 import type { Scene } from "../core/Scene.ts";
@@ -59,7 +59,7 @@ interface MountedObject {
 
 declare global {
   interface Window {
-    __murali?: {
+    __veena?: {
       width: number;
       height: number;
       duration: number;
@@ -68,14 +68,14 @@ declare global {
       gifCaptures: Scene["gifCaptures"];
       renderFrame: (time: number) => void;
     };
-    __muraliReady?: boolean;
-    __muraliPreviewFinished?: boolean;
-    __muraliSceneClass?: new () => Scene;
+    __veenaReady?: boolean;
+    __veenaPreviewFinished?: boolean;
+    __veenaSceneClass?: new () => Scene;
   }
 }
 
 function applyCSS(element: HTMLElement, styles: CSSStyles): void {
-  const shape = element.querySelector("[data-murali-shape], [data-murali-vector-shape]");
+  const shape = element.querySelector("[data-veena-shape], [data-veena-vector-shape]");
   for (const [property, value] of Object.entries(styles)) {
     if (property === "background" && shape) {
       if (typeof value === "string") shape.setAttribute("fill", value);
@@ -211,7 +211,7 @@ function applyPaint(content: HTMLElement, state: TattvaState): void {
     content.style.color = state.indicate ? indicateColor(state.color, state.indicate) : state.color;
   }
   if (typeof state.background !== "string") return;
-  const shape = content.querySelector("[data-murali-shape], [data-murali-vector-shape]");
+  const shape = content.querySelector("[data-veena-shape], [data-veena-vector-shape]");
   if (shape) shape.setAttribute("fill", state.background);
   else content.style.background = state.background;
 }
@@ -252,8 +252,8 @@ function applyReveal(item: MountedObject, state: TattvaState): void {
   if (item.tattva.revealKind === "path") {
     for (const path of item.paths ?? []) {
       const { element, length } = path;
-      const authoredDash = element.getAttribute("data-murali-dash");
-      const clip = element.ownerSVGElement?.querySelector("[data-murali-reveal-clip]");
+      const authoredDash = element.getAttribute("data-veena-dash");
+      const clip = element.ownerSVGElement?.querySelector("[data-veena-reveal-clip]");
       if (authoredDash && clip) {
         element.setAttribute("stroke-dasharray", authoredDash);
         element.setAttribute("stroke-dashoffset", "0");
@@ -348,11 +348,11 @@ function cleanPathNumber(value: number): string {
 
 function mountPath(element: SVGPathElement): MountedPath {
   const length = Math.max(element.getTotalLength(), 0.001);
-  if (!element.hasAttribute("data-murali-reveal-fill")) return { element, length };
+  if (!element.hasAttribute("data-veena-reveal-fill")) return { element, length };
   const contours = sampleRevealContours(element.getAttribute("d") ?? "");
   const fillLength = contours.reduce((sum, contour) => sum + contour.length, 0);
   const transient = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  transient.dataset.muraliTransientFill = "true";
+  transient.dataset.veenaTransientFill = "true";
   transient.setAttribute("fill", element.getAttribute("fill") ?? "none");
   transient.setAttribute("fill-rule", element.getAttribute("fill-rule") ?? "nonzero");
   transient.setAttribute("stroke", "none");
@@ -471,8 +471,8 @@ function mountDom(tattva: Tattva<any>, container: HTMLElement, pixelsPerUnit: nu
   const wrapper = document.createElement("div");
   const content = document.createElement(tattva.tag);
   wrapper.dataset.tattvaId = tattva.id;
-  wrapper.className = "murali-transform";
-  content.className = ["murali-content", tattva.elementClassName].filter(Boolean).join(" ");
+  wrapper.className = "veena-transform";
+  content.className = ["veena-content", tattva.elementClassName].filter(Boolean).join(" ");
   const html = tattva.contentHTML(0, tattva.initialState);
   if (html !== undefined) content.innerHTML = html;
   else if (tattva.text !== undefined) content.textContent = tattva.text;
@@ -504,10 +504,10 @@ function mountDom(tattva: Tattva<any>, container: HTMLElement, pixelsPerUnit: nu
     wrapper,
     content,
     paths: tattva.revealKind === "path"
-      ? [...content.querySelectorAll<SVGPathElement>("[data-murali-path]")].map(mountPath)
+      ? [...content.querySelectorAll<SVGPathElement>("[data-veena-path]")].map(mountPath)
       : undefined,
     arrowheads: tattva.revealKind === "path"
-      ? [...content.querySelectorAll<SVGPathElement>("[data-murali-arrowhead]")]
+      ? [...content.querySelectorAll<SVGPathElement>("[data-veena-arrowhead]")]
       : undefined,
   };
 }
@@ -548,7 +548,7 @@ function mountScene(
     aspect,
   );
   const worldLayer = document.createElement("div");
-  worldLayer.dataset.muraliLayer = "world";
+  worldLayer.dataset.veenaLayer = "world";
   Object.assign(worldLayer.style, {
     position: "absolute",
     left: "0",
@@ -559,7 +559,7 @@ function mountScene(
     pointerEvents: "none",
   });
   const overlayLayer = document.createElement("div");
-  overlayLayer.dataset.muraliLayer = "overlay";
+  overlayLayer.dataset.veenaLayer = "overlay";
   Object.assign(overlayLayer.style, {
     position: "absolute",
     inset: "0",
@@ -576,7 +576,7 @@ function mountScene(
       item.reactRoot = createRoot(item.content);
     } else if (tattva.kind === "canvas") {
       const canvas = item.content as HTMLCanvasElement;
-      canvas.dataset.muraliCanvas = "true";
+      canvas.dataset.veenaCanvas = "true";
       canvas.width = Math.max(1, Math.round((tattva.worldSize?.width ?? 1) * pixelsPerUnit));
       canvas.height = Math.max(1, Math.round((tattva.worldSize?.height ?? 1) * pixelsPerUnit));
       const context = canvas.getContext("2d");
@@ -586,7 +586,7 @@ function mountScene(
     } else if (tattva.kind === "canvas3d") {
       const canvasTattva = tattva as Canvas3DTattva;
       const canvas = item.content as HTMLCanvasElement;
-      canvas.dataset.muraliCanvas3d = "true";
+      canvas.dataset.veenaCanvas3d = "true";
       canvas.width = Math.max(1, Math.round((tattva.worldSize?.width ?? 1) * pixelsPerUnit));
       canvas.height = Math.max(1, Math.round((tattva.worldSize?.height ?? 1) * pixelsPerUnit));
       const gl = canvas.getContext("webgl2", {
@@ -658,7 +658,7 @@ function mountScene(
         const component = item.tattva as ReactTattva;
         const content = component.render(state, { theme: item.tattva.resolvedTheme });
         flushSync(() => item.reactRoot?.render(createElement(
-          MuraliThemeContext.Provider,
+          VeenaThemeContext.Provider,
           { value: item.tattva.resolvedTheme },
           content,
         )));
@@ -718,7 +718,7 @@ function mountScene(
 
 function mountNestedScene(item: MountedObject, view: SceneViewTattva, pixelsPerUnit: number): void {
   const host = document.createElement("div");
-  host.dataset.muraliLayer = "scene-view";
+  host.dataset.veenaLayer = "scene-view";
   Object.assign(host.style, {
     position: "absolute",
     left: "0",
@@ -760,9 +760,9 @@ export async function mountAndExpose(SceneClass: new () => Scene): Promise<void>
   const scene = new SceneClass().prepare();
   await loadFontFaces(scene.fonts);
   const stage = document.querySelector<HTMLElement>("#stage");
-  if (!stage) throw new Error("Murali JS runtime requires a #stage element.");
+  if (!stage) throw new Error("Veena runtime requires a #stage element.");
   const mounted = mountScene(scene, stage);
-  window.__murali = {
+  window.__veena = {
     width: scene.width,
     height: scene.height,
     duration: scene.duration,
@@ -772,5 +772,5 @@ export async function mountAndExpose(SceneClass: new () => Scene): Promise<void>
     renderFrame: mounted.renderAt,
   };
   mounted.renderAt(0);
-  window.__muraliReady = true;
+  window.__veenaReady = true;
 }

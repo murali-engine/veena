@@ -1,6 +1,6 @@
 # Fractal examples
 
-Murali's line fractals are reusable `FractalPathTattva` objects, not example-only geometry.
+Veena's line fractals are reusable `FractalPathTattva` objects, not example-only geometry.
 
 ```bash
 npx tsx fractals/01-recursive-growth.ts --preview

@@ -1,8 +1,8 @@
-import { render } from "murali-js";
-import { Scene, Timeline } from "murali-js/core";
-import { Rectangle } from "murali-js/primitives";
-import { Label } from "murali-js/text";
-import { PageTurn } from "murali-js/storytelling";
+import { render } from "veena";
+import { Scene, Timeline } from "veena/core";
+import { Rectangle } from "veena/primitives";
+import { Label } from "veena/text";
+import { PageTurn } from "veena/storytelling";
 
 interface PageStyle {
   background: string;

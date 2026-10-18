@@ -1,4 +1,4 @@
-import { Circle, Scene, render } from "murali-js";
+import { Circle, Scene, render } from "veena";
 
 class ShortPreviewScene extends Scene {
   override construct(): void {

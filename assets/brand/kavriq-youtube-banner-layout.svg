@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1440" viewBox="0 0 2560 1440">
+  <title>Kavriq YouTube banner foreground</title>
+  <desc>The Kavriq drop mark, channel name, and tagline positioned within YouTube's centered safe area.</desc>
+  <defs>
+    <filter id="dropGlow" x="-80%" y="-50%" width="260%" height="220%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+    </filter>
+  </defs>
+
+  <!-- Soft brand glow behind the exact Kavriq mark. -->
+  <path
+    d="M 918 601 C 906 635 836 697 836 763 C 836 814 872 848 918 848 C 964 848 1000 814 1000 763 C 1000 697 930 635 918 601 Z"
+    fill="#08a9c4" opacity="0.32" filter="url(#dropGlow)"/>
+  <path
+    d="M 918 601 C 906 635 836 697 836 763 C 836 814 872 848 918 848 C 964 848 1000 814 1000 763 C 1000 697 930 635 918 601 Z"
+    fill="#08a9c4"/>
+
+</svg>

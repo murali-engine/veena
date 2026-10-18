@@ -1,6 +1,6 @@
 ---
 title: Storytelling and composites
-description: Stepwise stories, openings, fireworks, wave mesh, subscribe CTA, and the Murali logo.
+description: Stepwise stories, openings, fireworks, wave mesh, subscribe CTA, and the Veena logo.
 ---
 
 # Storytelling and composites
@@ -64,13 +64,13 @@ Fireworks({ layout: "portrait" })
 
 `YouTubeSubscribe` has wide and compact layouts, with a ready-made `YouTubeSubscribeSequence` for entrance, subscribe action, and bell ring.
 
-## Murali logo
+## Veena logo
 
 ```ts
-const mark = this.add(MuraliLogoMark({ width: 6.6 }));
-this.play(MuraliLogoSequence(mark, { duration: 6.4 }));
+const mark = this.add(VeenaLogoMark({ width: 6.6 }));
+this.play(VeenaLogoSequence(mark, { duration: 6.4 }));
 ```
 
-The sequence loops from one oval through the three-oval mark and back. `MuraliLogoSwell(mark)` instead keeps that settled mark and plays one baseline-pinned phrase: a low swell, a mid nudge, and a short high transient, each springing back past rest. See `examples/murali-logo-image.ts` for transparent and opaque PNG export. Its opaque variant defaults to `MURALI_LOGO_BACKGROUND`, the navy-to-teal documentation hero gradient, while `--background` accepts a custom CSS color or gradient. See `examples/murali-logo-animation.ts` for the swell.
+The sequence loops from one oval through the three-oval mark and back. `VeenaLogoSwell(mark)` instead keeps that settled mark and plays one baseline-pinned phrase: a low swell, a mid nudge, and a short high transient, each springing back past rest. See `examples/veena-logo-image.ts` for transparent and opaque PNG export. Its opaque variant defaults to `VEENA_LOGO_BACKGROUND`, the navy-to-teal documentation hero gradient, while `--background` accepts a custom CSS color or gradient. See `examples/veena-logo-animation.ts` for the swell.
 
 What the ovals and the swell mean is described in [The logo](../../logo).

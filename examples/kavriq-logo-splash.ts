@@ -1,10 +1,10 @@
-import { render } from "murali-js";
+import { render } from "veena";
 import {
   KAVRIQ_BACKGROUND,
   KAVRIQ_SPLASH_3D_DURATION,
   KavriqSplashLogo3D,
-} from "murali-js/composite";
-import { Scene, Timeline } from "murali-js/core";
+} from "veena/composite";
+import { Scene, Timeline } from "veena/core";
 
 const settings = splashSettings();
 
@@ -66,12 +66,12 @@ interface SplashSettings {
 
 function splashSettings(): SplashSettings {
   const injected = (globalThis as {
-    __muraliArgs?: {
+    __veenaArgs?: {
       background?: string;
       color?: string;
       maxSplashRadius?: string;
     };
-  }).__muraliArgs;
+  }).__veenaArgs;
   if (injected) {
     return {
       background: injected.background ?? KAVRIQ_BACKGROUND,

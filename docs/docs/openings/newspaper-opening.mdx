@@ -8,7 +8,7 @@ description: Build stacked newspaper montages with selectable generated layouts,
 `NewspaperOpening` places a sequence of fully opaque newspapers into an imperfect stack, then reveals a final title page. Each sheet can use a generated layout or a real newspaper image.
 
 ```ts
-import { Newspaper, NewspaperOpening } from "murali-js/storytelling";
+import { Newspaper, NewspaperOpening } from "veena/storytelling";
 
 const newspapers = [
   new Newspaper("A New Era Begins")
@@ -36,7 +36,7 @@ opening.animate(timeline);
 
 ## Generated layouts
 
-Murali currently provides three generated newspaper layouts:
+Veena currently provides three generated newspaper layouts:
 
 | Layout | Visual structure | Best suited to |
 | --- | --- | --- |
@@ -123,8 +123,8 @@ Missing values use newspaper-style defaults. Passing an empty string intentional
 Use `Newspaper.fromImage()` when a real scan, photograph, or prepared newspaper design is available. The supplied image replaces the generated masthead, headline, columns, and layout completely.
 
 ```ts
-import { imageFile } from "murali-js/core";
-import { Newspaper } from "murali-js/storytelling";
+import { imageFile } from "veena/core";
+import { Newspaper } from "veena/storytelling";
 
 const archive = Newspaper.fromImage(
   imageFile("./assets/archive-front-page.jpg"),
@@ -205,4 +205,4 @@ NewspaperOpening(newspapers, {
 });
 ```
 
-See [`examples/openings/newspaper-opening.ts`](https://github.com/murali-engine/murali-js/blob/main/examples/openings/newspaper-opening.ts) for a complete executable composition.
+See [`examples/openings/newspaper-opening.ts`](https://github.com/murali-engine/veena/blob/main/examples/openings/newspaper-opening.ts) for a complete executable composition.

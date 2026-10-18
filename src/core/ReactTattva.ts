@@ -2,10 +2,10 @@ import { createContext, useContext, type ReactNode } from "react";
 import { Tattva, type TattvaOptions, type TattvaState } from "./Tattva.ts";
 import { themes, type Theme } from "./theme.ts";
 
-export const MuraliThemeContext = createContext<Theme>(themes.dark);
+export const VeenaThemeContext = createContext<Theme>(themes.dark);
 
-export function useMuraliTheme(): Theme {
-  return useContext(MuraliThemeContext);
+export function useVeenaTheme(): Theme {
+  return useContext(VeenaThemeContext);
 }
 
 export interface ReactRenderContext {

@@ -7,7 +7,7 @@ import { resolveAudioTrack, type AudioTrack } from "./audio.ts";
 
 export interface PreviewOptions {
   headless?: boolean;
-  /** Values exposed to the scene as `globalThis.__muraliArgs` before it loads. */
+  /** Values exposed to the scene as `globalThis.__veenaArgs` before it loads. */
   args?: Record<string, string>;
   /** Runs after the window is showing the scene. The window closes when this returns. */
   ready?: (page: Page) => Promise<void>;
@@ -44,15 +44,15 @@ export async function previewScene(
     page.on("pageerror", (error) => {
       process.stderr.write(`Preview failed: ${error.message}\n`);
     });
-    await page.addInitScript(`globalThis.__muraliArgs = ${JSON.stringify(options.args ?? {})};`);
+    await page.addInitScript(`globalThis.__veenaArgs = ${JSON.stringify(options.args ?? {})};`);
     await page.setContent(previewDocument(basename(scenePath)));
     await page.evaluate((args) => {
-      (globalThis as typeof globalThis & { __muraliArgs?: Record<string, string> }).__muraliArgs = args;
+      (globalThis as typeof globalThis & { __veenaArgs?: Record<string, string> }).__veenaArgs = args;
     }, options.args ?? {});
     await page.addScriptTag({ content: bundle, type: "module" });
-    await page.waitForFunction(() => window.__muraliReady === true);
+    await page.waitForFunction(() => window.__veenaReady === true);
     const metadata = await page.evaluate((): SceneMetadata | null => {
-      const api = window.__murali;
+      const api = window.__veena;
       if (!api) return null;
       return { width: api.width, height: api.height, duration: api.duration, fps: api.fps };
     });
@@ -94,7 +94,7 @@ export async function previewScene(
 async function waitForPlaybackAndClose(page: Page, delay: number): Promise<void> {
   const manuallyClosed = new Promise<void>((resolve) => page.once("close", () => resolve()));
   const completed = page
-    .waitForFunction(() => window.__muraliPreviewFinished === true, undefined, { timeout: 0 })
+    .waitForFunction(() => window.__veenaPreviewFinished === true, undefined, { timeout: 0 })
     .then(async () => {
       if (delay > 0 && !page.isClosed()) await page.waitForTimeout(delay * 1000);
     })
@@ -119,18 +119,18 @@ function previewDocument(title: string): string {
     #bar { display: flex; gap: 10px; align-items: center; padding: 10px 14px; background: #161b22; border-top: 1px solid #2a3340; }
     button { background: #222a35; color: inherit; border: 1px solid #3a4656; border-radius: 6px; padding: 6px 10px; font: inherit; }
     button:hover { background: #2a3442; }
-    #murali-scrub { flex: 1; accent-color: #7dd3fc; }
-    #murali-readout { min-width: 12rem; text-align: right; font-variant-numeric: tabular-nums; color: #b7c3d4; }
+    #veena-scrub { flex: 1; accent-color: #7dd3fc; }
+    #veena-readout { min-width: 12rem; text-align: right; font-variant-numeric: tabular-nums; color: #b7c3d4; }
   </style>
 </head>
 <body>
   <div id="fit"><div id="frame"><div id="stage"></div></div></div>
   <div id="bar">
-    <button id="murali-play" type="button">Play</button>
-    <button id="murali-prev" type="button">Prev</button>
-    <button id="murali-next" type="button">Next</button>
-    <input id="murali-scrub" type="range" min="0" max="0" step="any" value="0" aria-label="Scene time">
-    <span id="murali-readout"></span>
+    <button id="veena-play" type="button">Play</button>
+    <button id="veena-prev" type="button">Prev</button>
+    <button id="veena-next" type="button">Next</button>
+    <input id="veena-scrub" type="range" min="0" max="0" step="any" value="0" aria-label="Scene time">
+    <span id="veena-readout"></span>
   </div>
 </body>
 </html>`;
@@ -176,12 +176,12 @@ function audioMimeType(extension: string): string {
 function playerScript(input: SceneMetadata & { frames: number; audio?: PreviewAudio }): string {
   return `(() => {
   const input = ${JSON.stringify(input)};
-  const api = window.__murali;
+  const api = window.__veena;
   const stage = document.querySelector("#stage");
   const frameElement = document.querySelector("#frame");
-  const playButton = document.querySelector("#murali-play");
-  const scrub = document.querySelector("#murali-scrub");
-  const readout = document.querySelector("#murali-readout");
+  const playButton = document.querySelector("#veena-play");
+  const scrub = document.querySelector("#veena-scrub");
+  const readout = document.querySelector("#veena-readout");
   if (!api || !stage || !frameElement || !playButton || !scrub || !readout) return;
 
   const width = input.width;
@@ -192,11 +192,11 @@ function playerScript(input: SceneMetadata & { frames: number; audio?: PreviewAu
   let time = 0;
   let frame = 0;
   let playing = duration > 0;
-  window.__muraliPreviewFinished = duration <= 0;
+  window.__veenaPreviewFinished = duration <= 0;
   let lastTick = performance.now();
   const audio = input.audio ? new Audio(input.audio.url) : null;
   if (audio) {
-    audio.id = "murali-audio";
+    audio.id = "veena-audio";
     audio.loop = true;
     audio.volume = input.audio.volume;
     audio.preload = "auto";
@@ -254,13 +254,13 @@ function playerScript(input: SceneMetadata & { frames: number; audio?: PreviewAu
     } else {
       if (time >= duration) show(0, 0, true);
       playing = duration > 0;
-      window.__muraliPreviewFinished = duration <= 0;
+      window.__veenaPreviewFinished = duration <= 0;
       lastTick = performance.now();
     }
     show(time, frame, false);
   });
-  const previous = document.querySelector("#murali-prev");
-  const next = document.querySelector("#murali-next");
+  const previous = document.querySelector("#veena-prev");
+  const next = document.querySelector("#veena-next");
   if (previous) previous.addEventListener("click", () => step(-1));
   if (next) next.addEventListener("click", () => step(1));
   scrub.addEventListener("input", () => {
@@ -287,7 +287,7 @@ function playerScript(input: SceneMetadata & { frames: number; audio?: PreviewAu
       if (time >= duration) {
         time = duration;
         playing = false;
-        window.__muraliPreviewFinished = true;
+        window.__veenaPreviewFinished = true;
       }
       show(time, Math.floor(time * fps));
     }
