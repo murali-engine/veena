@@ -6,7 +6,7 @@ import { Axes3D, ParametricCurve } from "veena/maths";
 const { BLUE_B, GOLD_A, GOLD_C, GRAY_B, ORANGE_B, WHITE } = palette;
 import type { Vec3 } from "veena/core";
 
-/** Port of Veena `examples/curves_3d.rs`. The curve is a Three.js line revealed by scene time. */
+/** Port of Murali `examples/curves_3d.rs`. The curve is a Three.js line revealed by scene time. */
 class Curves3D extends Scene {
   override construct(): void {
     this.camera.perspective({ fov: 45, near: 0.1, far: 100 }).position([0, 0.8, 12.8]).lookAt([0, 0.1, 0]);

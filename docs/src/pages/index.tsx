@@ -235,16 +235,15 @@ export default function Home(): ReactNode {
               Need a native engine?
             </Heading>
             <p>
-              Veena is the main path for creating visual stories. For specialised projects that
-              need lower-level native control, a Rust implementation and its documentation remain
-              available on GitHub.
+              Veena is the web-powered engine for creating visual stories. For specialised projects
+              that need lower-level native control, meet Murali, the Rust-powered engine.
             </p>
           </div>
           <Link
             className={styles.rustAction}
-            href="https://github.com/murali-engine/murali-rs/tree/main/docs"
+            href="https://muraliengine.com/"
           >
-            Open Rust Murali documentation →
+            Visit Murali →
           </Link>
         </section>
 

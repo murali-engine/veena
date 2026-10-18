@@ -11,7 +11,7 @@ const entries = [
   ["0", "-1", "2"],
 ] as const;
 
-/** Port of Veena `examples/equation_and_matrix_animation.rs`. */
+/** Port of Murali `examples/equation_and_matrix_animation.rs`. */
 class EquationAndMatrixAnimation extends Scene {
   constructor() {
     super({ viewWidth: 16 });

@@ -15,7 +15,7 @@ fps = 60
 background = "slate"
 `;
 
-/** Port of Veena `examples/code_blocks.rs`. Coloring is browser text, not highlight.js or Typst. */
+/** Port of Murali `examples/code_blocks.rs`. Coloring is browser text, not highlight.js or Typst. */
 class CodeBlocks extends Scene {
   override construct(): void {
     const title = this.add(Label("Re-imagined Code Blocks").height(0.38).color(WHITE).typewriter());

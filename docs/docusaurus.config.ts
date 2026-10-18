@@ -2,7 +2,7 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import { themes as prismThemes } from "prism-react-renderer";
 
-const rustDocsUrl = "https://github.com/murali-engine/murali-rs/tree/main/docs";
+const muraliWebsiteUrl = "https://muraliengine.com/";
 
 const config: Config = {
   title: "Veena",
@@ -121,7 +121,7 @@ const config: Config = {
           items: [
             { label: "Documentation", to: "/docs/" },
             { label: "The logo", to: "/docs/logo/" },
-            { label: "Rust Murali documentation", href: rustDocsUrl },
+            { label: "Murali (Rust)", href: muraliWebsiteUrl },
           ],
         },
         {

@@ -5,7 +5,7 @@ import { Label } from "veena/text";
 import { Stepwise } from "veena/storytelling";
 const { GRAY_B, TEAL_C, WHITE } = palette;
 
-/** Port of Veena `examples/stepwise_storytelling.rs`. The path reveals, then the signal replays it. */
+/** Port of Murali `examples/stepwise_storytelling.rs`. The path reveals, then the signal replays it. */
 class StepwiseStory extends Scene {
   override construct(): void {
     const title = this.add(Label("Stepwise Storytelling").height(0.38).color(WHITE).typewriter(), { at: [0, 3, 0] });

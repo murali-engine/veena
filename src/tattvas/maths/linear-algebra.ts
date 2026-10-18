@@ -335,7 +335,7 @@ export class DimensionBadgeBuilder {
   }
 }
 
-/** A short label such as `rank: 2`. Corners are square; Veena's plate is rounded. */
+/** A short label such as `rank: 2`. Corners are square; Murali's plate is rounded. */
 export function QuantityBadge(label: string, value: string): QuantityBadgeBuilder {
   return new QuantityBadgeBuilder(label, value);
 }
@@ -1179,7 +1179,7 @@ export function composeColumns(
 
 /**
  * One matrix, the vector it multiplies, the product, and an optional row-by-row expansion.
- * The product is a 32-bit dot product, so the printed entries match Veena.
+ * The product is a 32-bit dot product, so the printed entries match Murali.
  */
 export function MatrixVectorFlow(
   rows: readonly (readonly number[])[],
@@ -1314,7 +1314,7 @@ function requireMatrixShape(rows: readonly (readonly number[])[], input: readonl
   }
 }
 
-/** Left-to-right dot product in 32-bit floats. Veena stores these entries as `f32`. */
+/** Left-to-right dot product in 32-bit floats. Murali stores these entries as `f32`. */
 function f32Dot(row: readonly number[], input: readonly number[]): number {
   let sum = 0;
   for (let index = 0; index < row.length; index += 1) {

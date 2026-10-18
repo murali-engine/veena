@@ -1,4 +1,4 @@
-/** Veena and Manim palette. Shade A is lightest, E is darkest, and the bare name is shade C. */
+/** Murali and Manim compatibility palette. Shade A is lightest, E is darkest, and the bare name is shade C. */
 export const WHITE = "#ffffff";
 export const BLACK = "#000000";
 

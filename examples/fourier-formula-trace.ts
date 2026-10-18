@@ -13,7 +13,7 @@ const traceDuration = 30;
 const harmonics = 34;
 
 /**
- * Port of Veena `examples/fourier_formula_trace.rs`.
+ * Port of Murali `examples/fourier_formula_trace.rs`.
  * The π is sampled from its real typeset vector outline before applying the DFT.
  */
 class FourierFormulaTrace extends Scene {

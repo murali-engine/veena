@@ -27,7 +27,7 @@ export interface TensorViewOptions {
   cellHeight: number;
   labelHeight: number;
   valueHeight: number;
-  /** Value blends. Progress is smoothstep, matching Veena's InOutSmooth. */
+  /** Value blends. Progress is smoothstep, matching Murali's InOutSmooth. */
   morphs?: readonly TensorMorph[];
 }
 

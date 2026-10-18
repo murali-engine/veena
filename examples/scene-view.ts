@@ -9,7 +9,7 @@ import type { CircleTattva, RectangleTattva } from "veena/primitives";
 import type { LabelTattva } from "veena/text";
 
 /**
- * Port of Veena `examples/scene_view.rs`.
+ * Port of Murali `examples/scene_view.rs`.
  * The network is a child scene whose clock loops while the parent explains it.
  */
 class HandBuiltTransformer extends Scene {

@@ -5,7 +5,7 @@ import { worldPath } from "veena/primitives";
 import { Label } from "veena/text";
 const { BLUE_B, GRAY_A, GRAY_B, GOLD_C, PURPLE_B, TEAL_C, WHITE } = palette;
 
-/** Port of Veena `examples/text_animation.rs`. */
+/** Port of Murali `examples/text_animation.rs`. */
 class TextAnimation extends Scene {
   override construct(): void {
     const title = this.add(Label("Text Animation").height(0.38).color(WHITE));

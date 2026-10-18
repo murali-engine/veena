@@ -7,7 +7,7 @@ import { VectorField } from "veena/maths";
 const { BLUE_B, GRAY_B, RED_B, TEAL_C, WHITE } = palette;
 import type { Vec2 } from "veena/core";
 
-/** Port of Veena `examples/force_fields.rs`. Charges and arrows are both functions of scene time. */
+/** Port of Murali `examples/force_fields.rs`. Charges and arrows are both functions of scene time. */
 class ForceFields extends Scene {
   constructor() {
     super({ viewWidth: 16 });

@@ -5,7 +5,7 @@ import { Arrow, Circle, Line, Rectangle, worldPath } from "veena/primitives";
 import { Label } from "veena/text";
 const { BLUE_B, BLUE_D, GRAY_A, GRAY_B, GOLD_C, GREEN_D, PURPLE_B, TEAL_C, WHITE } = palette;
 
-/** Port of Veena `examples/style_and_paths.rs`. */
+/** Port of Murali `examples/style_and_paths.rs`. */
 class StyleAndPaths extends Scene {
   override construct(): void {
     const title = this.add(Label("Style And Paths").height(0.38).color(WHITE), { at: [0, 3, 0] });

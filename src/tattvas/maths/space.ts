@@ -270,7 +270,7 @@ class ParametricSurfaceTattva extends ThreeTattva {
     return this;
   }
 
-  /** Match Veena's `texture_flip_y`. The default keeps `u` running down the texture. */
+  /** Match Murali's `texture_flip_y`. The default keeps `u` running down the texture. */
   flipY(value = true): this {
     this.flipVertical = value;
     return this;

@@ -2285,7 +2285,7 @@ test("gives every scene an orthographic camera matching its logical frame", () =
   assert.equal(scene.camera.initialState.cameraTargetZ, 0);
 });
 
-test("provides Veena-parity camera geometry and orthographic framing helpers", () => {
+test("provides Murali-parity camera geometry and orthographic framing helpers", () => {
   class EmptyScene extends Scene {
     override construct(): void {}
   }

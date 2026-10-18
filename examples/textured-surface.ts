@@ -7,7 +7,7 @@ const { BLUE_B, GOLD_C, GRAY_B, ORANGE_B, TEAL_C, WHITE } = palette;
 import type { Vec3 } from "veena/core";
 const EARTH_TEXTURE = imageFile("./assets/textures/earthmap1k.jpg");
 
-/** Port of Veena `examples/textured_surface.rs`, using the same Earth surface image. */
+/** Port of Murali `examples/textured_surface.rs`, using the same Earth surface image. */
 class TexturedSurface extends Scene {
   override construct(): void {
     this.camera.perspective({ fov: 42, near: 0.1, far: 100 }).position([-3.2, 1.9, 5.8]).lookAt([0, 0, 0]);

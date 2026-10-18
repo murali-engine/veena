@@ -8,7 +8,7 @@ type PortalNavbar = {
   items: NavbarItemConfig[];
 };
 
-const rustDocsUrl = "https://github.com/murali-engine/murali-rs/tree/main/docs";
+const muraliWebsiteUrl = "https://muraliengine.com/";
 
 const landingItems: NavbarItemConfig[] = [
   { to: "/docs/", label: "Docs", position: "left" },
@@ -23,7 +23,7 @@ const landingItems: NavbarItemConfig[] = [
     position: "left",
   },
   {
-    href: rustDocsUrl,
+    href: muraliWebsiteUrl,
     label: "Murali (Rust)",
     position: "right",
   },
@@ -48,7 +48,7 @@ const docsItems: NavbarItemConfig[] = [
     items: [],
   },
   {
-    href: rustDocsUrl,
+    href: muraliWebsiteUrl,
     label: "Murali (Rust)",
     position: "right",
   },

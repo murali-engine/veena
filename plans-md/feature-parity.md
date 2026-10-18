@@ -1,6 +1,6 @@
-# Veena → Veena feature parity
+# Murali → Veena feature parity
 
-This is an evidence ledger, not a roadmap. It tracks the Manim and Veena baseline, using Veena at `/Users/ravishankar/personal-work/animation/veena` as the reference implementation. Current priorities live in [`roadmap.md`](./roadmap.md). The latest source-level audit was completed on **29 September 2026**.
+This is an evidence ledger, not a roadmap. It tracks the Manim and Murali baseline, with Murali as the Rust reference implementation and Veena as the web implementation. Current priorities live in [`roadmap.md`](./roadmap.md). The latest source-level audit was completed on **29 September 2026**.
 
 The ledger is not a limit on scene content. Anything the web can draw can be in a Veena scene without an entry here, as long as the picture at time `t` is fully determined by the scene and `t`. Determinism outranks that openness.
 
@@ -111,7 +111,7 @@ Configuration currently reads `veena.json` and `.env` from the working directory
 
 ## Collections and teaching components
 
-The original Veena collections belong above the core language and renderer. The implementation and comparison state of the 51 reference examples is in [`example-parity.md`](./example-parity.md).
+The original Murali collections belong above the core language and renderer. The implementation and comparison state of the 51 reference examples is in [`example-parity.md`](./example-parity.md).
 
 | Collection | Veena status |
 | --- | --- |
@@ -126,11 +126,11 @@ The original Veena collections belong above the core language and renderer. The 
 
 ## Rust capability audit (29 September 2026)
 
-All 51 Rust examples have runnable Veena counterparts, but example coverage is not the same as parity with every public Rust API. Several Rust facilities are not exercised by those examples, and most example ports still await direct rendered comparison.
+All 51 Murali examples have runnable Veena counterparts, but example coverage is not the same as parity with every public Murali API. Several Murali facilities are not exercised by those examples, and most example ports still await direct rendered comparison.
 
 ### Confirmed Veena gaps
 
-| Area | Rust capability | Veena state |
+| Area | Murali capability | Veena state |
 | --- | --- | --- |
 | Transform continuity | `match_transform`, `morph_from`, staged matching, vector equation/formula morphing | Closed built-in shapes morph through normalized contours; text and formulas have staged semantic matching; native LaTeX glyph outlines use cubic Bézier interpolation. General object matching and semantic TeX-token matching remain |
 | Timeline callbacks | `call_at`, `call_during`, and reversible variants | Not implemented |
@@ -154,9 +154,9 @@ All 51 Rust examples have runnable Veena counterparts, but example coverage is n
 
 ### Intentional differences, not gaps
 
-- Rust targets Tattvas through numeric `TattvaId` values; JavaScript uses typed object references.
-- Rust authoring uses quaternions; Veena exposes Euler degrees and converts them when composing 3D transforms.
-- Rust uses hecs internally. ECS is an implementation choice, not a user-facing capability Veena must reproduce.
+- Murali targets Tattvas through numeric `TattvaId` values; Veena uses typed object references.
+- Murali authoring uses quaternions; Veena exposes Euler degrees and converts them when composing 3D transforms.
+- Murali uses hecs internally. ECS is an implementation choice, not a user-facing capability Veena must reproduce.
 - Browser gradients, filters, masks, CSS, React, and arbitrary web content intentionally replace several native rendering mechanisms.
 
 ### Areas where Veena is already broader
@@ -173,21 +173,21 @@ A capability reaches `parity` only when it has:
 1. A documented authoring API.
 2. Deterministic behavioral tests.
 3. A runnable Veena reference example.
-4. A comparison against the corresponding Veena example.
+4. A comparison against the corresponding Murali example.
 5. Documented intentional platform differences.
 
 ## Parity comparisons
 
 ### Transform parity
 
-Veena's `DrawableProps` represents position as `Vec3`, rotation as a quaternion, and scale as `Vec3`; parent model matrices compose through the scene graph. Veena provides the same visible capability through XYZ position, degree-based XYZ Euler rotation, XYZ scale, and hierarchical CSS `matrix3d()` composition. The runnable comparison is `examples/css-3d-transforms.ts`, with deterministic interpolation and browser hierarchy coverage in the core and preview tests. Euler degrees are an intentional JavaScript/CSS-facing authoring difference; Veena converts them to quaternions when constructing render matrices. The 2D `at`, `rotate`, and `scale` builders are shorthand for the corresponding 3D state.
+Murali's `DrawableProps` represents position as `Vec3`, rotation as a quaternion, and scale as `Vec3`; parent model matrices compose through the scene graph. Veena provides the same visible capability through XYZ position, degree-based XYZ Euler rotation, XYZ scale, and hierarchical CSS `matrix3d()` composition. The runnable comparison is `examples/css-3d-transforms.ts`, with deterministic interpolation and browser hierarchy coverage in the core and preview tests. Euler degrees are an intentional JavaScript/CSS-facing authoring difference; Veena converts them to quaternions when constructing render matrices. The 2D `at`, `rotate`, and `scale` builders are shorthand for the corresponding 3D state.
 
 ### Stepwise storytelling
 
-`Stepwise()` uses a JavaScript callback builder: `step()` returns stable numeric handles, `connect()` creates edges, `route()` adds deterministic orthogonal routing, and `sequence()` defines a replay that may revisit steps. Without explicit connections it creates a linear story; acyclic explicit connections receive a deterministic topological sequence. Cyclic stories require an explicit sequence. Timeline state keeps reveal and replay independent through `reveal` and `signal`. The runnable comparison is `examples/stepwise-storytelling.ts`, and deterministic tests cover reveal phases, routed feedback, replay position, defaults, and validation. Direct side-by-side frame comparison with Veena remains before this reaches `parity`.
+`Stepwise()` uses a JavaScript callback builder: `step()` returns stable numeric handles, `connect()` creates edges, `route()` adds deterministic orthogonal routing, and `sequence()` defines a replay that may revisit steps. Without explicit connections it creates a linear story; acyclic explicit connections receive a deterministic topological sequence. Cyclic stories require an explicit sequence. Timeline state keeps reveal and replay independent through `reveal` and `signal`. The runnable comparison is `examples/stepwise-storytelling.ts`, and deterministic tests cover reveal phases, routed feedback, replay position, defaults, and validation. Direct side-by-side frame comparison with Murali remains before this reaches `parity`.
 
 ### Camera parity
 
-Veena's scene camera matches Veena's camera model: orthographic projection by default, opt-in perspective, frame-aware aspect, position/target/up vectors, forward/right helpers, visible bounds on a world Z plane, orthographic zoom, and deterministic `frameTo`, `moveTo`, `lookAt`, `zoomTo`, and `fovTo` animation. `toEdge` resolves against the camera intersection at the object's Z plane. World and overlay depth modes are distinct.
+Veena's scene camera matches Murali's camera model: orthographic projection by default, opt-in perspective, frame-aware aspect, position/target/up vectors, forward/right helpers, visible bounds on a world Z plane, orthographic zoom, and deterministic `frameTo`, `moveTo`, `lookAt`, `zoomTo`, and `fovTo` animation. `toEdge` resolves against the camera intersection at the object's Z plane. World and overlay depth modes are distinct.
 
-The runnable comparison is `examples/three-camera.ts`, corresponding to Veena's perspective surface and curve examples. It combines camera-animated Three.js geometry, a CSS label projected in world space, and a fixed overlay label. Veena expresses FOV in degrees rather than Veena's radians because degrees match Three.js and CSS-facing JavaScript APIs. Projection-mode changes are immediate configuration; numeric camera properties are the animatable surface. Browser DOM planes and WebGL geometry share camera state but remain separate compositing surfaces, so cross-surface geometric intersection is intentionally unsupported.
+The runnable comparison is `examples/three-camera.ts`, corresponding to Murali's perspective surface and curve examples. It combines camera-animated Three.js geometry, a CSS label projected in world space, and a fixed overlay label. Veena expresses FOV in degrees rather than Murali's radians because degrees match Three.js and CSS-facing JavaScript APIs. Projection-mode changes are immediate configuration; numeric camera properties are the animatable surface. Browser DOM planes and WebGL geometry share camera state but remain separate compositing surfaces, so cross-surface geometric intersection is intentionally unsupported.

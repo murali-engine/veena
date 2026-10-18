@@ -2,7 +2,7 @@
 
 Veena is a fully deterministic video tool. That is the first priority. It is also code-first and built on the web, and neither of those changes the rule: the same scene always produces the same frames.
 
-Manim and Veena are the baseline. A scene is ordinary code, objects sit in a world, and a timeline samples them at a virtual time. Rendering seeks that time. It does not play a wall clock.
+Manim and [Murali](https://muraliengine.com/) are the baseline. A scene is ordinary code, objects sit in a world, and a timeline samples them at a virtual time. Rendering seeks that time. It does not play a wall clock.
 
 The web is why scene construction is not limited to the built-in library. The shapes Veena ships are conveniences. If the browser can draw it — DOM, CSS, React, another web library, or Three.js — it can be in the scene, on that same timeline, and rendered frame-by-frame to an MP4. Web content is allowed only when its picture is a function of scene time.
 
@@ -755,9 +755,9 @@ The core has no dependency on Chromium, esbuild, or ffmpeg; those concerns stay 
 
 ## Project documentation
 
-- [`docs/ergonomics.md`](./docs/ergonomics.md) defines the intended authoring experience.
-- [`docs/roadmap.md`](./docs/roadmap.md) is the single current plan and code-health summary.
-- [`docs/feature-parity.md`](./docs/feature-parity.md) tracks capability evidence against Veena and Manim.
-- [`docs/example-parity.md`](./docs/example-parity.md) tracks all 51 Veena reference examples.
+- [`plans-md/ergonomics.md`](./plans-md/ergonomics.md) defines the intended authoring experience.
+- [`plans-md/roadmap.md`](./plans-md/roadmap.md) is the single current plan and code-health summary.
+- [`plans-md/feature-parity.md`](./plans-md/feature-parity.md) tracks capability evidence against Murali and Manim.
+- [`plans-md/example-parity.md`](./plans-md/example-parity.md) tracks all 51 Murali reference examples.
 
-Veena represents the lessons from all 51 Veena examples in 45 runnable scenes; ten static linear-algebra ports became five animated stories, and the separate GLB/glTF demonstrations became one format-comparison scene. Example coverage is not the same as complete Rust API parity. A source-level Rust gap audit and the still-unprioritized candidate set are recorded in [`docs/feature-parity.md`](./docs/feature-parity.md#rust-capability-audit-29-september-2026) and [`docs/roadmap.md`](./docs/roadmap.md#rust-parity-audit-snapshot). The next planning step is to rank those gaps alongside web-native investments before changing the roadmap order.
+Veena represents the lessons from all 51 Murali examples in 45 runnable scenes; ten static linear-algebra ports became five animated stories, and the separate GLB/glTF demonstrations became one format-comparison scene. Example coverage is not the same as complete Murali API parity. A source-level Rust gap audit and the still-unprioritized candidate set are recorded in [`plans-md/feature-parity.md`](./plans-md/feature-parity.md#rust-capability-audit-29-september-2026) and [`plans-md/roadmap.md`](./plans-md/roadmap.md#rust-parity-audit-snapshot). The next planning step is to rank those gaps alongside web-native investments before changing the roadmap order.

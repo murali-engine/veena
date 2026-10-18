@@ -1,10 +1,10 @@
 # Code organization
 
-Veena uses the same broad collection taxonomy as Veena Rust. Each collection is also an intentional package subpath, so specialized APIs no longer need to accumulate at the package root.
+Veena uses the same broad collection taxonomy as Murali. Each collection is also an intentional package subpath, so specialized APIs no longer need to accumulate at the package root.
 
 ## Tattva domains
 
-The target internal structure mirrors the useful parts of Veena Rust's collections without copying its module depth mechanically:
+The target internal structure mirrors the useful parts of Murali's collections without copying its module depth mechanically:
 
 ```text
 src/tattvas/

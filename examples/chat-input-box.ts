@@ -10,7 +10,7 @@ const rgba = (red: number, green: number, blue: number, alpha: number) => {
   return `rgba(${channel(red)}, ${channel(green)}, ${channel(blue)}, ${alpha})`;
 };
 
-/** Port of Veena `examples/chat_input_box.rs`. The box fades in, then its text types. */
+/** Port of Murali `examples/chat_input_box.rs`. The box fades in, then its text types. */
 class ChatInputScene extends Scene {
   override construct(): void {
     const title = this.add(Label("Chat Input Box").height(0.38).color(WHITE).typewriter());

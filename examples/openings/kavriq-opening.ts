@@ -6,7 +6,7 @@ import { Opening } from "veena/storytelling";
 const PARTICLE_PALETTE = ["#2ed1c7", "#5294ff", "#eb6190", "#ffb838", "#7adc61", "#ff6666"];
 const SATOSHI = fontFile("Satoshi", "../../assets/fonts/private/Satoshi-Bold.ttf", { weight: 700 });
 
-/** Port of Veena `examples/kavriq_opening.rs`. */
+/** Port of Murali `examples/kavriq_opening.rs`. */
 class KavriqOpening extends Scene {
   constructor() {
     super({ width: 1280, height: 720, background: "#0a121c" });

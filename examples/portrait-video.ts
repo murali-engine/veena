@@ -5,7 +5,7 @@ import { Circle } from "veena/primitives";
 import { Label } from "veena/text";
 const { BLUE_D, GREEN_D, WHITE } = palette;
 
-/** Port of Veena `examples/portrait_video.rs`. */
+/** Port of Murali `examples/portrait_video.rs`. */
 class PortraitVideo extends Scene {
   constructor() {
     super({ frame: "portrait" });

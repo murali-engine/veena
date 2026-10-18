@@ -7,7 +7,7 @@ import { Label } from "veena/text";
 import { Axes, NumberPlane, PlotLegend, ScatterPlot } from "veena/maths";
 const { BLUE_B, GRAY_A, GRAY_B, GOLD_C, ORANGE_B, WHITE } = palette;
 
-/** Port of Veena `examples/graphs_2d.rs`. */
+/** Port of Murali `examples/graphs_2d.rs`. */
 class Graphs2D extends Scene {
   override construct(): void {
     const title = this.add(Label("2D Graphs").height(0.38).color(WHITE));

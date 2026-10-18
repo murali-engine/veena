@@ -6,7 +6,7 @@ import { Axes3D, ParametricSurface } from "veena/maths";
 const { BLUE_B, GOLD_C, GRAY_B, ORANGE_B, TEAL_C, WHITE } = palette;
 import type { Vec3 } from "veena/core";
 
-/** Port of Veena `examples/wireframe_surfaces.rs`. */
+/** Port of Murali `examples/wireframe_surfaces.rs`. */
 class WireframeSurfaces extends Scene {
   override construct(): void {
     this.camera.perspective({ fov: 42, near: 0.1, far: 100 }).position([-4.6, 2.4, 6.4]).lookAt([0, 0, 0]);

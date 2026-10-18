@@ -6,7 +6,7 @@ import { Label } from "veena/text";
 const { BLUE_B, GRAY_A, GRAY_B, GOLD_C, GREEN_D, ORANGE_B, PURPLE_B, RED_B, TEAL_C, WHITE } = palette;
 import type { Tattva, Vec3 } from "veena/core";
 
-/** Port of Veena `examples/layout_and_groups.rs`. */
+/** Port of Murali `examples/layout_and_groups.rs`. */
 class LayoutAndGroups extends Scene {
   override construct(): void {
     const title = this.add(

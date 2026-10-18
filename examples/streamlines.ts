@@ -10,7 +10,7 @@ import type { Vec2 } from "veena/core";
 const growthStart = 2;
 const growthDuration = 2.8;
 
-/** Port of Veena `examples/streamlines.rs`. Step count and opacity are functions of scene time. */
+/** Port of Murali `examples/streamlines.rs`. Step count and opacity are functions of scene time. */
 class Streamlines extends Scene {
   constructor() {
     super({ viewWidth: 16 });

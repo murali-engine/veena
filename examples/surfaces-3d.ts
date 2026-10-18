@@ -6,7 +6,7 @@ import { Axes3D, ParametricSurface } from "veena/maths";
 const { BLUE_B, GOLD_C, GRAY_B, ORANGE_B, WHITE } = palette;
 import type { Vec3 } from "veena/core";
 
-/** Port of Veena `examples/surfaces_3d.rs`. The sheet writes in by parameter row. */
+/** Port of Murali `examples/surfaces_3d.rs`. The sheet writes in by parameter row. */
 class Surfaces3D extends Scene {
   override construct(): void {
     this.camera.perspective({ fov: 42, near: 0.1, far: 100 }).position([-5.6, 2.25, 8.2]).lookAt([0, 0.24, 0]);

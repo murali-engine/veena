@@ -119,7 +119,7 @@ Animation builders use the grammar:
 animate(target) → at(time) → duration(seconds) → ease(curve) → terminal verb
 ```
 
-Terminal verbs register an immutable animation specification immediately. JavaScript authoring does not require Veena's Rust-era `.spawn()` commit step.
+Terminal verbs register an immutable animation specification immediately. Veena authoring does not require Murali's `.spawn()` commit step.
 
 ```ts
 timeline

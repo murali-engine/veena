@@ -1,6 +1,6 @@
-- Make rust docs ad md file friendly and the new rust repo docs will live in repo only
-- Clean python stuff from rust veena repo
-- Rename veena rust edition to murali-rs
+- Make Murali docs Markdown-friendly and publish them on `muraliengine.com`
+- Clean Python tooling from the Murali repository
+- Use Murali (`murali-rs`) for the Rust-powered engine
 - Use similar semantics, and create proper docusaurus documentation for web version of veena
 - update CNAME
 - and update github build code for astro in new website

@@ -13,8 +13,8 @@ const { GRAY_A, GRAY_B, WHITE } = palette;
 const EARTH_TEXTURE = imageFile("./assets/textures/earthmap1k.jpg");
 
 /**
- * Port of Veena `examples/map_projection_morph.rs`.
- * The projection blend is a function of scene time and uses Veena's Earth surface image.
+ * Port of Murali `examples/map_projection_morph.rs`.
+ * The projection blend is a function of scene time and uses Murali's Earth surface image.
  */
 class MapProjectionMorph extends Scene {
   constructor() {

@@ -37,7 +37,7 @@ class OpeningScene extends Scene {
   }
 }
 
-/** Port of Veena `examples/opening_scene_view.rs`. */
+/** Port of Murali `examples/opening_scene_view.rs`. */
 class OpeningSceneView extends Scene {
   constructor() {
     super({ width: 1280, height: 720, background: BACKGROUND });

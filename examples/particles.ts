@@ -9,7 +9,7 @@ const evolveStart = 2.6;
 const evolveDuration = 5.6;
 const evolveSpeed = 1.05;
 
-/** Port of Veena `examples/particles.rs`. Belt phase is a function of scene time. */
+/** Port of Murali `examples/particles.rs`. Belt phase is a function of scene time. */
 class Particles extends Scene {
   constructor() {
     super({ viewWidth: 16 });

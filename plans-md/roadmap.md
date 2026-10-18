@@ -16,7 +16,7 @@ one scene file -> built-in or user-defined web content -> one timeline -> previe
 
 DOM, CSS, SVG, Canvas, React, Three.js, and future browser libraries must be able to participate in the same scene graph, camera, timeline, layout, and deterministic sampling rules. An author should not need a new Veena release merely because their visual is new.
 
-Implementation modules, package exports, and runnable examples are being organized with Rust-aligned domains. The category subpaths and migration rules are documented in [`code-organization.md`](./code-organization.md). Existing root imports remain a compatibility prelude while examples move incrementally to their canonical category imports.
+Implementation modules, package exports, and runnable examples are being organized with Murali-aligned domains. The category subpaths and migration rules are documented in [`code-organization.md`](./code-organization.md). Existing root imports remain a compatibility prelude while examples move incrementally to their canonical category imports.
 
 ## Decisions already made
 
@@ -29,7 +29,7 @@ These are product decisions, not open roadmap questions:
 5. **Built-in Tattvas remain a first-class convenience library.** Shapes, text, diagrams, teaching components, and higher-level artifacts are valuable, but users can create equally capable custom constructs without modifying Veena internals.
 6. **The fluent builder API remains the preferred code-first ergonomics.** Custom web content should gain the same placement, grouping, styling, camera, and timeline grammar as built-ins.
 7. **React and Three.js adapter separation is desirable but not urgent by itself.** Refactor when it simplifies the runtime or unlocks other browser renderers; do not split packages merely for architectural purity.
-8. **Veena is the JavaScript implementation of Veena Engine.** The original Rust/Python engine remains the parity baseline and historical source of useful ideas, but it does not constrain the web implementation's internal architecture.
+8. **Veena is the web-powered engine; Murali is the Rust-powered engine.** Murali remains the parity baseline and historical source of useful ideas, but it does not constrain Veena's internal architecture.
 
 ## Current state
 
@@ -45,13 +45,13 @@ The project is already a broad working implementation, not an early prototype.
 | Composition | Child scenes, independent child clocks, looping and playback modes | Visual parity proof and lifecycle semantics |
 | Runtime | Preview, MP4, PNG, transparency, progress, looping audio with volume and intervals, scene-authored screenshot sets and GIFs, npm installation, bundled Chromium | Source-relative config discovery, unified CLI behavior, diagnostics |
 | Teaching components | Linear algebra; semantic weighted/sparse neural networks with snapshot animation and unique-edge flow; transformers; tensors; probability; normalization; chat; stepwise stories; reusable 3D openings | Timeline-native tensor morphs, composable chat objects, large-network visual compression, specialized architecture views, API curation |
-| Veena coverage | All 51 reference lessons are represented by 45 Veena scenes after linear-algebra and 3D-format consolidation | Systematic rendered comparisons and documented intentional differences |
+| Murali coverage | All 51 Murali reference lessons are represented by 45 Veena scenes after linear-algebra and 3D-format consolidation | Systematic rendered comparisons and documented intentional differences |
 
 The verification baseline is 90 deterministic tests plus a package smoke test that installs the packed npm artifact and imports the root, render pipeline, and every public category subpath.
 
 ## Rust parity audit snapshot
 
-A source-level comparison against the Rust engine was refreshed on **29 September 2026**. All 51 reference examples are ported, but the following public Rust capabilities remain absent or materially incomplete in Veena:
+A source-level comparison against Murali was refreshed on **29 September 2026**. All 51 reference examples are ported, but the following public Murali capabilities remain absent or materially incomplete in Veena:
 
 - general object match-transform, semantic TeX-token correspondence, Typst parity, and richer equation continuity; closed-shape, semantic text, structural formulas, native LaTeX vector typesetting, and cubic glyph-outline interpolation are implemented;
 - scene removal/clear operations remain; typed per-frame updater handles, active ranges, and removal are implemented;
@@ -64,7 +64,7 @@ A source-level comparison against the Rust engine was refreshed on **29 Septembe
 - a versioned, validated AI trace ingestion model;
 - specialized built-ins including procedural noisy shapes/fields, `Cube`, standalone `ChatBubble`, reusable letter particles, decision-boundary/optimization views, and typed agent-flow components. `Ellipse` is now implemented.
 
-The native Rust renderer also provides one geometric depth space and shared GPU ownership. Veena instead shares camera state across separately composited DOM/SVG/React and Three.js surfaces. That is an intentional platform tradeoff unless a real scene demonstrates that unified cross-surface intersection is worth a different renderer architecture. Rust's ECS is likewise not a parity requirement.
+Murali's native renderer also provides one geometric depth space and shared GPU ownership. Veena instead shares camera state across separately composited DOM/SVG/React and Three.js surfaces. That is an intentional platform tradeoff unless a real scene demonstrates that unified cross-surface intersection is worth a different renderer architecture. Murali's ECS is likewise not a parity requirement.
 
 This snapshot is an inventory, **not a new priority order**. The next planning step is to rank these gaps against web-native investments by user value, reuse, determinism risk, implementation cost, and whether an adequate browser escape hatch already exists. The detailed evidence is in [`feature-parity.md`](./feature-parity.md#rust-capability-audit-29-september-2026).
 
@@ -220,7 +220,7 @@ Runnable examples demonstrate coverage but do not by themselves prove parity.
 
 - Add a small manifest of representative timestamps for each parity scene.
 - Capture deterministic Veena frames at those timestamps.
-- Maintain approved Veena reference frames or side-by-side comparison sheets.
+- Maintain approved Murali reference frames or side-by-side comparison sheets.
 - Record intentional browser differences next to each comparison.
 - Start with stepwise stories, chat, tensor operations, tensor slicing, and self-attention.
 - Then review primitives, layout, linear algebra, procedural scenes, 3D, and child scenes in dependency order.
@@ -266,11 +266,11 @@ Completion criteria:
 - CI visual comparisons run in a pinned environment;
 - performance work does not introduce playback-history-dependent frames.
 
-## Completed foundation: Veena port coverage
+## Completed foundation: Murali port coverage
 
 - The reusable opening composite is implemented with configurable texture, typography, particles, style, timing, and deterministic timeline choreography.
 - `kavriq_opening` and `opening_scene_view` are ported and render successfully.
-- All 51 Veena reference lessons are represented by runnable Veena scenes; ten static linear-algebra ports were consolidated into five animated scenes.
+- All 51 Murali reference lessons are represented by runnable Veena scenes; ten static linear-algebra ports were consolidated into five animated scenes.
 - Visual comparison of the complete set remains part of roadmap item 8.
 
 ## Definition of done
@@ -291,7 +291,7 @@ Passing unit tests alone means the implementation is working; it does not establ
 - [`../README.md`](../README.md): installation, first scene, everyday commands, and a concise feature overview.
 - [`ergonomics.md`](./ergonomics.md): the intended public authoring contract.
 - [`roadmap.md`](./roadmap.md): the numbered implementation order and completion criteria.
-- [`feature-parity.md`](./feature-parity.md): capability-level evidence against Veena and Manim.
+- [`feature-parity.md`](./feature-parity.md): capability-level evidence against Murali and Manim.
 - [`example-parity.md`](./example-parity.md): example-level implementation and comparison ledger.
 
 Historical milestone sequencing is available in Git history. It is intentionally not maintained as a second roadmap.

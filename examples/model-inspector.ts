@@ -18,7 +18,7 @@ const ASPECT = 16 / 9;
 const TURN_SPEED = 24;
 
 /**
- * Port of Veena's default `examples/model_inspector.rs` preview.
+ * Port of Murali's default `examples/model_inspector.rs` preview.
  * The apple is fitted and turns with scene time. Pointer orbit is not part of the recording.
  */
 class ModelInspector extends Scene {

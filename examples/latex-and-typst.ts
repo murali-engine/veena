@@ -5,7 +5,7 @@ import { Label, Latex, LatexMorph, MathText } from "veena/text";
 const { BLUE_B, GOLD_B, GRAY_A, GRAY_B, WHITE, TEAL_C } = palette;
 
 /**
- * Port of Veena `examples/latex_and_typst.rs`.
+ * Port of Murali `examples/latex_and_typst.rs`.
  * Static comparison uses browser MathML. The final sequence uses native LaTeX
  * vector outlines and glyph-to-glyph cubic Bezier interpolation.
  */

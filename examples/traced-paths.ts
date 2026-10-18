@@ -13,7 +13,7 @@ const rollDuration = 5.4;
 const startX = -3.45;
 const totalTheta = Math.PI * 4;
 
-/** Port of Veena `examples/traced_paths.rs`. The trace is resampled from scene time. */
+/** Port of Murali `examples/traced_paths.rs`. The trace is resampled from scene time. */
 class TracedPaths extends Scene {
   constructor() {
     super({ viewWidth: 16 });

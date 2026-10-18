@@ -5,7 +5,7 @@ import { Circle, Square } from "veena/primitives";
 import { Label } from "veena/text";
 const { BLUE_D, GRAY_A, GRAY_B, GOLD_C, RED_B, TEAL_C, WHITE } = palette;
 
-/** Port of Veena `examples/motion_basics.rs`. */
+/** Port of Murali `examples/motion_basics.rs`. */
 class MotionBasics extends Scene {
   override construct(): void {
     const title = this.add(Label("Motion Basics").height(0.38).color(WHITE));

@@ -7,9 +7,9 @@ This Docusaurus workspace hosts the Veena landing page and documentation.
 | Landing page | `/` | `src/pages/` | — |
 | Veena docs | `/docs/` | `docs/` | `docs:version` |
 
-The site is exclusively for Veena. The navbar and landing page link to the
-[Rust Murali documentation](https://github.com/murali-engine/murali-rs/tree/main/docs) for specialised
-projects that need the native engine.
+The site is exclusively for Veena. The navbar and landing page link to
+[Murali](https://muraliengine.com/), the Rust-powered engine, for specialised projects that need
+native control.
 
 Run the site from the repository root:
 

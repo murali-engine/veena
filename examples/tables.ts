@@ -5,7 +5,7 @@ import { Label } from "veena/text";
 import { Table } from "veena/table";
 const { GRAY_B, TEAL_C, WHITE } = palette;
 
-/** Port of Veena `examples/tables.rs`. Rules draw first, then the cells type on, then the table unwrites. */
+/** Port of Murali `examples/tables.rs`. Rules draw first, then the cells type on, then the table unwrites. */
 class Tables extends Scene {
   override construct(): void {
     const title = this.add(Label("Tables").height(0.38).color(WHITE).typewriter());
