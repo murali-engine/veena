@@ -36,20 +36,9 @@ npm install-scripts approve @playwright/browser-chromium ffmpeg-static esbuild
 
 Set `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` only when the environment already provides the matching Chromium.
 
-:::note Registry publish
+:::note Package name
 
-npm blocks the shorter name `veena` because its typosquat check treats that name as too similar to `lerna`. The package name is `veena-engine`. Publish it with `npm publish` from this repository.
-
-Until that publish, install a packed tarball from a checkout:
-
-```bash
-cd /path/to/veena
-npm pack
-cd /path/to/my-animation
-npm install /path/to/veena/veena-engine-0.1.0.tgz
-```
-
-The tarball name follows the version in `package.json`. `npm pack` builds the package and runs the tests before it writes that file.
+`veena-engine@0.1.0` is published, and the `latest` tag points at it. npm blocks the shorter name `veena` because that name is too similar to `lerna`.
 
 :::
 

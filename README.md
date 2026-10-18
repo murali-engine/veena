@@ -25,7 +25,7 @@ npx tsx hello.ts
 
 `npx veena render` reads the scene file directly. `npx tsx` runs a file that calls `render()` itself, which needs `"type": "module"` in the project. The first render downloads Chromium and FFmpeg when the package manager skipped their install scripts. That includes npm 12, a global install, and any install run with `--ignore-scripts`.
 
-The published package name is `veena-engine`. npm blocks the shorter name `veena` because it is too similar to `lerna`. Until the first publish, install a packed tarball. See [Installation](./docs/docs/installation.mdx).
+`veena-engine@0.1.0` is the `latest` release on npm. The shorter name `veena` is blocked because it is too similar to `lerna`. See [Installation](./docs/docs/installation.mdx).
 
 ## Quick start
 
